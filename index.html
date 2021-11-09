@@ -4,9 +4,6 @@
 		<base target="_blank"> 
 		<style>
 			body {
-				font-size: 14pt;
-				color: white;
-				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
 				background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("library.jpg");
 				background-color: black;
 				background-repeat: no-repeat;
@@ -14,11 +11,17 @@
 				background-attachment: fixed;
 				background-position: center; 
 			}
-			#page-wrap {
+			div#left {
+				float: left;
+			}
+			div#page-wrap {
+				font-size: 14pt;
+				color: white;
+				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
 				width: 800px;
 				margin: 0 auto;
 			}
-			a:link, a:visited, a:hover, a:active {
+			div#page-wrap a:link, a:visited, a:hover, a:active {
 				font-size: 14pt;
 				color: white;
 				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
@@ -26,7 +29,166 @@
 		</style>
 	</head>
 	<body>
-	  <div id="page-wrap">
+	<div id="left">
+	      <!-- Show static HTML/CSS as a placeholder in case js is not enabled - javascript include will override this if things work -->
+	      <style type="text/css" media="screen">
+	  .gr_custom_container_1636436898 {
+	    /* customize your Goodreads widget container here*/
+	    border: 1px solid gray;
+	    border-radius:10px;
+	    padding: 10px 5px 10px 5px;
+	    background-color: #FFFFFF;
+	    color: #000000;
+	    width: 300px
+	  }
+	  .gr_custom_header_1636436898 {
+	    /* customize your Goodreads header here*/
+	    border-bottom: 1px solid gray;
+	    width: 100%;
+	    margin-bottom: 5px;
+	    text-align: center;
+	    font-size: 120%
+	  }
+	  .gr_custom_each_container_1636436898 {
+	    /* customize each individual book container here */
+	    width: 100%;
+	    clear: both;
+	    margin-bottom: 10px;
+	    overflow: auto;
+	    padding-bottom: 4px;
+	    border-bottom: 1px solid #aaa;
+	  }
+	  .gr_custom_book_container_1636436898 {
+	    /* customize your book covers here */
+	    overflow: hidden;
+	    height: 60px;
+	      float: left;
+	      margin-right: 4px;
+	      width: 39px;
+	  }
+	  .gr_custom_author_1636436898 {
+	    /* customize your author names here */
+	    font-size: 10px;
+	  }
+	  .gr_custom_tags_1636436898 {
+	    /* customize your tags here */
+	    font-size: 10px;
+	    color: gray;
+	  }
+	  .gr_custom_rating_1636436898 {
+	    /* customize your rating stars here */
+	    float: right;
+	  }
+	</style>
+
+	      <div id="gr_custom_widget_1636436898">
+		  <div class="gr_custom_container_1636436898">
+	    <h2 class="gr_custom_header_1636436898">
+	    <a style="text-decoration: none;" rel="nofollow" href="https://www.goodreads.com/review/list/22437975-david?shelf=currently-reading&amp;utm_medium=api&amp;utm_source=custom_widget">David&#39;s bookshelf: currently-reading</a>
+	    </h2>
+	      <div class="gr_custom_each_container_1636436898">
+		  <div class="gr_custom_book_container_1636436898">
+		    <a title="Pragmatic Thinking and Learning: Refactor Your Wetware" rel="nofollow" href="https://www.goodreads.com/review/show/674561747?utm_medium=api&amp;utm_source=custom_widget"><img alt="Pragmatic Thinking and Learning: Refactor Your Wetware" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1390692774l/3063393._SX50_.jpg" /></a>
+		  </div>
+		  <div class="gr_custom_rating_1636436898">
+		    <span class=" staticStars notranslate" title="it was amazing"><img alt="it was amazing" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /></span>
+		  </div>
+		  <div class="gr_custom_title_1636436898">
+		    <a rel="nofollow" href="https://www.goodreads.com/review/show/674561747?utm_medium=api&amp;utm_source=custom_widget">Pragmatic Thinking and Learning: Refactor Your Wetware</a>
+		  </div>
+		  <div class="gr_custom_author_1636436898">
+		    by <a rel="nofollow" href="https://www.goodreads.com/author/show/2815.Andy_Hunt">Andy Hunt</a>
+		  </div>
+		  <div class="gr_custom_tags_1636436898">
+		    tagged:
+		    own, general-stem, and currently-reading
+		  </div>
+	      </div>
+	      <div class="gr_custom_each_container_1636436898">
+		  <div class="gr_custom_book_container_1636436898">
+		    <a title="Working Effectively with Legacy Code" rel="nofollow" href="https://www.goodreads.com/review/show/674562960?utm_medium=api&amp;utm_source=custom_widget"><img alt="Working Effectively with Legacy Code" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1348627451l/44919._SX50_.jpg" /></a>
+		  </div>
+		  <div class="gr_custom_rating_1636436898">
+		    <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+		  </div>
+		  <div class="gr_custom_title_1636436898">
+		    <a rel="nofollow" href="https://www.goodreads.com/review/show/674562960?utm_medium=api&amp;utm_source=custom_widget">Working Effectively with Legacy Code</a>
+		  </div>
+		  <div class="gr_custom_author_1636436898">
+		    by <a rel="nofollow" href="https://www.goodreads.com/author/show/25201.Michael_C_Feathers">Michael C. Feathers</a>
+		  </div>
+		  <div class="gr_custom_tags_1636436898">
+		    tagged:
+		    currently-reading, own, and software-engineering
+		  </div>
+	      </div>
+	      <div class="gr_custom_each_container_1636436898">
+		  <div class="gr_custom_book_container_1636436898">
+		    <a title="Choice (Big Ideas)" rel="nofollow" href="https://www.goodreads.com/review/show/3181939148?utm_medium=api&amp;utm_source=custom_widget"><img alt="Choice" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1328723887l/11795948._SY75_.jpg" /></a>
+		  </div>
+		  <div class="gr_custom_rating_1636436898">
+		    <span class=" staticStars notranslate" title="it was amazing"><img alt="it was amazing" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /></span>
+		  </div>
+		  <div class="gr_custom_title_1636436898">
+		    <a rel="nofollow" href="https://www.goodreads.com/review/show/3181939148?utm_medium=api&amp;utm_source=custom_widget">Choice</a>
+		  </div>
+		  <div class="gr_custom_author_1636436898">
+		    by <a rel="nofollow" href="https://www.goodreads.com/author/show/88696.Renata_Salecl">Renata Salecl</a>
+		  </div>
+		  <div class="gr_custom_tags_1636436898">
+		    tagged:
+		    own, psychology, and currently-reading
+		  </div>
+	      </div>
+	      <div class="gr_custom_each_container_1636436898">
+		  <div class="gr_custom_book_container_1636436898">
+		    <a title="Assimilate: A Critical History of Industrial Music" rel="nofollow" href="https://www.goodreads.com/review/show/3629382457?utm_medium=api&amp;utm_source=custom_widget"><img alt="Assimilate: A Critical History of Industrial Music" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1356019311l/17014039._SY75_.jpg" /></a>
+		  </div>
+		  <div class="gr_custom_rating_1636436898">
+		    <span class=" staticStars notranslate"><img src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+		  </div>
+		  <div class="gr_custom_title_1636436898">
+		    <a rel="nofollow" href="https://www.goodreads.com/review/show/3629382457?utm_medium=api&amp;utm_source=custom_widget">Assimilate: A Critical History of Industrial Music</a>
+		  </div>
+		  <div class="gr_custom_author_1636436898">
+		    by <a rel="nofollow" href="https://www.goodreads.com/author/show/6871353.S_Alexander_Reed">S. Alexander Reed</a>
+		  </div>
+		  <div class="gr_custom_tags_1636436898">
+		    tagged:
+		    currently-reading, own, and music-production
+		  </div>
+	      </div>
+	      <div class="gr_custom_each_container_1636436898">
+		  <div class="gr_custom_book_container_1636436898">
+		    <a title="The Secret DJ" rel="nofollow" href="https://www.goodreads.com/review/show/4285944923?utm_medium=api&amp;utm_source=custom_widget"><img alt="The Secret DJ" border="0" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1559877738l/42447811._SY75_.jpg" /></a>
+		  </div>
+		  <div class="gr_custom_rating_1636436898">
+		    <span class=" staticStars notranslate" title="really liked it"><img alt="really liked it" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_active.png" /><img alt="" src="https://s.gr-assets.com/images/layout/gr_red_star_inactive.png" /></span>
+		  </div>
+		  <div class="gr_custom_title_1636436898">
+		    <a rel="nofollow" href="https://www.goodreads.com/review/show/4285944923?utm_medium=api&amp;utm_source=custom_widget">The Secret DJ</a>
+		  </div>
+		  <div class="gr_custom_author_1636436898">
+		    by <a rel="nofollow" href="https://www.goodreads.com/author/show/15996227.The_Secret_DJ">The Secret DJ</a>
+		  </div>
+		  <div class="gr_custom_tags_1636436898">
+		    tagged:
+		    own, djing, and currently-reading
+		  </div>
+	      </div>
+	  <br style="clear: both"/>
+	  <center>
+	    <a rel="nofollow" href="https://www.goodreads.com/"><img alt="goodreads.com" style="border:0" src="https://s.gr-assets.com/images/widget/widget_logo.gif" /></a>
+	  </center>
+	  <noscript>
+	    Share <a rel="nofollow" href="https://www.goodreads.com/">book reviews</a> and ratings with David, and even join a <a rel="nofollow" href="https://www.goodreads.com/group">book club</a> on Goodreads.
+	  </noscript>
+	  </div>
+
+	      </div>
+	      <script src="https://www.goodreads.com/review/custom_widget/22437975.David's%20bookshelf:%20currently-reading?cover_position=left&cover_size=small&num_books=5&order=a&shelf=currently-reading&show_author=1&show_cover=1&show_rating=1&show_review=1&show_tags=1&show_title=1&sort=date_added&widget_bg_color=FFFFFF&widget_bg_transparent=&widget_border_width=1&widget_id=1636436898&widget_text_color=000000&widget_title_size=medium&widget_width=medium" type="text/javascript" charset="utf-8"></script>
+  </div>
+  <div id="page-wrap">
 		<div style="border: 2px solid #EBE8D5; border-radius:10px; padding: 0px 7px 0px 7px;"><h3 style=""><a href="https://www.goodreads.com/user/show/22437975-david" style="text-decoration: none;color:#aaa;font-family:georgia,serif;font-style:italic;" rel="nofollow">David’s quotes</a></h3><br/>
 			<div id="gr_quote_body">&quot;Some books are to be tasted, others to be swallowed, and some few to be chewed and digested: that is, some books are to be read in parts, others to be read, but not curiously, and some few books to be read wholly, and with diligence and attraction.&quot;&mdash; <a title="Francis Bacon quotes" href="https://www.goodreads.com/author/quotes/50964.Francis_Bacon">Francis Bacon</a><br/><br/></div>
 			<script src="https://www.goodreads.com/quotes/widget/22437975-david?v=2" type="text/javascript"></script>
