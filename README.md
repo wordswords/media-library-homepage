@@ -1,5 +1,7 @@
 # media-library-homepage
 
+![Alt text](https://i.imgur.com/HWZPRH5.png "My Media Library Homepage")
+
 A simple personal homepage that I use to list and organise my media.
 
 ## Requirements
