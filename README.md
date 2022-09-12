@@ -10,7 +10,8 @@ Works under Debian Linux systems with Python 3 installed.
 
 # Installation
 
-Run the script `install-media-library-homepage-server.sh`.
+1) Run the script `install-media-library-homepage-server.sh`.
+2) Run this command to make your computer serve the homepage always on boot `sudo systemctl enable media-library-homepage-server`
 
 # Accessing the homepage
 
