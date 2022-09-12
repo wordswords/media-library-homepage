@@ -14,9 +14,9 @@ Run the script `install-media-library-homepage-server.sh`.
 
 The Python3 web server binds on all available interfaces on port 7777, so you should be able to access it on the installed computer via `http://localhost:7777` and over the network on port 7777 on your network IP address.
 
-# Updating the homepage
+# Editing the homepage
 
-After you have made edits and customised your homepage and want to serve the latest version, just run the script `update-media-library-homepage.sh`.
+You will need to fork/duplicate this repository and update the references in the shell scripts to your personal github repo. Once you have done that, the process is 1) Make edits to the homepage 2) Commit them to your Github repo 3) Run the script `update-media-library-homepage.sh`.
 
 # Uninstalling
 
