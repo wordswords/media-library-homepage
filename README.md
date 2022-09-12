@@ -16,7 +16,7 @@ The Python3 web server binds on all available interfaces on port 7777, so you sh
 
 # Updating the homepage
 
-After you have made edits and customised your homepage and want to serve the latest version, just run the script `update-media-library-homepage-server.sh`.
+After you have made edits and customised your homepage and want to serve the latest version, just run the script `update-media-library-homepage.sh`.
 
 # Uninstalling
 
