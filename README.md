@@ -21,8 +21,8 @@ The Python3 web server binds on all available interfaces on port 7777, so you sh
 
 You will need to fork/duplicate this repository and update all the github references in the shell scripts to your personal github repo. Once you have done that, the process is:
 
-1) Make edits to the homepage 
-2) Commit them to your Github repo 
+1) Make edits to the homepage
+2) Commit them to your Github repo
 3) Run the script `update-media-library-homepage.sh`.
 
 # Uninstalling
