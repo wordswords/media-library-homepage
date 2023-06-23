@@ -6,16 +6,17 @@ A simple personal homepage that I use to list and organise my media.
 
 ## Requirements
 
-Works under Debian Linux systems with Python 3 installed.
+Tested under latest Ubuntu LTS.
 
 # Installation
 
-1) Run the script `install-media-library-homepage-server.sh`.
-2) Run this command to make your computer serve the homepage always on boot `sudo systemctl enable media-library-homepage-server`
+1. Install lighttpd - `sudo apt install lighttpd`
+2. Run the `./deploy-media-library-homepage.sh` script to deploy the page for the first time.
+3. Run `sudo ln -s ${PWD}/deploy-media-library-homepage.sh /etc/cron.d/cron.daily/deploy-media-library-homepage` to make it update every day with the latest version.
 
 # Accessing the homepage
 
-The Python3 web server binds on all available interfaces on port 7777, so you should be able to access it on the installed computer via `http://localhost:7777` and over the network on port 7777 on your network IP address.
+1. Browse to `http://localhost` or equivalent, to view the homepage.
 
 # Editing the homepage
 
@@ -23,11 +24,7 @@ You will need to fork/duplicate this repository and update all the github refere
 
 1) Make edits to the homepage
 2) Commit them to your Github repo
-3) Run the script `update-media-library-homepage.sh`.
-
-# Uninstalling
-
-Run the script `uninstall-media-library-homepage-server.sh`.
+3) Run the script `deploy-media-library-homepage.sh`.
 
 # Reuse
 
