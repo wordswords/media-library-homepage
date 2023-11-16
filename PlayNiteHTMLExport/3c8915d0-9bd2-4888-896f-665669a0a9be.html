@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>CryoFall</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('3c8915d0-9bd2-4888-896f-665669a0a9be/f88f8138-c0a2-4fd2-b5c6-a0b48b430c04.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="3c8915d0-9bd2-4888-896f-665669a0a9be/25e52820-4e24-4ace-96c3-00cebfdb9294.ico"/> CryoFall</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="3c8915d0-9bd2-4888-896f-665669a0a9be/17a5ba0d-18d2-40b9-a7c2-943ce29c6cf1.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 8:43:13</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-03/04/2019">03/04/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-50">50</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-AtomicTorch Studio">AtomicTorch Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Daedalic Entertainment">Daedalic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/829590" target="_blank">Steam</a><br/><a href="https://cryofall.com" target="_blank">Official Website</a><br/><a href="https://cryofall.gamepedia.com/" target="_blank">Wikia</a><br/><a href="https://twitter.com/AtomicTorch" target="_blank">Twitter</a><br/><a href="https://discord.gg/hS6VzMW" target="_blank">Discord</a><br/><a href="https://nexusmods.com/cryofall" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>JOIN OUR DISCORD COMMUNITY</h1><p><a href="https://steamcommunity.com/linkfilter/?url=https://discord.com/invite/hS6VzMW" target="_blank" rel="noopener"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/Discord-Cryofall_Discord.gif?t=1633705581" /></a></p><br><h1>Featured DLC</h1><p><a href="https://store.steampowered.com/app/1178321" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/1178321</a></p><br><h1>About the Game</h1><strong>CryoFall</strong> is a sci-fi colony simulation survival game set on a forgotten planet in a distant future.<br><br>Join the vast world of CryoFall together with other survivors to rebuild your civilization from scratch. Start with primitive technology and simple tools and use them to progress towards modern industrial might and even beyond, eventually reaching space-age technology only seen in science fiction.<br><br><strong>CryoFall can be played either as a relaxed PvE experience with no competition or as a brutal and unforgiving PvP. Make your choice and join one of many available servers with different game modes or host your own and invite your friends to join you!</strong><br><br>Build your house or a large base together with other players. Dig wells and create farms to sustain basic needs. Build vehicles to explore the world faster. Establish basics of science, all the way from medicine and chemistry to fuel creation and even lithium extraction to create electronic devices. Cook food or prepare drinks to sell them from vending machines in your store.<br><br>Build factories to produce on an industrial scale: Weapons and defense systems, bionic implants to augment yourself, even large war machines and artillery guns to use against the biggest of opponents.<h2 class="bb_tag">BUILD A HOUSE, BASE, OR A CITY!</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/1BuildABase.gif?t=1633705581" /><br>Start with a small house and expand it as you progress through the technological stages. First into a large base, then invite other players and create an entire city full of infrastructure, industrial machines, agricultural sectors, shops, and more.<h2 class="bb_tag">COMPLEX AGRICULTURE AND INDUSTRY</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/2Agriculture.gif?t=1633705581" /><br>Find rare seeds and create plantations of different crops. Use them to cook a variety of foods, each providing different effects to your character. And if it isn’t your thing - build large factories instead to produce a variety of items, refine petroleum to use as fuel for your vehicles, create weapons, defense equipment, and more.<h2 class="bb_tag">PLAYER RUN ECONOMY</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/3PlayerEconomy.jpg?t=1633705581" /><br>Issue currency and establish trade around the map using automated vending machines that you configure to sell or buy anything, even when you are not around.<h2 class="bb_tag">CONQUER THE PLANET</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/4ConquerPlanet.jpg?t=1633705581" /><br>Previously a thriving colony, now a desolate land full of dangers. What happened to this planet? Explore far reaches of this world and find abandoned laboratories and factories left from the previous colonists. Cross deserts and tundras, tropical areas and swamps, oceans and volcanoes.<h2 class="bb_tag">ELECTRICITY</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/5Electricity.jpg?t=1633705581" /><br>Build an electric grid for your base to enable complex industrial processes, defense installations, and other convenient technologies. Electricity starts with generators: steam, bioreactor, engine generator, solar, etc. Then you can store this energy in large capacitors and send it to many of your consumers from a simple induction furnace to a large psi-field projector to defend your base from intruders.<h2 class="bb_tag">NOT SURE IF THIS GAME IS FOR YOU?</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/829590/extras/6NotSureIfForYou.gif?t=1633705581" /><br>Try the <strong>complete version of the game for free</strong> for 8 hours by downloading the demo.<br>We are proud to offer you CryoFall to try completely free of charge because we are confident you will like it! Upgrade to full version any time if you enjoy the demo.<h2 class="bb_tag">Game facts</h2><ul class="bb_ul"><li>Complex crafting and industry, including oil refining &amp; lithium extraction.<br></li><li>Technology progression through the ages: primitive, industrial, modern, futuristic, sci-fi.<br></li><li>Farming with crop growth simulation, fertilizers, irrigation, etc. &amp; diverse cooking options.<br></li><li>Electricity system with power grid simulation. Build generators, storage structures, and electricity consumers.<br></li><li>Civilian and military vehicles to explore the world faster or use in combat.<br></li><li>Bionic and cybernetic implants to augment your character with new abilities or to boost stats.<br></li><li>Player-driven economy with currency issuance, complex trading and automated vending machines managed by players.<br></li><li>Carefully hand-crafted game world (+ map editor).<br></li><li>Diverse environments with several biomes (temperate, desert, tropical, boreal, wasteland, volcanic, etc.).<br></li><li>Complex character simulation with a multitude of various effects and afflictions.<br></li><li>Science! Chemistry, physics, medicine, and more.<br></li><li>Meaningful player interactions with complex specialization options, rather than just mindless combat.</li></ul><h2 class="bb_tag">Technical</h2><ul class="bb_ul"><li>Official and community-hosted PvE, PvP, and modded servers.<br></li><li>Feature rich <strong>map editor</strong>.<br></li><li>Extensive modding capabilities, including real-time code editing and open source game code.<br></li><li>In-house developed Renkei Engine™, allowing hundreds of players on the same server.</li></ul><h2 class="bb_tag">Still not convinced?</h2>Take a look at our complete feature overview!<br><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1489843089" target="_blank" rel="noreferrer"  id="dynamiclink_1" >https://steamcommunity.com/sharedfiles/filedetails/?id=1489843089</a><h2 class="bb_tag">Development</h2>The game is in active development and new features are being added regularly with each new version release!
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

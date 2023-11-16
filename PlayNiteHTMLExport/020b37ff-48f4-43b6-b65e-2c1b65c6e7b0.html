@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>FaceRig</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('020b37ff-48f4-43b6-b65e-2c1b65c6e7b0/0d9228c8-106c-4d57-acc6-8d31d3fda4f9.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="020b37ff-48f4-43b6-b65e-2c1b65c6e7b0/f29c30cc-66cc-463c-b90c-2dbce77828bf.ico"/> FaceRig</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="020b37ff-48f4-43b6-b65e-2c1b65c6e7b0/c212200a-86eb-4eaf-b38e-e7e8046b1d96.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>3h 18m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-03/12/2021">03/12/2021</a> 6:41:43</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:07</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 8:30:46</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-07/07/2015">07/07/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Holotech Sudios">Holotech Sudios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Holotech Sudios">Holotech Sudios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/274920/FaceRig/" target="_blank">Steam</a><br/><a href="http://www.facerig.com" target="_blank">Official Website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<a href="https://store.steampowered.com/app/1364390/Animaze_by_FaceRig/" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/1364390/Animaze_by_FaceRig/</a><h2 class="bb_tag">  FaceRig is in critical support mode and will be sunset at the end of 2021; all active Holotech Studios development is on Animaze. For the latest features and capabilities, download Animaze. </h2><br>FaceRig is a program enabling anyone with a webcam to digitally embody awesome characters. It is meant to be an open creation platform so everybody can make their own characters, backgrounds or props and import them into FaceRig. (More on <a href="https://steamcommunity.com/linkfilter/?url=http://facerig.com" target="_blank" rel="noopener"  >http://facerig.com</a> )<br><br>FaceRig is being developed by Holotech Studios and the image-based face tracking SDK being used is provided by ULSee Inc. To find out more about ULSee Inc., visit <a href="https://steamcommunity.com/linkfilter/?url=http://ulsee.com" target="_blank" rel="noopener"  >http://ulsee.com</a> or email them at <a href="mailto:info@ulsee.com">info@ulsee.com</a>. Our previous tracking technology was provided by Visage Technologies.<br><br>FaceRig has three versions:<br><ul class="bb_ul"><li>FaceRig Classic is the base version of FaceRig, which allows for home non-profit use and even limited monetization on YouTube/Twitch or similar as long as the commercial aspect of it is not significant. We consider commercially significant using it on any avenue (channel) that produces you more than $500 monthly revenue. This includes ad-based revenue and voluntary donations (one time or recurrent such as a Patreon). If you are under this threshold you can use Classic, if you are above you need to upgrade to Pro or Studio.<br></li><li>the FaceRig Pro DLC, which allows you to monetize videos on YouTube/Twitch regardless of the monthly revenue, but not for content exclusive to paid/subscription based services, such as the new YouTube Red (for content that is exclusive to YouTube Red or similar you will need FaceRig Studio).<br><strong>FaceRig Pro does not bring new assets, technical features or improvements to FaceRig Classic. </strong> For more details, take a look at the <a href="http://store.steampowered.com/app/315200" target="_blank" rel="noreferrer"  >Pro DLC description </a><br></li><li>the Studio Version allows commercial use, as well as  access to the expression mo-cap data. For more details about this version visit <a href="https://steamcommunity.com/linkfilter/?url=http://facerig.com" target="_blank" rel="noopener"  >http://facerig.com</a></li></ul><br>We believe that FaceRig will entertain many gamers, modelling and animation artists, members of various fandoms, streamers, web casters, YouTubers and their audiences.<br>For now we're focusing on just tracking and rendering the portrait with its expressions, but we aim to do more in the future. The FaceRig end goal is to provide a full featured real time digital actor set for home use.<br><br><br><strong>Key Features:</strong><br><ul class="bb_ul"><li>Real time head and expression tracking in an input video stream, (also with audio analysis).<br></li><li>Combining tracked data with additional virtual puppeteering input.<br></li><li>On-the-fly animation re-targeting for the tracked data and applying the animation on a user selected 3d model, with audio processing (voice alteration) <br></li><li>Rendering and lighting the animated model in real time, in a user selected background.<br></li><li>Encoding the rendered video and sending it further as output from a virtual webcam (it basically intercepts webcam input, and swaps the images captured by your real webcam with the fantastic content before sending it further).<br></li><li>Provide the interface for tuning the parameters of all operations above.<br></li><li>Customizable avatars. To see the complete list on FaceRig avatars including the ones from DLC's please see: <a href="https://steamcommunity.com/linkfilter/?url=https://facerig.com/tips/tuesday-tips-0-avatar-list/" target="_blank" rel="noopener"  >https://facerig.com/tips/tuesday-tips-0-avatar-list/</a><br></li><li>Open creation platform: you can make your own models (outside of FaceRig), import and use them as your avatars. The models need to be created according to  a set of published specs.</li></ul><br>Notes:<br>Numeric export of the tracked expression data (exporting the motion capture data to use in other applications) is a feature reserved for the Studio version.<br>FaceRig  Classic and Pro only output already rendered video and audio.<br><br><br>FaceRig is an indie initiative, and its development so far has been successfully crowd-funded through Indiegogo. A warm thank you goes to our amazing backers for their support and enthusiasm.<br><br>You can find the EULA here: <a href="http://store.steampowered.com/eula/274920_eula_1" target="_blank" rel="noreferrer"  >http://store.steampowered.com/eula/274920_eula_1</a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

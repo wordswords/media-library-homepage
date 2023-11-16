@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tannenberg</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('9405d795-231f-4d87-827f-d4f7205edbb3/fe5a2d99-86c9-4e5c-97f2-1c1303f4ccc5.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="9405d795-231f-4d87-827f-d4f7205edbb3/ec87133c-f144-4359-803e-36cd18200d9d.ico"/> Tannenberg</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="9405d795-231f-4d87-827f-d4f7205edbb3/ccfd4d77-3759-4ae5-a347-b3684063c39e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 5:01:16</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-13/02/2019">13/02/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-66">66</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Blackmill Games">Blackmill Games</a><br/><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-M2H">M2H</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Blackmill Games">Blackmill Games</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-M2H">M2H</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/633460" target="_blank">Steam</a><br/><a href="http://www.tannenberggame.com" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/WW1GameSeries" target="_blank">Facebook</a><br/><a href="https://twitter.com/WW1GameSeries" target="_blank">Twitter</a><br/><a href="https://www.epicgames.com/store/en-US/p/tannenberg" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/ww1gameseries" target="_blank">Twitch</a><br/><a href="https://www.reddit.com/r/WW1GameSeries/" target="_blank">Reddit</a><br/><a href="https://www.youtube.com/channel/UCJvD67ROAkMF7ZcYnV5YrcA" target="_blank">Youtube</a><br/><a href="http://discord.gg/WW1GameSeries" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>Combat erupts on a new frontline!</h1><p>The mountains of northern Italy are the focus of our new game: <strong>Isonzo</strong>. Lead the charge across stunning Italian landscapes on the attack, or prepare your defense on dynamic battlefields. Are you ready for high-altitude Alpine Warfare? Wishlist now:<br><br><a href="https://store.steampowered.com/app/1556790/Isonzo" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/1556790/Isonzo</a></p><br><h1>About the Game</h1>Tannenberg brings the massive battles of the Eastern Front in WW1 to life with 64 players fighting for control of key sectors of the battlefield, each one offering a distinct strategic advantage. Warfare between the Russian Empire, Germany, and their allies offers a fresh experience for first person shooter players and history enthusiasts alike.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/storebanner_base_gameplay.gif?t=1637656727" /><br><br>There are seven squads, 50+ weapons, eight large maps that give players tactical freedom, and a 64 player game mode with full AI bot support so you can experience epic battles at any time! Everything has been recreated with the same attention to detail seen in Verdun, the first entry in the WW1 Game Series.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/storebanner_base_uniforms.gif?t=1637656727" /><br><br>This historical game takes place across the lakes, forests, mountains and snowy plains of the Eastern Front - it was inspired by the Battle of Tannenberg in 1914, one of the most iconic encirclement battles in history. Players will be able to master a range of authentically modelled equipment brought to the field by Russian Frontovik and Cossack squads, the renowned Latvian Riflemen, or the Roumanian infantry squad. Alternatively they can join the Central Powers to serve in an Austro-Hungarian K.u.K. unit, with the German Infanterie, or in the Bulgarian rifle section.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/storebanner_base_weather.gif?t=1637656727" /><br><br>Tannenberg offers several game modes - including the exciting Maneuver game mode reflecting the nature of war on the Eastern Front, as 64 players battle across large maps where the objectives and battle lines are always shifting. Survive the deadly battles by working together with your four man squad and utilizing your distinctive skills. There is a wealth of historical detail including realistic WW1 weaponry, authentic uniforms, horrendous gore, and maps based on real battlefields.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/storebanner_base_weapons.gif?t=1637656727" /><h2 class="bb_tag">Tannenberg key features include:</h2> <ul class="bb_ul"><li> <strong>Authentic WW1 atmosphere;</strong> accuracy in everything from maps and weaponry to uniforms<br></li><li> <strong>Tactical squad-based FPS;</strong> play as Russian, Roumanian, Latvian, Austro-Hungarian, German and Bulgarian troops<br></li><li> <strong>Wide-ranging landscapes;</strong> large maps each with weather variants from snow to summer sun<br></li><li> <strong>64 player Maneuver game mode;</strong> capture strategic sectors in grand battles of movement<br></li><li> <strong>Never fight alone;</strong> squad gameplay and AI bots for Maneuver so you can join epic battles at any time</li></ul><h2 class="bb_tag"><strong>WW1 on the Eastern Front</strong></h2>It’s all-out war on the Eastern Front! From artillery barrages and poison gas to the deadly heavy machine gun and hard-hitting rifle, there are many weapons to master. The battlefield is a dangerous place – lead your shots, keep your eyes open, and be ready to engage in ferocious close combat at any moment.<br><br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/storebanner_base_gas.gif?t=1637656727" /><br><br>Tannenberg’s Maneuver game mode captures the essence of warfare on the Eastern Front, with 64 players, large open maps, and the freedom to choose which sectors you will attack and defend. Just make sure you don’t get outflanked and encircled before you can do the same to your enemies!<h2 class="bb_tag"><strong>Authentic World War 1 Setting</strong></h2>The WW1 Game Series currently includes Tannenberg and <a href="http://store.steampowered.com/app/242860" target="_blank" rel="noreferrer"  >Verdun</a> (set on the Western Front). These authentic WW1 shooters let players choose from a range of squads from across the war, as they fight for control of the ever-changing frontlines.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/storebanner_base_levels.gif?t=1637656727" /><br><br>We recreate the atmosphere of the Eastern Front with the same level of accuracy as seen in Verdun. Extensive research has been conducted, with uniforms recreated to the tiniest detail and weapons modelled to exact references. The maps use realistic props and terrain layouts based on locations from the hilly forests of Galicia to Polish villages subjected to scorched earth tactics and more!<br><br><i><strong>More WW1 FPS action in Verdun, and soon in Isonzo!</strong><br>World War One took place on several fronts, with the Western front known for one of the bloodiest histories of all. Join the trench warfare in <a href="https://store.steampowered.com/app/242860/Verdun" target="_blank" rel="noreferrer"  >Verdun</a>! Also make sure to check out the upcoming <a href="https://store.steampowered.com/app/1556790/Isonzo" target="_blank" rel="noreferrer"  >Isonzo</a> which is set on the Italian Front.<br><br>Or if you want to chat with us...<br><br><a href="https://steamcommunity.com/linkfilter/?url=https://www.discordapp.com/invite/dUY5DSu?utm_source=SteamstoreTannenberg&amp;utm_medium=Discord&amp;utm_campaign=crosspromo" target="_blank" rel="noopener"  ><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/633460/extras/DiscordBannerTest.jpg?t=1637656727" /></a></i>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

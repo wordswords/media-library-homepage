@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>112 Operator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b91bf085-5018-4d8e-924e-8856f50b67b4/6d11ca2e-22fd-4b53-835d-6ae409080a10.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b91bf085-5018-4d8e-924e-8856f50b67b4/efb1b5ba-b101-4987-aba9-81635e2222f0.ico"/> 112 Operator</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b91bf085-5018-4d8e-924e-8856f50b67b4/5662e2e7-99ee-4a7f-8962-3281649045e7.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/03/2022">23/03/2022</a> 9:46:57</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:42:01</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-23/04/2020">23/04/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Jutsu Games">Jutsu Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Games Operators">Games Operators</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-PlayWay S.A.">PlayWay S.A.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/793460" target="_blank">Steam</a><br/><a href="http://jutsugames.com/index.php/operator-112" target="_blank">Official Website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Education">Education</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Heist">Heist</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Immersive Sim">Immersive Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Management">Management</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Medical Sim">Medical Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Minimalist">Minimalist</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Moddable">Moddable</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Modern">Modern</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Open World">Open World</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Procedural Generation">Procedural Generation</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Real Time Tactics">Real Time Tactics</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Realistic">Realistic</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-RTS">RTS</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sandbox">Sandbox</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Simulation">Simulation</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Time Management">Time Management</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><img src="https://cdn.akamai.steamstatic.com/steam/apps/793460/extras/ENG_01.gif?t=1645811706" /></h2><br>112 Operator allows you to manage emergency services in any city in the world! Dispatch units, take calls and face situations caused by weather, traffic or changing seasons. Help the city survive escalating events like riots, organized crime, terrorist attacks, cataclysms, natural disasters and many more!<h2 class="bb_tag"><img src="https://cdn.akamai.steamstatic.com/steam/apps/793460/extras/ENG_02.gif?t=1645811706" /></h2><h2 class="bb_tag">Danger has escalated</h2>Help on a scale bigger than ever before. The sequel of the award-winning <a href="http://store.steampowered.com/app/503560/911_Operator/" target="_blank" rel="noreferrer"  >911 Operator</a> lets you act on many, completely different levels - from taking care of a single neighborhood to coordinating several operators’ work in the world’s biggest metropolises. Full 3D visualization will give you the inside view of your units’ actions. Choose from over 100 000 areas, such as districts, municipalities, and tens of thousands of real cities from all over the world.<h2 class="bb_tag">To all units: a storm is coming…</h2>Face the dynamic weather, based on authentic, historical data. Watch the incidents change as day or night comes, traffic increases and seasons pass. Watch out for extreme conditions that may lead to cataclysms and natural disasters. Try to tame big wildfires spreading across the map. Weather isn’t your only problem though - be careful when dealing with terrorist attacks and gang wars.<h2 class="bb_tag"><img src="https://cdn.akamai.steamstatic.com/steam/apps/793460/extras/ENG_04.gif?t=1645811706" /></h2><h2 class="bb_tag">112, what’s your emergency?</h2>Take calls from people in various situations, needing emergency services’ help. You never know who’s on the other side of the line - you might hear a frightening murder story, maybe you’ll have to instruct someone on performing CPR, or keep your nerves while encountering an annoying prankster.<h2 class="bb_tag">It’s my job, ma’am...</h2>Choose one of the European cities in completely new Career mode and find out if you’ll manage to climb up to the very top of an operator’s career ladder. Follow the commands of your supervisors and see your actions affecting people you’re in charge of or those who need your help. Sometimes your mistakes will only be followed by a reprimanding e-mail, sometimes they’ll influence your own life.<br>You can also play special scenarios in any city in the world, or make your own rules in the Free Game mode.<h2 class="bb_tag">We need backup!</h2>Command the best specialists, using technologically advanced equipment and vehicles. Decide what to use - a SWAT team, Search and Rescue helicopter, or maybe riot gear? When your units arrive at the scene, command them in the tactical view that gives you the full image of the situation.<h2 class="bb_tag"><img src="https://cdn.akamai.steamstatic.com/steam/apps/793460/extras/ENG_03.gif?t=1645811706" /></h2><h2 class="bb_tag">NEW FEATURES IN 112 OPERATOR:</h2><ul class="bb_ul"><li>25 times bigger, expandable maps of REAL CITIES with 3D buildings<br></li><li> entirely new set of emergency calls and large events<br></li><li> completely redesigned campaign mode, with objectives system, emails, and a story  <br></li><li> day&amp;night, weather, seasons and traffic now influences the duty and the incidents happening<br></li><li> new fire mechanic, that can consume entire areas and require dozens of units<br></li><li> region specification - gameplay will vary depending on a country legislation and district characteristics (slums / business / residential /industrial / forest etc)<br></li><li> new OnSite situation visualization that shows the action precisely and intuitively  <br></li><li> new team members - doctors, sergeants, dogs, robots, and others!<br></li><li> additional dispatchers, that you can assign to districts for help! <br></li><li> redesigned equipment, now packed up in entire gears</li></ul><h2 class="bb_tag">CHECK OUT MORE FROM GAMES OPERATORS AND FRIENDS!</h2><a href="https://store.steampowered.com/app/1324760/Everest_Search_and_Rescue/" target="_blank" rel="noreferrer"  id="dynamiclink_3" >https://store.steampowered.com/app/1324760/Everest_Search_and_Rescue/</a><br><br><a href="https://store.steampowered.com/app/1460010/Cryospace/" target="_blank" rel="noreferrer"  id="dynamiclink_4" >https://store.steampowered.com/app/1460010/Cryospace/</a><br><br><a href="https://store.steampowered.com/app/1168610/Natural_Instincts/" target="_blank" rel="noreferrer"  id="dynamiclink_5" >https://store.steampowered.com/app/1168610/Natural_Instincts/</a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

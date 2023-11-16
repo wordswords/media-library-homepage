@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wildermyth</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('8ecb4b6a-0a80-4692-bc19-c5965761cf78/7bc0e83b-e514-45f4-8fb2-ee55bc8d2810.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="8ecb4b6a-0a80-4692-bc19-c5965761cf78/2de31219-9cb0-4a33-a0f4-cdca104eed4d.ico"/> Wildermyth</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="8ecb4b6a-0a80-4692-bc19-c5965761cf78/30048b56-41b7-48d0-8d79-d311e8cfe298.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>15h 21m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-13/09/2023">13/09/2023</a> 13:18:02</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:06</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 2:34:40</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-13/11/2019">13/11/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Tactical">Tactical</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Worldwalker Games">Worldwalker Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-WhisperGames">WhisperGames</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Worldwalker Games">Worldwalker Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/763890" target="_blank">Steam</a><br/><a href="https://wildermyth.com/" target="_blank">Official Website</a><br/><a href="https://twitter.com/wildermyth" target="_blank">Twitter</a><br/><a href="https://wildermyth.itch.io/wildermyth" target="_blank">Itch</a><br/><a href="https://nexusmods.com/wildermyth" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>Hear a Tale or Spin Your Own</h1><p><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/763890/extras/discord.png?t=1639156245" /></p><br><h1>About the Game</h1>Wildermyth is a character-driven, procedurally-generated tactical RPG. Like the best tabletop roleplaying experiences, Wildermyth gives you choices and answers your every decision with consequences that drive your characters forward. <br><br>Lead a band of heroes as they grow from reluctant farmers into unique, legendary fighters. Combat unexpected threats and strange monsters across interactive battlefields. Unravel mysteries and share pensive moments in an ever-new fantasy setting that blends hard truths and sacrifice with humor and personal storytelling.<br><br>Where does your myth lead? Come help us uncover it!<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/763890/extras/heroLineup.png?t=1639156245" /><br><ul class="bb_ul"><li>Reminiscent of tabletop roleplaying, unique heroes are born in unique settings every game. They age, transform, fall in love, disagree, and make harrowing sacrifices. <br></li><li>Each hero brings their own organic history and personality with them, but your choices and combat skills are what decide their paths and outcomes. <br></li><li>All heroes die someday… but you get to hold on to your favorites. Reintroduce them in the next adventure, and over many lifetimes the myths you make will form your own legendary pantheon.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/763890/extras/heroesGorgonSmall.png?t=1639156245" /><br><br><strong>An Imaginative Papercraft World</strong><br>The Yondering Lands, where the game is set, is a richly layered world populated with hand-painted 2D characters and scenery. We’ve paid loving attention to breaking molds and exploring new ideas: no orcs, elves, or goblins here—but watch out for the telepathic insect-dragons and the clockwork undead.<br><br><strong>Extreme Character Depth</strong><br>Each of your heroes has their own unique generated history, personality, and appearance, and will form relationships with your other heroes. All of these elements change and develop over the course of a playthrough, as characters age, encounter mysteries, and overcome challenges.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/763890/extras/heroesRelationshipSmall.png?t=1639156245" /><br><br><strong>Choices That Matter</strong><br>Your hero may choose to trust the enigmatic wolf god, leading to a hair-raising change in their appearance and combat abilities. Or they may pursue a romance with a fellow hero, giving each of them a shared buff and more story opportunities. Encounters and events have permanent, character-defining effects, letting you craft the arc of each character.<br><br><strong>A New Approach to Death</strong><br>Did your favorite character get one-shotted by a tentacled horror-bear? Choose to let a hero &quot;fall back&quot; with a maiming that will lead to some transformative new paths in their legend, or let them go out in a blaze of glory to be remembered for generations to come.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/763890/extras/heroesDrauvenTower.png?t=1639156245" /><br><br><strong>Deep and Creative Tactical Combat</strong><br>Combat in Wildermyth emphasizes teamwork and careful positioning, as well as imaginative use of your evolving capabilities and surroundings. Walling and Flanking mechanics provide clear but conflicting incentives, while mystical interfusion lets you remake the battlefield with explosive magic. Multiple difficulty levels mean you can get as intense as you want to.<br><br><strong>Cooperative Multiplayer</strong><br>In a multiplayer game, you and your friends can each customize and control your own heroes as you play through a campaign. Recommended for up to five players—though in a typical campaign, you start with three heroes and pick up the fourth and fifth along the way. (A campaign mode with a five-player start is planned soon!) We also support Steam Remote Play.<br><br><strong>Endless Replayability</strong><br>Pick and choose from a huge bank of combat abilities as your heroes level up in each playthrough, and decide whether you prefer offensive or defensive tactics, brute strength, stealth, or magically flinging fire from a nearby lamp into your enemies' faces. Procedural generation gives you new heroes, new enemies, new story events, and new maps every time you play.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/763890/extras/heroesMentor.png?t=1639156245" /><br><br><strong>A Custom Pantheon of Legends</strong><br>You’ll have the freedom to customize hero appearances, names, histories, and more. As time passes, heroes grow old and may retire, or else might fall in combat—and yes, some will survive all the way to the end. You can add your favorite heroes to a roster of legends and call on them again in later playthroughs. Build your own mythologies and share the awe-inspiring might of your heroes with others.</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
