@@ -7,5 +7,5 @@ set -x
 ./remove-all-image-links-from-playnite-export.sh
 git add ./PlayNiteHTMLExport
 git commit -m"Latest PlayNiteHTMLExport"
-git pushd
+git push
 
