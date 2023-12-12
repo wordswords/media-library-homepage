@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Torment: Tides of Numenera</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('8fc3d3f8-6bd9-44ee-9635-ab29ba0097da/8f295944-1971-418d-95b1-fdce3958777f.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="8fc3d3f8-6bd9-44ee-9635-ab29ba0097da/f8804633-b28d-4e83-91b9-0fc9cd7e0151.ico"/> Torment: Tides of Numenera</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="8fc3d3f8-6bd9-44ee-9635-ab29ba0097da/da6efa38-ddf9-4695-9697-670a1afb315c.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>17h 28m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-09/09/2022">09/09/2022</a> 22:33:38</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:06</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:28:39</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-28/02/2017">28/02/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-73">73</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-inXile Entertainment">inXile Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Techland">Techland</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://torment.wikia.com/wiki/Torment:_Tides_of_Numenera" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Torment:_Tides_of_Numenera" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/Torment.inXile" target="_blank">Facebook</a><br/><a href="https://store.steampowered.com/app/272270" target="_blank">Steam</a><br/><a href="https://torment.inxile-entertainment.com/" target="_blank">Official Website</a><br/><a href="https://www.gog.com/game/torment_tides_of_numenera" target="_blank">GOG</a><br/><a href="https://nexusmods.com/tormenttidesofnumenera" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>Accolades</h1><p><img src="https://cdn.akamai.steamstatic.com/steam/apps/272270/extras/Store_Frontpage_Quotes_m2k_sm.jpg?t=1585341448" /></p><br><h1>Legacy Edition</h1><p><img src="https://cdn.akamai.steamstatic.com/steam/apps/272270/extras/Torment_SteamStore_LegacyEdition.jpg?t=1585341448" /><br><br>The Torment: Tides of Numenera Legacy Edition contains 6 digital extras. Build your legacy and immerse yourself into the Ninth World.<br><br><ul class="bb_ul"><li><strong>Digital Soundtrack</strong> - The Original Soundtrack for Torment: Tides of Numenera. Composed by Mark Morgan and featuring 50 tracks.<br></li><li> <strong>Digital World Map</strong> - A high-resolution version of Torment's world map.<br></li><li> <strong>&quot;From the Depths&quot;</strong> Digital Novellas (2x) - &quot;From the Depths: Gold&quot; and &quot;From the Depths: Blue&quot;, two digital novellas fleshing out the game's world and backstory (70 and 140 pages each).<br></li><li> <strong>Forum Avatars</strong> - A selection of forum avatars based on the in-game party portraits.<br></li><li> <strong>Ringtones</strong> - A selection of Torment-themed ringtones and notification sounds.</li></ul>Once installed, Legacy Edition extras can be found inside your Torment installation folder.</p><br><h1>Immortal Edition</h1><p><img src="https://cdn.akamai.steamstatic.com/steam/apps/272270/extras/Torment_SteamStore_ImmortalEdition.jpg?t=1585341448" /><br><br>The Torment: Tides of Numenera Immortal Edition Upgrade contains 12 digital extras. Become an immortal castoff and immerse yourself more deeply into the Ninth World.<br><ul class="bb_ul"><li><strong>Digital Soundtrack</strong> - The Original Soundtrack for Torment: Tides of Numenera. Composed by Mark Morgan and featuring 50 tracks.<br></li><li> <strong>Digital World Map</strong> - A high-resolution version of Torment's world map.<br></li><li> <strong>Digital Concept Art</strong> - A selection of high-resolution concept pieces and wallpaper.<br></li><li><strong> &quot;From the Depths&quot; Digital Novellas (5x)</strong> - The full &quot;From the Depths&quot; Tidal novella series. Each novella is themed around a different Tide and fleshes out the game's world and backstory (between 60-140 pages each).<br></li><li> <strong>Digital Strategy Guide</strong> - A 143-page companion guidebook containing walkthroughs of quests, location overviews, ability lists, and more.<br></li><li> <strong>Digital Concept Art Book</strong> - A lovingly crafted 90-page digital art book showing off a selection of the game's concept and promotional artwork.<br></li><li> <strong>Forum Avatars</strong> - A selection of forum avatars based on the in-game party portraits.<br></li><li> <strong>Ringtones</strong> - A selection of Torment-themed ringtones and notification sounds.</li></ul>Once installed, Immortal Edition extras can be found inside your Torment installation folder.<br><br><strong>Note:</strong> Includes all items in the Legacy Edition.</p><br><h1>About the Game</h1>You are born falling from orbit, a new mind in a body once occupied by the Changing God, a being who has cheated death for millennia. If you survive, your journey through the Ninth World will only get stranger… and deadlier.<br> <br>With a host of strange companions – whose motives and goals may help or harm you – you must escape an ancient, unstoppable creature called the Sorrow and answer the question that defines your existence: What does one life matter? <br> <br>Torment: Tides of Numenera is the thematic successor to Planescape: Torment, one of the most critically acclaimed and beloved role-playing games of all time. Torment: Tides of Numenera is a single-player, isometric, narrative-driven role-playing game set in Monte Cook’s Numenera universe, and brought to you by the creative team behind Planescape: Torment and the award-winning <strong>Wasteland 2</strong>. <br><br>Features: <ul class="bb_ul"><li><strong>A Deep, Thematically Satisfying Story.</strong> The philosophical underpinnings of Torment drive the game, both mechanically and narratively. Your words, choices, and actions are your primary weapons. <br></li><li><strong>A World Unlike Any Other.</strong> Journey across the Ninth World, a fantastic, original setting, with awe-inspiring visuals, offbeat and unpredictable items to use in and out of battle, and stunning feats of magic. Powered by technology used in the award-winning Pillars of Eternity by Obsidian Entertainment, the Numenera setting by Monte Cook provides endless wonders and impossibly imaginative locations for you to explore. <br></li><li><strong>A Rich, Personal Narrative.</strong> Thoughtful and character-driven, the story is epic in feel but deeply personal in substance, with nontraditional characters and companions whose motivations and desires shape their actions throughout the game. <br></li><li><strong>Reactivity, Replayability, and the Tides.</strong> Your choices matter, and morality in the Ninth World is not a simple matter of “right” and “wrong”. You will decide the fates of those around you, and characters will react to your decisions and reputation. The result is a deeply replayable experience that arises naturally from your actions throughout the game. <br></li><li><strong>A New Take on Combat.</strong> With the Crisis system, combat is more than just bashing your enemies. Plan your way through hand-crafted set-pieces which combine battles with environmental puzzles, social interaction, stealth, and more.</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chicken Police</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('bc048a83-c37a-4710-9c97-2311e5067e82/1f13ca5a-30ee-487b-8f19-944e83a5401b.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="bc048a83-c37a-4710-9c97-2311e5067e82/bfc86775-b915-4803-8c6c-d4afeb8ece0b.ico"/> Chicken Police</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="bc048a83-c37a-4710-9c97-2311e5067e82/bd51a40f-74c8-4a71-b653-06f740132593.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-18/04/2022">18/04/2022</a> 13:30:43</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:41:21</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-05/11/2020">05/11/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Point-and-click">Point-and-click</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-The Wild Gentlemen">The Wild Gentlemen</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-HandyGames">HandyGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1084640" target="_blank">Steam</a><br/><a href="https://chickenpolice.com/" target="_blank">Official Website</a><br/><a href="https://www.gog.com/game/chicken_police" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/en-US/p/chicken-police-paint-it-red" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/handygames_official" target="_blank">Twitch</a><br/><a href="https://www.instagram.com/handygames/" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/HandyGamesGmbH" target="_blank">Youtube</a><br/><a href="https://discord.gg/tKY8jrh" target="_blank">Discord</a><br/><a href="https://twitter.com/handy_games" target="_blank">Twitter</a><br/><a href="https://www.facebook.com/HandyGames/" target="_blank">Facebook</a><br/><a href="http://itunes.apple.com/us/app/id1538607724#?platform=iphone" target="_blank">iPhone</a><br/><a href="http://itunes.apple.com/us/app/id1538607724#?platform=ipad" target="_blank">iPad</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2.5D">2.5D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-America">America</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Atmospheric">Atmospheric</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cats">Cats</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cinematic">Cinematic</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Clicker">Clicker</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Conversation">Conversation</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Crime">Crime</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dark Humor">Dark Humor</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Detective">Detective</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Hidden Object">Hidden Object</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Nature">Nature</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Noir">Noir</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Point & Click">Point & Click</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Story Rich">Story Rich</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Chicken Police - Paint it RED! is a narrative-driven noir adventure with a complex interrogation system and mystery-solving detective gameplay. <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/új_gifes_2020.gif?t=1643365592" /><h2 class="bb_tag">KEY FEATURES:</h2><ul class="bb_ul"><li> A thrilling, rich storyline with a classic film-noir twist<br></li><li> Professional voiceover with more than 8 hours of spoken dialogue!<br></li><li> A carefully crafted, unique and &quot;colorful&quot; world<br></li><li> A complex interrogation system<br></li><li> 30 fully voiced characters<br></li><li> A cinematic film-noir experience with more than 20 cutscenes!<br></li><li> Lots of clues, information, and collectibles to find<br></li><li> And a beautiful original soundtrack</li></ul><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/Steam_Page_Title_story2.png?t=1643365592" /><br><br><i>A mysterious Dame...<br>A strange case...<br>and the wildest cops of the Wilderness!</i><h2 class="bb_tag">MEET THE CHICKEN POLICE</h2>Sonny Featherland and Marty MacChicken were once a legendary detective-duo, the Chicken Police. But that was almost a decade ago, and time had passed them by... Now, Sonny is just a semi-alcoholic wreck of a bird on his paid leave, while Marty still hides behind the facade of a star-detective. <br>During their last case, they nearly killed each other, and they haven't spoken ever since... <br><br>Now Sonny and Marty are forced to work together on a case that's weirder and wilder than anything they've ever encountered before!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/Új_natashás.gif?t=1643365592" /><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/Steam_Page_Title_features2.png?t=1643365592" /><h2 class="bb_tag">NARRATIVE-DRIVEN, DETECTIVE GAMEPLAY</h2>Chicken Police is a story-rich, dialogue-heavy adventure, combining elements of the visual novels and classic adventure games. <br>The game has more than 30 characters to talk to, with some having to be seriously interrogated. <br>Collect tons of clues, evidence, and highly sensitive personal information from the shady characters of Clawville to use ruthlessly against them!<h2 class="bb_tag">EXPLORE THE CITY OF CLAWVILLE (again, and again...)</h2>There are more than 30 places to visit and some of them will change several times during the story. <br>You can return to previous locations on several occasions to find hidden secrets, meet new characters, or gather information about the world and its inhabitants.<h2 class="bb_tag">A CINEMATIC EXPERIENCE</h2>Chicken Police has a weirdly-stunning visual style made with the usage of real photos and photo-realistic 3D backgrounds, inspired by classic film-noir movies like The Big Sleep, Double Indemnity or Gilda and games like <strong>Grim Fandango</strong>, <strong>Policenauts</strong>, <strong>Snatcher</strong>, <strong>L.A.Noire</strong>, <strong>Aviary Attorney</strong> or the <strong>Tex Murphy</strong> series. The game was also heavily influenced by animated features like Porco Rosso, Fantastic Mr. Fox, and the series: BoJack Horseman. <br><br>The noir mood is enhanced by an original musical score, backed up by professional voice acting from the studio that brought you the voices of <strong>The Wolf Among Us</strong>, <strong>Horizon Zero Dawn</strong> and <strong>Warhammer: End Times - Vermintide 2</strong>. <br>The game is 100% voice-acted with more than 8+ hours of spoken dialogue!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/álom_montázs.gif?t=1643365592" /><h2 class="bb_tag">CLAWVILLE NEVER SLEEPS</h2><i>&quot;This city never sleeps - they say. <br>Maybe that's why it is so cranky all the time.&quot; </i><br><br>The city of Clawville was built as an Edenic place, where predators and prey can live in peace. But the dream remained just a dream while Clawville slowly became the darkest corner of all the Wilderness.<br><br>Chicken Police is a satire, which recalls the mood and atmosphere of the 40's film-noir classics, and as the best noirs and hardboiled detective stories, it's so gritty and hopeless, that it can only be served with a lot of cynical humor...<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/KÉSZ_world.gif?t=1643365592" /><h2 class="bb_tag">QUOTES ABOUT US</h2><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1084640/extras/dest_kép_cikk.jpg?t=1643365592" /><br><br><strong>FORBES:</strong> <i>&quot;It's also clear from the trailer that its dark story will be pretty funny, with plenty of scope to establish it as one of the more unique releases in its genre. Needless to say, there'll be absolutely nothing like it released during 2020, and hopefully, it'll be as brilliant as it is different.&quot;</i><br><br><strong>DESCTRUCTOID:</strong> <i>&quot;I know I mostly cover animal-based games, but few have ever stopped me dead in my tracks like this one. I mean, did you hear that song in the trailer? That's original music, baby! I'm a sucker for games with quirky themes and original music, so of course, I took notice to this one straight away. Mix that with the animals-as-people motif and spot-on detective visuals, and yeah I didn't really stand a chance.&quot;</i><br><br><strong>ROCK PAPER SHOTGUN:</strong> <i>&quot;Fortunately I’m batting my jet-lagged eyes at Chicken Police, an upcoming noir detective adventure with grizzled chickens and a very good raccoon. It’s a point and clicker, which means I’ll almost certainly never play it. But I’d still like you to revel in this trailer with me. It’s a cinematographic masterpiece.&quot;</i><br><br><strong>ALPHA BETA GAMER:</strong> <i>&quot;It really nails the film noir vibe it’s going for. Meanwhile, the voice acting is excellent throughout, the story is interesting and the writing is very witty, packed full of cynical humor and animal-based puns. A ridiculous and riveting hardboiled detective adventure that will give you a clucking good time.&quot;</i>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

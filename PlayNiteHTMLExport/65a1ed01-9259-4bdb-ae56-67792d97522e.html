@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Just Cause 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('65a1ed01-9259-4bdb-ae56-67792d97522e/3bc4fc8d-c5c1-45ef-adff-75cacdeaef80.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="65a1ed01-9259-4bdb-ae56-67792d97522e/2fa9f58c-420e-4629-9871-fd19b20c091a.ico"/> Just Cause 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="65a1ed01-9259-4bdb-ae56-67792d97522e/93334806-9743-4b3d-a4ad-478644652c47.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:47:08</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-30/11/2015">30/11/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Avalanche Studios">Avalanche Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Square Enix">Square Enix</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/JustCause" target="_blank">Facebook</a><br/><a href="https://justcause.com/" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/225540" target="_blank">Steam</a><br/><a href="https://justcause.fandom.com/wiki/Just_Cause_3" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Just_Cause_3" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Just%20Cause%203" target="_blank">Twitch</a><br/><a href="https://nexusmods.com/justcause3" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>JUST CAUSE 4</h1><p><a href="https://store.steampowered.com/app/517630/Just_Cause_4/" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/517630/Just_Cause_4/</a></p><br><h1>XXL Edition</h1><p><img src="https://cdn.akamai.steamstatic.com/steam/apps/225540/extras/JC3_XXL_In-text_banner.jpg?t=1612807713" /><br>The Just Cause 3 XXL Edition packs the critically acclaimed Just Cause 3 game as well as a great selection of extra missions, explosive weapons and vehicles to expand your experience in Medici. This ultimate edition of the game will please newcomers who want to jump into all of Rico's missions with a boosted arsenal and exotic new vehicles. <br><br>This pack includes the following items:<br><ul class="bb_ul"><li>Just Cause 3<br></li><li>Air, Land and Sea Expansion Pass<br></li><li>Weaponized Vehicle Pack<br></li><li>Explosive Weapon Pack<br></li><li>Reaper Missile Mech<br></li><li>Kousavá Rifle</li></ul></p><br><h1>Reviews and Accolades</h1><p><i> 9.5/10 &quot;Just Cause 3 may be the only recent release that truly qualifies as a sandbox&quot;</i> - <strong><a href="https://steamcommunity.com/linkfilter/?url=http://www.forbes.com/sites/insertcoin/2015/11/30/just-cause-3-and-the-appeal-of-the-one-true-sandbox/#73cda5aa1f10" target="_blank" rel="noopener"  >Forbes</a></strong><br><br><i> 9/10 &quot;Just Cause 3 is probably the most goddamn fun I've had in a game this year&quot;</i> - <strong><a href="https://steamcommunity.com/linkfilter/?url=http://www.usgamer.net/articles/just-cause-3-pc-review" target="_blank" rel="noopener"  >US Gamer</a></strong><br><br><i>9/10 &quot;Spectacularly Destructive&quot;</i> - <strong><a href="https://steamcommunity.com/linkfilter/?url=http://www.gamereactor.eu/reviews/367103/Just+Cause+3" target="_blank" rel="noopener"  >GAME REACTOR</a></strong><br><br><i>8/10 &quot;A wide-open playground primed for explosive action&quot;</i> - <strong><a href="http://in.ign.com/just-cause-3/83977/review/just-cause-3-pc-review" target="_blank" rel="noreferrer"  >IGN</a></strong><br><br><i>8/10 &quot;A stunning display of cause and effect&quot;</i> - <strong><a href="https://steamcommunity.com/linkfilter/?url=http://www.gamespot.com/reviews/just-cause-3-review/1900-6416323/" target="_blank" rel="noopener"  >Gamespot</a></strong><br><br><i>8/10 &quot;it’s hard not to cackle with glee after watching yet another base bloom into a fiery blossom&quot;</i> - <strong><a href="https://steamcommunity.com/linkfilter/?url=http://www.gameinformer.com/games/just_cause_3/b/xboxone/archive/2015/11/30/just-cause-3-review-game-informer.aspx" target="_blank" rel="noopener"  >Game Informer</a></strong><br><br><i> 8/10 &quot;lives up to the series’ standard of high quality explosiveness by exhibiting just how a sandbox game should operate&quot;</i> - <strong><a href="https://steamcommunity.com/linkfilter/?url=http://www.egmnow.com/articles/reviews/just-cause-3-review/" target="_blank" rel="noopener"  >EGM</a></strong><br><br><i> 8/10 &quot;A memorable game that's hard not to like and recommend to others&quot;</i> - <strong><a href="http://www.destructoid.com/review-just-cause-3-322878.phtml" target="_blank" rel="noreferrer"  >Destructoid</a></strong></p><br><h1>Bavarium Sea Heist</h1><p><a href="http://store.steampowered.com/app/442051/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/225540/extras/JC3_BSH_Steam_Banner_616x288.jpg?t=1612807713" /></a><br><strong>Just Cause 3: Bavarium Sea Heist is available now!</strong></p><br><h1>MECH LAND ASSAULT</h1><p><a href="http://store.steampowered.com/app/400490/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/225540/extras/JC3_MLA_steam_banner_616x147_Paint.png?t=1612807713" /></a><br><strong>Just Cause 3: Mech Land Assault is available now!</strong></p><br><h1>SKY FORTRESS</h1><p><a href="http://store.steampowered.com/app/400551/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/225540/extras/JC3_steam_banner.jpg?t=1612807713" /></a><br><strong>Just Cause 3: Sky Fortress is available now!<br><br>Download the Expansion Pass today and receive the PDLC packs 7 days early.</strong></p><br><h1>About the Game</h1><a href="https://store.steampowered.com/app/680420/OUTRIDERS/" target="_blank" rel="noreferrer"  id="dynamiclink_1" >https://store.steampowered.com/app/680420/OUTRIDERS/</a><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/225540/extras/gif_take_3.jpg?t=1612807713" /><br>The Mediterranean republic of Medici is suffering under the brutal control of General Di Ravello, a dictator with an insatiable appetite for power. Enter Rico Rodriguez, a man on a mission to destroy the General’s hold on power by any means necessary.  With over 400 square miles of complete freedom from sky to seabed and a huge arsenal of weaponry, gadgets and vehicles, prepare to unleash chaos in the most creative and explosive ways you can imagine.<h2 class="bb_tag">FEATURES:</h2><ul class="bb_ul"><li>Explore a Mediterranean island paradise with complete vertical freedom – skydive, BASE jump and free dive in an open world with virtually zero limits<br></li><li>Glide through the air and swoop across mountains with your Wingsuit giving a new way to rain death from above<br></li><li>Use your Grapple and Parachute to scale buildings, hijack vehicles, move quickly or tether objects together for creative new ways to cause Chaos.  <br></li><li>Cause massive chains of destruction in military bases, harbours, prisons, police stations and communications facilities to bring down a dictator<br></li><li>Arm yourself with a wide range of explosive weaponry from shotguns and missile launchers to tank-busters and air-strikes<br></li><li>Choose from a huge variety of different vehicles to drive including speedboats, jets, helicopters, turbo-fuelled sports cars and super bikes<br></li><li>Get adventurous with dozens of challenge missions and collectibles to discover<br></li><li>Online community features</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Monster Hunter: World</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('2a2d857a-a9ba-454f-90b6-3ba486a5e3a1/840dd7e5-2109-4849-a96e-76bd77a7a319.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="2a2d857a-a9ba-454f-90b6-3ba486a5e3a1/baa60100-29f3-44fc-b368-8c11dd8ebb0d.ico"/> Monster Hunter: World</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="2a2d857a-a9ba-454f-90b6-3ba486a5e3a1/ca973bd1-b9ef-4c18-9b9d-e1c5e9ef1adc.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>41m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-14/10/2021">14/10/2021</a> 2:35:34</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:22:13</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-26/01/2018">26/01/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-93">93</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Capcom">Capcom</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Capcom">Capcom</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.monsterhunterworld.com/" target="_blank">Official Website</a><br/><a href="https://en.wikipedia.org/wiki/Monster_Hunter:_World" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/monsterhunter" target="_blank">Facebook</a><br/><a href="https://twitter.com/monsterhunter" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/monsterhuntergame" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/monsterhunter" target="_blank">Youtube</a><br/><a href="http://monsterhunter.wikia.com/wiki/Monster_Hunter:_World" target="_blank">Wikia</a><br/><a href="https://www.reddit.com/r/MonsterHunterWorld" target="_blank">Reddit</a><br/><a href="https://store.steampowered.com/app/582010/MONSTER_HUNTER_WORLD" target="_blank">Steam</a><br/><a href="https://nexusmods.com/monsterhunterworld" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>Featured DLC</h1><p><a href="https://store.steampowered.com/app/1118010/Monster_Hunter_World_Iceborne/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/ICB_BNR_F.png?t=1623978557" /></a></p><br><h1>Featured DLC</h1><p><a href="https://store.steampowered.com/bundle/12360/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/handlercostumepack.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/12358/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesturepack.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/12359/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/stickerpack.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/9788/Monster_Hunter_World__Additional_Sticker_Set_Bundle_3/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/sticker_bundle3.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/9787/Monster_Hunter_World__Additional_Gesture_Bundle_8/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesture_bundle8.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/9264/Monster_Hunter_World__Additional_Gesture_Bundle_7/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesture_bundle7.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/7766/Monster_Hunter_World__Additional_Gesture_Bundle_6/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesture_bundle6.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/7765/Monster_Hunter_World__Additional_Gesture_Bundle_5/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesture_bundle5.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/7764/Monster_Hunter_World__Additional_Gesture_Bundle_4/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesutre_bundle4.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/7763/Monster_Hunter_World__Additional_Gesture_Bundle_3/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/gesture_bundle3.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/7768/Monster_Hunter_World__Additional_Sticker_Set_Bundle_2/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/sticker_bundle2.png?t=1623978557" /></a><br><br><a href="https://store.steampowered.com/bundle/7769/Monster_Hunter_World__Additional_Face_Paint_Bundle/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/facepaint_bundle.png?t=1623978557" /></a></p><br><h1>Digital Deluxe Edition</h1><p><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/DLC999-Special_Announcement.png?t=1623978557" /><br>The digital deluxe edition includes the following content:<br><ul class="bb_ul"><li>Samurai Set<br> Layered armor sets will change the look of your armor without changing the properties underneath. Equip this Samurai set over your favorite armor to take on the striking appearance of a feudal Japanese samurai warrior! <br> Note : No weapons are included with this set<br><br></li><li>Gesture: Zen<br></li><li>Gesture: Ninja Star<br></li><li>Gesture: Sumo Slap<br> Enjoy three new amusing gestures you can use when interacting with other players in the game.<br><br></li><li>Sticker Set: MH All-Stars Set<br></li><li>Sticker Set: Sir Loin Set<br> Fun stickers you can use when chatting with other players in the game.<br><br></li><li>Face Paint: Wyvern<br> Add a new face paint for character customisation in Monster Hunter: World.<br><br></li><li>Hairstyle: Topknot<br> Adds a new hairstyle for character customisation in Monster Hunter: World.</li></ul></p><br><h1>About the Game</h1>Welcome to a new world! Take on the role of a hunter and slay ferocious monsters in a living, breathing ecosystem where you can use the landscape and its diverse inhabitants to get the upper hand. Hunt alone or in co-op with up to three other players, and use materials collected from fallen foes to craft new gear and take on even bigger, badder beasts!<h2 class="bb_tag"><strong>INTRODUCTION</strong></h2><strong>Overview</strong><br><strong>Battle gigantic monsters in epic locales.</strong><br><br>As a hunter, you'll take on quests to hunt monsters in a variety of habitats.<br>Take down these monsters and receive materials that you can use to create stronger weapons and armor in order to hunt even more dangerous monsters.<br><br>In Monster Hunter: World, the latest installment in the series, you can enjoy the ultimate hunting experience, using everything at your disposal to hunt monsters in a new world teeming with surprises and excitement.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_introduction.jpg?t=1623978557" /><br><br><strong>Setting</strong><br>Once every decade, elder dragons trek across the sea to travel to the land known as the New World in a migration referred to as the Elder Crossing.<br><br>To get to the bottom of this mysterious phenomenon, the Guild has formed the Research Commission, dispatching them in large fleets to the New World.<br><br>As the Commission sends its Fifth Fleet in pursuit of the colossal elder dragon, Zorah Magdaros, one hunter is about to embark on a journey grander than anything they could have ever imagined.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_story.jpg?t=1623978557" /><h2 class="bb_tag"><strong>ECOSYSTEM</strong></h2><strong>A World That Breathes Life</strong><br>There are various locations teeming with wildlife. Expeditions into these locales are bound to turn up interesting discoveries.<h2 class="bb_tag"><strong>HUNTING</strong></h2><strong>A Diverse Arsenal, and an Indispensable Partner</strong><br>Your equipment will give you the power to need to carve out a place for yourself in the New World.<br><br><strong>The Hunter's Arsenal</strong><br>There are fourteen different weapons at the hunter's disposal, each with its own unique characteristics and attacks. Many hunters acquire proficiency in multiple types, while others prefer to attain mastery of one.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_hunters.jpg?t=1623978557" /><br><br><strong>Scoutflies</strong><br>Monster tracks, such as footprints and gashes, dot each locale. Your Scoutflies will remember the scent of a monster and guide you to other nearby tracks. And as you gather more tracks, the Scoutflies will give you even more information.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_shirubemushi_s.jpg?t=1623978557" /><br><br><strong>Slinger</strong><br>The Slinger is an indispensable tool for a hunter, allowing you to arm yourself with stones and nuts that can be gathered from each locale.<br>From diversion tactics to creating shortcuts, the Slinger has a variety of uses, and allows you to hunt in new and interesting ways.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_slinger_s.jpg?t=1623978557" /><br><br><strong>Specialized Tools</strong><br>Specialized tools activate powerful effects for a limited amount of time, and up to two can be equipped at a time. Simple to use, they can be selected and activated just like any other item you take out on a hunt.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_specialTool_s.jpg?t=1623978557" /><br><br><strong>Palicoes</strong><br>Palicoes are hunters' reliable comrades out in the field, specialized in a variety of offensive, defensive, and restorative support abilities.<br>The hunter's Palico joins the Fifth Fleet with pride, as much a bona fide member of the Commission as any other hunter.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/582010/extras/MHW_otomo.jpg?t=1623978557" />
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

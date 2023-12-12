@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ultimate General: Gettysburg</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('f9329560-f32b-4f85-b38e-1a890fbb8ae1/2777fd39-cc47-43dd-a6a5-39fb72fe159f.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="f9329560-f32b-4f85-b38e-1a890fbb8ae1/fa2362a6-adda-4e88-85da-c73358745336.ico"/> Ultimate General: Gettysburg</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="f9329560-f32b-4f85-b38e-1a890fbb8ae1/69c7304c-3455-4d4f-8c31-9c405f5a1d82.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>3m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-10/04/2016">10/04/2016</a> 15:36:20</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:07</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 8:22:02</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-16/10/2014">16/10/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-61">61</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Game-Labs">Game-Labs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Game-Labs">Game-Labs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.ultimategeneral.com/" target="_blank">Wikia</a><br/><a href="https://store.steampowered.com/app/306660" target="_blank">Steam</a><br/><a href="https://itunes.apple.com/us/app/ultimate-general-gettysburg/id913585516?mt=8&uo=4" target="_blank">iPhone</a><br/><a href="https://www.gog.com/game/ultimate_general_gettysburg" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<strong>Ultimate General: Gettysburg</strong> is a Tactical Battle Simulator that allows you to lead thousands of soldiers in the famous Battle of Gettysburg as commander of either the Union or Confederate army. The game features the most accurately created map, complex morale, innovative control mechanics and smart AI. You have the freedom to use different strategies while the battle progresses. Your decisions and military performance play a crucial role in the result. Lead your army and win the Battle of Gettysburg! <br><br>It has been voted as Best Strategy Game of 2014 by PCGamesN.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/306660/extras/UGG_Big_Battle_4_sharpen.jpg?t=1562054645" /><h2 class="bb_tag">Main Features </h2><br><strong>Smart AI Commanders</strong> <br>Ultimate General: Gettysburg does not use “AI gameplay cheats” because it does not need them. The game’s difficulty is accomplished only by nine distinctive AI personalities, each with their own advantages and special skills. AI Commanders are able to evaluate and gain tactical superiority in real time, reacting according to their different commanding skills, aggressively or defensively, heroically or cunningly and resemble different, competent human players. <br><br>Each one of the AI generals is a formidable, non-scripted opponent who can actively try to flank you, secure strategic locations with artillery, keep reserves and reinforce areas that it attacks or defends. The AI will try to win the battle with tactics that fit to its personality. For example a defensive opponent may not attack ferociously in the first engagement and progressively advance its forces in the next battles.<br><br><i><u>What players say</u>: “Fantastic AI - don't know what kind of brain you put in this game but it works”</i><br><br><strong>Multi-Day Dynamic Battle</strong> <br>On the morning of July 1st 1863, the two armies meet near Gettysburg. Reinforcements arrive from historically accurate directions as the battle progresses, however, random events, delays and tactical differences are always a possibility that can change the results of each engagement compared to history.<br><br>Can you re-enact Pickett’s Charge? What if Lee attacked the center of the Union Army early in the morning of July 2nd of 1863 instead of attempting to flank the extreme left in the afternoon? What would happen if Meade counter-attacked on July 4th 1863? These questions and more can be answered within the game engine of Ultimate General: Gettysburg.<br><br>The battle is dynamically fought in time phases and can last up to 4 days. Each day can be separated by up to 3 time phases and the armies’ condition and positioning on the map are saved.<br><br>According to battle events, you have the possibility to take decisions that can change the tide of the battle based on your prior tactical prowess. For example, when leading the Confederates, on the morning of July 2nd, you can choose to attack at Cemetery Hill and not make a delayed flanking maneuver at Peach Orchard… if you have managed to take Seminary Ridge the previous day! You can even choose to defend and wait for your AI opponent to take the initiative between days. These choices greatly increase the number of possible battle outcomes and challenges.<br><br><i><u>What players say</u>:“9 different AI profiles, multiple outcomes, multiple strategies, casualties carry over. This game is a different experience every time. Well worth it, can't wait for the next one.”</i><br><br><strong>Easy Controls &amp; Unit Self-Awareness</strong> <br>Drag simple movement arrows to command large forces easily. Units do not need your micromanagement because they are able to act on their own initiative and re-align, switch targets, withdraw and form battle lines without player input. Consequently, you are able to give generic commands to your units and can rely on them to fight efficiently without the need for “babysitting”. <br><br><i><u>What players say</u>: “Innovative movement system - this is by far an awesome system they developed. It’s not only insanely easy to learn, but also incredibly innovative”</i><br><br><strong>Detailed Map of Gettysburg</strong> <br>Utilizing satellite images and historical maps, every major location, house, ridge and hill are depicted as accurately as possible within the game’s unique art style. If you are an American Civil War enthusiast, you will be especially happy to notice the amount of precision and information that the map provides. Not only will you be able to better understand the historical layout of the map, you will also be able to make use of each location and landmark in battle, thanks to the simulation of cover, concealment, terrain and high ground in the game. <br><br><i><u>What players say</u>: “Incredible Gorgeous Map - I had to capitalize that because this map is by far one of the best maps of Gettysburg I have ever seen either in a game or even in books”</i><br><br><strong>Advanced Line of Sight</strong><br>Elevation and obstructions affect unit visibility realistically. Units may make use of concealment and cover to survive artillery barrages, stage ambushes and more, but beware – the AI will attempt to do the same to you. The units enter or exit the Fog of War gradually with a fade in/out effect that helps you perceive their hiding and course seamlessly. <br><br><i><u>What players say</u>: “The way Game Labs implemented Line of Sight in this game should be held as an example to other developers to do the same”</i><br><br><strong>Numerous Tactical Factors</strong> <br>In Ultimate General: Gettysburg, you will realize that army units are not “machines” that blindly follow orders, but they need to conserve strength and courage for decisive battle actions. Every basic tactical element that is expected for a strategy game is incorporated into gameplay. Most importantly, morale is affected by many factors including flank or rear attacks, casualties, volley shocks, artillery fire and fatigue. <br><br><i><u>What players say</u>: “... positioning of units matters. You really bring the struggles of 19th century warfare to life here”</i><br><br><strong>Historically Accurate Forces and Leaders</strong> <br>Ultimate General: Gettysburg includes the full order of battle for the Union Army of the Potomac and the Confederate Army of Northern Virginia. Unit sizes range from the small artillery batteries to vast infantry brigades with cavalry and skirmishers in between.<br>All brigades have troop numbers and differing competencies based on historical facts. Additionally, all artillery battery numbers and types are correctly simulated. Lastly, major generals and officers actively participate in the battlefield to organize and support the armies and appear in after action battle reports to help you monitor battle progress. <br><br><i><u>What players say</u>: “Immersive American Civil War feel: sounds, portraits and general historical authentic really make this one of the most immersive historical games I have played, and I am a total history buff”</i><br><br>Furthermore, every inch of the map has a strategic role. Sloping, terrain type and obstructions affect unit movement realistically. Elevations, ridges and hills provide excellent firing positions and give increased sight, morale and accuracy to troops stationed there.<br>By placing your units close to each other, they become more resilient to charges and flank attacks but get more vulnerable to projectile fire. Thus, forcing your enemy to keep his lines dense while you shell him with artillery can be a valid tactic. As the condition of your units changes dynamically during the battle, the effectiveness of your whole army is affected. For example, units fire more coordinated volleys when they have high morale and have more discipline and tight formations.<br><br>These and many more deep gameplay mechanics are packed into a simple and intuitive GUI that aims to ease the game experience for the player without overwhelming with complex statistics.<br><br><strong>Evolving Multiplayer Experience</strong><br>The game currently offers 18 maps for 1vs1 matches and is continuously improved according to user feedback. <br><br><i><u>What players say</u>: “Well, actually, the AI in this game is about the best ever seen (except for chess), and there is a working multiplayer with about always at least one battle going.”</i><br><br><strong>Ultimate General: Gettysburg</strong> is developed by Game Labs and designed by Nick Thomadis, known for his successful and popular “DarthMod” series.<h2 class="bb_tag">How to Play</h2><a href="http://cdn.akamai.steamstatic.com/steam/apps/306660/manuals/Field_Manual.pdf?t=1413383900" target="_blank" rel="noreferrer"  > Please read our guide</a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

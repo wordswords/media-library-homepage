@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Life and Suffering of Sir Brante</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('7a2cbb83-ba34-4310-be47-6ebc5ad8be3b/8123ce20-f688-4680-8e0e-f14708ef99a9.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="7a2cbb83-ba34-4310-be47-6ebc5ad8be3b/100c9fb2-3bcf-4f81-b99e-9d6b1c264d9d.ico"/> The Life and Suffering of Sir Brante</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="7a2cbb83-ba34-4310-be47-6ebc5ad8be3b/f50161c7-cba8-4517-befa-f1deb1ecc453.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>6h 44m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-16/06/2021">16/06/2021</a> 2:37:55</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:43:22</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Completed">Completed</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-01/12/2020">01/12/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Sever">Sever</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-101XP">101XP</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1272160/The_Life_and_Suffering_of_Sir_Brante" target="_blank">Steam</a><br/><a href="https://store.101xp.com/brante/" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/game/The%20Life%20and%20Suffering%20of%20Sir%20Brante" target="_blank">Twitch</a><br/><a href="https://twitter.com/SirBrante" target="_blank">Twitter</a><br/><a href="https://the-life-and-suffering-of-sir-brante.fandom.com/wiki/The_Life_and_Suffering_of_Sir_Brante_Wiki" target="_blank">Wikia</a><br/><a href="https://www.epicgames.com/store/en-US/product/the-life-and-suffering-of-sir-brante/home" target="_blank">Epic</a><br/><a href="https://www.gog.com/game/the_life_and_suffering_of_sir_brante" target="_blank">GOG</a><br/><a href="https://discord.gg/KRjKYtj" target="_blank">Discord</a><br/><a href="https://www.facebook.com/TheLifeAndSufferingOfSirBrante/" target="_blank">Facebook</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>OUR NEW GAME</h1><p><a href="https://store.steampowered.com/app/1747660/Mother_of_All_Secrets/" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/1747660/Mother_of_All_Secrets/</a></p><br><h1>PLAY CHAPTER 1&amp;2 FOR FREE</h1><p><a href="https://store.steampowered.com/app/1460090/The_Life_and_Suffering_of_Sir_Brante__Chapter_12/" target="_blank" rel="noreferrer"  id="dynamiclink_1" >https://store.steampowered.com/app/1460090/The_Life_and_Suffering_of_Sir_Brante__Chapter_12/</a></p><br><h1>JOIN THE COMMUNITY ON DISCORD</h1><p><a href="https://steamcommunity.com/linkfilter/?url=https://discord.gg/3Myx9NJYhm" target="_blank" rel="noopener"  ><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/616x176_Brante_Discord_Steam_.png?t=1639733883" /></a></p><br><h1>MORE GAMES FROM 101XP</h1><p><a href="https://store.steampowered.com/app/1294880/Blind_Fate_Edo_no_Yami/" target="_blank" rel="noreferrer"  id="dynamiclink_2" >https://store.steampowered.com/app/1294880/Blind_Fate_Edo_no_Yami/</a><br><a href="https://store.steampowered.com/app/1307690/The_Darkest_Tales/" target="_blank" rel="noreferrer"  >https://store.steampowered.com/app/1307690/The_Darkest_Tales/</a><br><a href="https://store.steampowered.com/app/1146600/For_the_People/" target="_blank" rel="noreferrer"  >https://store.steampowered.com/app/1146600/For_the_People/</a></p><br><h1>About the Game</h1><strong>The Life and Suffering of Sir Brante</strong> is a narrative-driven RPG that comes to life on the pages of the protagonist's journal. Set in a ruthless world where any form of dissent is mercilessly crushed, the story follows a man who has dared to challenge the existing order. Set out on a lifelong journey and become an individual able to carve out their own destiny... But remember that freedom never comes cheap.<br><i><br>Life in the Great Arknian Empire is harsh and its hardest Lot is yours by the circumstance of birth. You are a commoner, holding no rights and no title. To seize your fate and become the rightful heir to the legacy of the Brante family you will have to come to grips with ossified tradition and prejudice. Embarking on a life-long journey from one's birth until true death, you will have to endure great upheavals, face adversity, and make many difficult choices. Every decision will affect not only the protagonist, his family, and loved ones, but may even topple the foundation of the Empire itself.</i><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/Brante_pen-1.gif?t=1639733883" /><h2 class="bb_tag">Key features</h2><strong><br>At the turn of time</strong><i><br>Every imperial citizen's life is predetermined by their estate. The deities known as the Twin Gods have bestowed this truth to the world, dividing mortals into Lots. The nobles lead and rule over others, while the clergy guides people on the one true path, and the lowborn suffer, toiling away for the glory of the Empire. You may accept your fate without question, but it is also in your power to change the cosmic order that governs all.<br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/Brante_orator.gif?t=1639733883" /><br><br><strong><br>Your choice is not an illusion</strong><br>Divided into chapters, the game keeps track of the player's deeds, the skills they acquired, as well as other overlapping circumstances that shape a unique plotline for each playthrough. Every decision has its consequences and you will be held accountable throughout the entire journey. To protect your family and loved ones, to impose the rule of the Emperor and make a fortune, or to try and change the world as you see fit... Make your choice, but beware of the follies of pride and ambition.<br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/Бранте_выбор_англ.gif?t=1639733883" /><br><br><strong><br>Fight for your life</strong><br>One man is anything but omnipotent in this realm yet under your guidance, Sir Brante may become a person who can endure every trial fate throws at him and rewrite the very laws that govern his world! Develop and train your character, leveling up such traits as determination, sensitivity, and endurance. All of the hero's skills, starting with those acquired in infancy, will affect his personality, worldview, and relationships, ultimately unlocking new talents and possible storylines.<br><i><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/Бранте_шкала_англ.gif?t=1639733883" /><br><strong><br>Find your own path</strong><br>The first complete walkthrough can take you upwards of 15 hours! Numerous branching paths that affect the unfolding story will make every playthrough a unique experience: become a noble judge, learn the ways of the inquisition, plot a revolution as a member of a secret society, or embrace an entirely different purpose. Be brave and fate itself shall bend to your will!<br><i><br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/Brante_tolpa.gif?t=1639733883" /><br><br><strong><br>There and hereafter</strong><br>Resurrection system allows the character to keep his experience upon death, letting the player reevaluate past steps and make adjustments to their strategy going forward. Take control not only of your life but also your demise, then put everything at stake in this cycle of death and rebirth!<br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1272160/extras/Бранте_смерть_англ.gif?t=1639733883" /></i></i></i>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Genesis Alpha One Deluxe Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('5f5ec384-af32-4d89-9f33-3685df1e4001/0e78c827-febc-4426-9a0b-6d2463c57847.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="5f5ec384-af32-4d89-9f33-3685df1e4001/ea85028a-277b-4e68-a6a7-29881df572ef.png"/> Genesis Alpha One Deluxe Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="5f5ec384-af32-4d89-9f33-3685df1e4001/2bc80bc3-eb8c-4b26-937a-cd9597f8a04d.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-30/10/2022">30/10/2022</a> 13:34:05</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 8:07:46</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-31/12/1983">31/12/1983</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Arcade">Arcade</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Datasoft, Inc.">Datasoft, Inc.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Datasoft, Inc.">Datasoft, Inc.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/game/genesis_alpha_one_deluxe_edition" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-3D">3D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action Roguelike">Action Roguelike</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Base Building">Base Building</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Building">Building</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-First-Person">First-Person</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-FPS">FPS</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Horror">Horror</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Management">Management</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Multiple Endings">Multiple Endings</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Open World">Open World</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Post-apocalyptic">Post-apocalyptic</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Procedural Generation">Procedural Generation</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Roguelike">Roguelike</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Roguelite">Roguelite</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Space">Space</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Space Sim">Space Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Survival">Survival</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Survival Horror">Survival Horror</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<a href="https://www.gog.com/promo/gog_halloween_2022">
+<img src="https://items.gog.com/promobanners/halloween_sale.png">
+</a><br><hr><br><h4>New and Improved</h4><p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/GAO_STEAMUPDATE_BY_001.gif" ></p>
+<br>
+<p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/GenesisDeluxeEdition.gif" ></p>
+<br>
+<b>Deluxe Edition Includes:</b>
+<ul class="bb_ul">
+<li>Artbook
+<br>
+</li>
+<li>Soundtrack
+<br>
+</li>
+<li>Rocket Star Corporation DLC
+<br>
+</li>
+</ul>
+
+<br>
+In a near future ravaged by wars, corrupt regimes and devastating pollution, influential corporations have created the Genesis program in a last-ditch attempt to save humanity.
+<br>
+
+<br>
+As the Captain of a Genesis starship, you journey into uncharted space on the ultimate mission. Build and manage a space vessel, farm resources, deal with terrifying alien infestations, clone creatures and explore a vast, randomly generated universe. 
+<br>
+
+<br>
+<b>Go Rogue</b>
+<br>
+<p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/1EpicRoguelike.jpg" ></p>
+
+<br>
+Huge, randomised galaxies ensure every run in Genesis Alpha One is unique. Choose one of three difficulties or tailor the game to your playstyle with the Custom Game Mode. Discover new planets, circumvent asteroid fields and survive encounters with the Mechanics and Framen, space pirates who will board your ship to destroy your ship and all its inhabitants. Death is the end and once all your clones are dead, the mission is over. However, you will carry through artefacts unearthed into your next playthrough as well as unlock new corporations, making you more powerful with each attempt.
+<br>
+
+<br>
+<b>Build, Upgrade, Explore</b>
+<br>
+
+<p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/GAO_BuildManage_BY_001.gif" >
+</p>
+<br>
+Starting with a small vessel, you’ll have to build and maintain an intergalactic ark by combining dozens of upgradable spaceship modules including crew quarters, workshops, hangars, clone labs and greenhouses.
+<br>
+Using an intuitive building menu, easily snap together the pieces of your ship to tailor it to your playstyle. Develop your vessel and then explore your creation in first person.
+<br>
+
+<br>
+<b>Battle Alien Infestations</b>
+<br>
+
+<p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/GAO_AlienInfestation_BY_001.gif" >
+</p>
+
+<br>
+Alien infestations can spread quickly, contaminating the ship and crew. It’s imperative to wipe them out before you become overwhelmed and your ship is destroyed. An arsenal of weapons and defences can be researched to help you fight the alien threat. Unleash an array of powerful weaponry, research alien diseases to heal your crew, equip new abilities and deploy warbots to devastate the alien hordes.
+<br>
+
+<br>
+<b>Clone and Create New Lifeforms</b>
+<br>
+
+<p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/4Clone.jpg" >
+</p>
+
+<br>
+As your ship grows, so must your crew. Using ground-breaking cloning technology, your crew will expand to meet the needs of the ship.
+<br>
+Loot DNA samples from the aliens you encounter across the galaxy and splice them with members of your crew to give humanity a chance to prosper with abilities far beyond what was previously imagined.
+<br>
+
+<br>
+<b>Delve Deep Into Vastness of Space For Valuable Resources</b>
+<br>
+
+<p><img src="https://items.gog.com/genesis_alpha_one_deluxe_edition/5Resources.jpg" >
+</p>
+
+<br>
+In order to expand your ship and sustain your crew, you must explore planets fraught with danger. Gather elements such as Copper and Uranium and harvest plants to sustain life aboard your vessel. You may also find alien artefacts and intel from those explorers that have gone before, and not lived to tell the tale.
+
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

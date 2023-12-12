@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fantasy Grounds Classic</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('30d54be7-78a7-4375-9ccb-095dc178f731/af0d977c-be8e-47be-8491-d70443d9986a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="30d54be7-78a7-4375-9ccb-095dc178f731/52221717-0cc3-408e-bf71-3b3f6becbbdc.ico"/> Fantasy Grounds Classic</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="30d54be7-78a7-4375-9ccb-095dc178f731/167271ea-bb30-4fe5-a837-8ba73f33f5ab.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>1h 20m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-10/11/2022">10/11/2022</a> 22:02:00</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:06</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 8:36:19</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-09/05/2014">09/05/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-60">60</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-SmiteWorks USA, LLC">SmiteWorks USA, LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/252690" target="_blank">Steam</a><br/><a href="http://www.fantasygrounds.com" target="_blank">Official Website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>New Version Now Available - Fantasy Grounds Unity</h1><p><h2 class="bb_tag">Warning</h2>Beginning on June 24, 2021, Fantasy Grounds Classic will no longer receive any product updates or DLC releases. Please consider upgrading to Fantasy Grounds Unity<br><a href="https://store.steampowered.com/app/1196310/Fantasy_Grounds_Unity/" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/1196310/Fantasy_Grounds_Unity/</a></p><br><h1>BUNDLE AND SAVE</h1><p>If you already own Fantasy Grounds Classic, you can bundle and save to get a discount when you upgrade.<br><a href="https://store.steampowered.com/bundle/13834/Upgrade_from_Fantasy_Grounds_to_Fantasy_Grounds_Unity_Standard_license/" target="_blank" rel="noreferrer"  >https://store.steampowered.com/bundle/13834/Upgrade_from_Fantasy_Grounds_to_Fantasy_Grounds_Unity_Standard_license/</a></p><br><h1>About the Game</h1>Fantasy Grounds is an application acting as a virtual online gaming table primarily intended for pen and paper style narrative role playing games.  It is designed to perform many of the things you can do while playing at a conventional gaming table and move it online.<h2 class="bb_tag">Shop DLC in the updated Steam Store</h2>You can browse by category more easily from the SmiteWorks Publish Page link below.<h2 class="bb_tag"><a href="https://store.steampowered.com/dlc/252690/Fantasy_Grounds/" target="_blank" rel="noreferrer"  >BROWSE DLC</a>.</h2><h2 class="bb_tag">A Note about DLC for Fantasy Grounds</h2>Fantasy Grounds has a wealth of DLC available as add-ons. Each of these DLC add-ons expands Fantasy Grounds to support a brand new game system or to add new adventures and supplements from your favorite game publishers and artists. SmiteWorks has negotiated license deals with several dozen different RPG Game publishers and artists, both large and small, to bring you a very large variety of gaming options. Our agreements with these publishers and artists provide royalties for every purchase made through Steam and elsewhere, so that a purchase of DLC for Fantasy Grounds is the equivalent to or better for the publisher than walking into a game store or book store and buying a physical book from the publisher. Each and every purchase is directly helping fund and grow the RPG hobby industry. <br><br>The share that SmiteWorks retains for this helps pay our content and programming developers and helps us add support for more and more games. In many cases, the content you can buy as DLC can be built directly by you within Fantasy Grounds if you already own the material in another form. The DLC provides a convenient option for time-strapped gamers who also wish to directly support the gaming industry.<br><br><br>* This is not a stand-alone game. This game features no computer controlled AI and relies upon another user acting as a Gamemaster to control the story, action and enemies you face.<h2 class="bb_tag">Overview</h2>Fantasy Grounds is a hybrid application which allows you to play and create your own RPG games. It facilitates this play and provides some optional add-on Adventure modules which can be loaded and played with very little preparation. Each game will require a GameMaster (GM) and one or more players. Games may be played in a session as short as a few hours or continued with multiple sessions over a series of days, weeks, months or years. A GM will typically install the application and choose their game-system of choice, which we refer to as a Ruleset. Fantasy Grounds comes pre-loaded with Rulesets supporting compatible play for Advanced Dungeons &amp; Dragons 2E, Dungeons &amp; Dragons 3.5, Dungeons &amp; Dragons 4E, Dungeons &amp; Dragons fifth edition and the Pathfinder Roleplaying Game (R). Additional Rulesets are available for free and for purchase from our Workshop. The 3.5E, 5E and PFRPG rulesets are good places to start for new GMs and for people new to Fantasy Grounds. These Rulesets come pre-loaded with some basic Library modules full of abilities, spells, monsters and items that have been marked as Open Gaming Content (OGC) by their respective copyright holders.  The 5E ruleset contains all the content from the D&amp;D Basic Rules for D&amp;D fifth edition. Additional rulesets, such as that for Call of Cthulhu or Savage Worlds are fully licensed versions and contain otherwise closed and proprietary content that we've licensed from those publishers. As of April 2015, Fantasy Grounds acquired an official license from Wizards of the Coast for D&amp;D fifth edition. This means that the 5E ruleset supports basic understanding and gameplay for D&amp;D fifth edition but you can also buy fully preloaded data packs and adventures that are licensed from Wizards of the Coast as DLC here on Steam.<h2 class="bb_tag">Players</h2>For players, Fantasy Grounds will allow you to connect to a game being hosted by a GM and control one or more characters within the game. You will be able to update and maintain your character sheet, much like you would in a face-to-face RPG game, but with some degree of automation and support for dragging and dropping abilities and items from the Library modules (for rulesets which support them.) Whenever a GM shares a map image, you will be able to move a token representing your character and initiate attack rolls against enemies visible on those maps when it is your turn. You will be interacting within the GM's game session with other players and every action you take will be communicated to the GM and connected players along with any chat messages you enter into the chat window. At the conclusion of the GM's game session, you will log out and your character sheet and progress will be saved to the GM's session. When you meet back up and a pre-scheduled time with the GM for the next session, you will be able to continue where you left off.  Scheduling of future game sessions is handled outside of Fantasy Grounds via email communication, the Fantasy Grounds forums and Game Calendar, Steam discussions or through whatever source the GM defines.  SmiteWorks hopes to improve the match-making features at a later date.<h2 class="bb_tag">GameMasters</h2>For GameMasters, Fantasy Grounds will allow you to outline and prepare your future game sessions. You will be able to create story entries and link them together or to specific maps. You could, for instance, create a story entry which links to an image of a dungeon and then each room could in turn be linked to individual story entries -- each containing room descriptions, secret GM notes, a list of NPCs and monster encounters or links to more images and player hand-outs. Depending on your game master style and the availability of pre-entered monsters and enemies, you can also run without preparation. You can create and maintain multiple Campaigns, each with their own content and players. When you are ready to run your campaign, you will need to spend some time recruiting players and establishing your preferred frequency and length of play, methods of communication when you are not connected with Fantasy Grounds and whether or not you want to use a voice application such as Skype or Google Hangouts alongside Fantasy Grounds. Most GMs tend to use a combination of in-game text-based chat within Fantasy Grounds *and* a voice application to help facilitate quicker and more natural play.<h2 class="bb_tag">With this version of the product, you can:</h2><br><ul class="bb_ul"><li>Run games as the Gamemaster (GM)<br></li><li>Host games as a GM for other players and GMs who are connected as players<br></li><li>Host a demo game for 1 player who is using only the FG Demo. The campaign won't allow saving, but will give you the ability to demonstrate the functionality to prospective players.<br></li><li>Join games as a player<br></li><li>Create characters locally to take with you into a game session<br></li><li>Create additional rulesets and modifications with custom XML and LUA Scripting<br></li><li>Use hundreds of built-in top-down tokens for monsters, characters and animals</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
