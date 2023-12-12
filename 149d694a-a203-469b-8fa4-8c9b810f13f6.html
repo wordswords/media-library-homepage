@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>FINAL FANTASY VI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('149d694a-a203-469b-8fa4-8c9b810f13f6/d371d56d-1535-48ff-a7cb-d884a0cbb379.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="149d694a-a203-469b-8fa4-8c9b810f13f6/fa2109c1-10c1-4a9b-bf78-63b80d45266c.ico"/> FINAL FANTASY VI</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="149d694a-a203-469b-8fa4-8c9b810f13f6/b499b4a0-7038-4c76-9e2f-852cc20e5272.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>2h 53m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-04/07/2023">04/07/2023</a> 17:56:33</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-29/06/2023">29/06/2023</a> 22:26:05</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-29/06/2023">29/06/2023</a> 22:26:16</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-23/02/2022">23/02/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1173820/FINAL_FANTASY_VI" target="_blank">Steam</a><br/><a href="https://square-enix-games.com/en_US/news/final-fantasy-pixel-remaster" target="_blank">Official</a><br/><a href="https://www.twitch.tv/squareenix" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/finalfantasy" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/finalfantasy" target="_blank">Facebook</a><br/><a href="https://www.twitter.com/finalfantasy" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/finalfantasy" target="_blank">Instagram</a><br/><a href="https://finalfantasy.fandom.com/wiki/Final_Fantasy_Pixel_Remaster" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Final_Fantasy_VI" target="_blank">Wikipedia</a><br/><a href="https://play.google.com/store/apps/details?id=com.square_enix.android_googleplay.FFPR6" target="_blank">Android</a><br/><a href="https://apps.apple.com/us/app/final-fantasy-vi/id1492041539" target="_blank">iPad</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Class-Based">Class-Based</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Emotional">Emotional</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Exploration">Exploration</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Female Protagonist">Female Protagonist</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Great Soundtrack">Great Soundtrack</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-JRPG">JRPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Lore-Rich">Lore-Rich</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Magic">Magic</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Nostalgia">Nostalgia</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Party-Based RPG">Party-Based RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Pixel Graphics">Pixel Graphics</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Remake">Remake</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Retro">Retro</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Story Rich">Story Rich</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Combat">Turn-Based Combat</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					The original FINAL FANTASY VI comes to life with completely new graphics and audio as a 2D pixel remaster!<br />
+<br />
+A remodeled 2D take on the sixth game in the world-renowned FINAL FANTASY series! Enjoy the timeless story told through charming retro graphics. All the magic of the original, with improved ease of play. <br />
+<br />
+The War of the Magi caused magic to disappear from the world. A thousand years later, humanity relies on machines - until they find a young woman with mysterious powers. The magicite system allows players to customize which abilities, magic spells, and summons the party members learn. All the playable characters have their own stories, goals, and destinies. Journey through their interwoven fates in this sweeping melodrama. <br />
+<br />
+Revisit the critically acclaimed FFVI - this remastered version also includes the beloved and iconic opera scene in reimagined majesty, including new vocals and animation.<br />
+<br />
+KEY FEATURES:<br />
+・Universally updated 2D pixel graphics, including the iconic FINAL FANTASY character pixel designs created by Kazuko Shibuya, the original artist and current collaborator.<br />
+・Beautifully rearranged soundtrack in a faithful FINAL FANTASY style, overseen by original composer Nobuo Uematsu.<br />
+・Improved gameplay, including modernized UI, auto-battle options, and more!<br />
+・Dive into the world of the game with supplemental extras like the bestiary, illustration gallery, and music player.<br />
+<br />
+*This remaster is based on the original &quot;FINAL FANTASY VI&quot; game released in 1994. Features and/or content may differ from previously rereleased versions of the game.
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

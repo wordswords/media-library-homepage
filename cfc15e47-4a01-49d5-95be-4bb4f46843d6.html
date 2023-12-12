@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>XBAND</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src=""/> XBAND</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b789ac82-c413-4c33-a103-ca232c6971ec/711e73d6-c4eb-4ec1-bd82-ea5cba1c58ae.png"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-07/09/2023">07/09/2023</a> 3:31:49</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-07/09/2023">07/09/2023</a> 4:30:30</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Playnite">Playnite</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-Nintendo SNES">Nintendo SNES</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-1994">1994</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					XBAND was one of the first competitive online console gaming networks and was available for the Genesis and Super NES systems. It was produced by Catapult Entertainment, a Cupertino, California-based software company. It is the only modem released in America to have been officially licensed by Nintendo. It debuted in various areas of the United States in late 1994 and 1995.<br>
+<br>
+History:<br>
+<br>
+The Genesis version of the XBAND was released in November 1994, with the Super NES version following in June 1995, and the Super Famicom version in April 1996. The Genesis version also works with the Genesis Nomad. In Brazil the Mega Drive service was released as the Mega Net 2, named after the Sega Meganet.<br>
+<br>
+In 1995, Catapult Entertainment signed a deal with General Instrument, producers of the Sega Channel, which stipulated that the XBAND modem would henceforth be built into new Sega Channel adapters, and that the top 5 to 10 games offered by Sega Channel each month would be wired for play over XBAND.<br>
+<br>
+Initially, Catapult Entertainment had a limited staff and virtually no advertising. By January 1997, XBAND network playability had reached practically every metropolitan area and several rural areas in the U.S. The actual XBAND modems were carried by a handful of software and video rental chains across the United States. Internationally, the XBAND saw some limited expansion in the Japanese market, and Catapult was working on PC- and Sega Saturn-based versions of the platform, though they merged with Mpath Interactive, and the focus shifted to the online PC gaming service, Mplayer.com (Mplayer.com was taken offline and integrated into GameSpy Arcade in 2001, after acquired by GameSpy on December 2000).<br>
+<br>
+Service:<br>
+<br>
+The concept of playing online was fairly new at the time. Arcades were still quite popular, and online gaming was not yet a household idea.<br>
+<br>
+The XBAND modem was widely available at Blockbuster Video branches during its time. It retailed for $19.99, with additional charges based on usage. Two pricing plans were available. One had a monthly fee of $4.95 and allowed the user to connect to the service up to 50 times a month with each additional connection costing 15 cents. The other had a monthly fee of $9.95 and granted the subscriber an unlimited number of connections per month. Activities that consumed a player's monthly allowance of connections included dialing into the XBAND service for matchmaking, downloading mail (called "XMAIL"), and downloading the daily edition of the two XBAND newsletters, one containing generic news and the other containing platform-specific information such as leaderboards and contest announcements. Players were also assessed a fee of $3.95/hour for connecting to opponents outside their local calling area; player-to-player connections inside their local calling area were free.<br>
+<br>
+The modem features built-in storage for up to four users ("codenames"). It stores user friend lists, which can contain the codenames of up to ten of the user's friends; the users' XMAIL boxes, storing up to ten incoming and ten outgoing messages for each user; the users' rankings, win/loss records, and accumulated scores; a short profile section; and the user's avatar (chosen from 40 preset avatars). Text entry is done either through an on-screen keyboard or an optional XBAND keyboard add-on ($29.95 MSRP) released later in the network's lifespan.<br>
+<br>
+The client-side system worked by manipulating the game's memory in a way similar to Game Genie and third-party computer game modifications such as Multi Theft Auto.<br>
+<br>
+A problem of most online services of the time was that the connection would be lost whenever a phone on the same line was picked up. The XBand operating system was designed to ensure that connections are not lost due to phone activity; in the case of call waiting, the system would alert the user to the call and allow the game to be resumed.<br>
+<br>
+XBAND had an official website where a member could check any other player's statistics, along with other information and updates that were not available to view on consoles.<br>
+<br>
+At its height, XBAND had 15,000 subscribed members.<br>
+<br>
+Gaming:<br>
+<br>
+A 1995 article in Next Generation stated that the XBAND modem's "ultra-low latency is the key to its successful handling of realtime videogaming". The modem's data transfer rate was 2,400 bits per second, which, while low compared to PC modems of the time, was sufficient to handle the simple one-on-one games which XBAND was used with.<br>
+<br>
+When connecting to play, unless a player specified a particular user from their friend list, players would be matched with a random player elsewhere in the country (or the player's local area code depending on their preference settings) who was also connecting to play the same game. The server would attempt to match players of like skill levels, using the Elo rating system. When the network matched two players up, the newly-connected player's XBAND modem would disconnect from the server and dial the other player, whose own XBAND modem would answer when the phone rang. At that point the players would see the XBAND logo slide together, followed by the matchup screen, which displayed each player's codenames, avatars, locations, and a pre-typed "taunt".<br>
+<br>
+In December 1995 XBAND launched its first national tournament. This was the first modem to modem tournament ever to be held over a console. The grand prize winner received a special Genghis Khan icon for their XBAND profile and a $200 cash prize from Catapult. Peter Kappes aka "SphiNX" of Orlando, FL became the first person in history to win a modem to modem national tournament over a console.
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

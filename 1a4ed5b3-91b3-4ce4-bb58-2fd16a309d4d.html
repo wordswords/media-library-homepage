@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Autonauts vs Piratebots</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('1a4ed5b3-91b3-4ce4-bb58-2fd16a309d4d/bb49d054-603e-42c5-9813-4951cbf997ad.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="1a4ed5b3-91b3-4ce4-bb58-2fd16a309d4d/213abd89-c261-4b0b-bbb0-8bb910591a9a.ico"/> Autonauts vs Piratebots</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="1a4ed5b3-91b3-4ce4-bb58-2fd16a309d4d/9f5a71c9-4701-4319-8e65-7e9d33fd2a85.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-06/09/2023">06/09/2023</a> 18:42:50</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-06/09/2023">06/09/2023</a> 18:43:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-28/07/2022">28/07/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1907720" target="_blank">Steam</a><br/><a href="https://curvegames.com/news/autonauts-vs-piratebots-announcement" target="_blank">Official</a><br/><a href="https://twitter.com/Automationauts" target="_blank">Twitter</a><br/><a href="https://discord.gg/DJjE82W9UB" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/Autonauts" target="_blank">Reddit</a><br/><a href="https://www.twitch.tv/directory/game/Autonauts%20vs%20Piratebots" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Agriculture">Agriculture</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Automation">Automation</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Base Building">Base Building</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Building">Building</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-City Builder">City Builder</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Colony Sim">Colony Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Combat">Combat</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Crafting">Crafting</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cute">Cute</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Farming Sim">Farming Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Management">Management</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Pirates">Pirates</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Programming">Programming</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Relaxing">Relaxing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Resource Management">Resource Management</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Robots">Robots</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sandbox">Sandbox</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Simulation">Simulation</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.akamai.steamstatic.com/steam/apps/1907720/extras/AvPB_Steam_Out_Now_Gif_EN.gif?t=1683890031" /><br>Grave news! Piratebots are kidnapping Autonauts and taking over our automated settlements! Only you can remove the invaders, recover your resources and resume control!  <br><br>You are Captain of the Autonauts Defence Force. You receive a distress signal from a nearby planet: a Piratebot invasion! You arrive to find that Piratebots have obliterated the base camp and taken control of the working outposts and industries. <br><br>To win, you must destroy the Space Pirate Boss - “The Dread Pirate Robot” - whose heavily-defended stronghold lies on the other side of the world. Standing between you and the ultimate showdown are hundreds of scurvy Piratebots commanded by The Dread Pirate Robot’s trusted Boss Mates. <br><br>Rescue the innocent. Rebuild the settlement. Reclaim the world. <br><br><strong>FEATURES:</strong><h2 class="bb_tag">Autonauts... Automate!</h2><br>Automate a farming business to earn gold and fund your defence campaign. Use industrious Workerbots, your ingenuity and all the natural resources you can harness to craft the tools and machinery needed to run a bustling settlement while commanding a successful defence campaign to conquer the invading Piratebots. <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1907720/extras/AvsP_4gif_616_200.gif?t=1683890031" /><h2 class="bb_tag">Code, Command &amp; Conquer!</h2>Build squads of special Defencebots including Warriors, Archers and Knights, then use tactical combat programming to take on swathes of swarthy Piratebots and their Bosses. <br><br>Prepare to repel boarders! <br><br>Create and command your Defencebot squads to engage in intense Boss battles with the crazy Long Bot Silver, the diabolical Botbeard and the brutal Botbarossa, culminating in a fullscale assault on the Dread Pirate Robot's formidable fortress <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1907720/extras/AvsP_6gif_616_200.gif?t=1683890031" /><h2 class="bb_tag">Pillaging Piratebot</h2><br>Merciless Piratebots raiders regularly storm your growing base to vandalise and pillage. Set up vigilant guard patrols, erect mighty defensive walls and deploy armed towers to stop marauding Piratebots in their tracks. <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1907720/extras/AvsP_5gif_616_200.gif?t=1683890031" /><br><br>Collect new technology from the black-hearted Piratebots to drive them from the land and free your fellow Autonauts! <br><br>You may have played Autonauts before, but never like this. It’s a whole new game of automation and strategy for novices and veterans alike!<br><br>Automate to defend! Defend to automate!
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

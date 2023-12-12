@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Year Of Rain</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('8cae7bb4-6104-4e48-9fdb-5cc2eabccbc0/a0ed4b27-37c7-4170-ba8a-1e2a21e88962.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="8cae7bb4-6104-4e48-9fdb-5cc2eabccbc0/ed6a1de9-3bf9-43f1-8c97-247ee74fb7c3.ico"/> A Year Of Rain</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="8cae7bb4-6104-4e48-9fdb-5cc2eabccbc0/90c1e77f-a098-4f70-af99-1a71263fc95d.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-20/05/2023">20/05/2023</a> 8:21:56</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-06/11/2019">06/11/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-50">50</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Daedalic Entertainment">Daedalic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Daedalic Entertainment">Daedalic Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://ayearofrain.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/ayearofrain" target="_blank">Facebook</a><br/><a href="https://twitter.com/ayearofrain" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/319540" target="_blank">Steam</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>DISCORD</h1><p><a href="https://steamcommunity.com/linkfilter/?url=https://discordapp.com/invite/ayearofrain" target="_blank" rel="noopener"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/English.png?t=1588807585" /></a></p><br><h1>About the Game</h1><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/AYOR_Header.gif?t=1588807585" /><h2 class="bb_tag">Story</h2><br>This world is a harsh and unforgiving place.<br><br>Its people have to fight for every scrap. Tenacious tribes, nomadic clans or those huddled in the shadow of those with power... they're all caught in a cycle of war and violence, to wrestle from the land what little sustenance it provides.<br><br>Two old friends want to break that cycle and create paradise amidst the desolation. A tempest of change is brewing on the horizon.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/RTS.gif?t=1588807585" /><h2 class="bb_tag">Real-Time Strategy</h2><br>Choose one of three rival factions and get immersed in a gameplay mixture of base building, resource gathering, unit recruiting and battling against or alongside others players in campaign or skirmish modes. Structures and units can be upgraded in order to enhance efficiency and power.<br><br>Conquer your enemies with your carefully assembled army led by a legendary hero!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/Teamplay.gif?t=1588807585" /><h2 class="bb_tag">Team Play and Roles</h2><br>The ultimate Team RTS - play together across all game modes! Select from one of three roles to unlock special technologies and coordinate with your ally to determine your team’s strategy. Alternatively, you can always command your AI companion to deploy its troops according to your masterplan.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/Coop.gif?t=1588807585" /><h2 class="bb_tag">Co-Op Campaign</h2><br>A Year Of Rain’s co-op campaign is designed with a team of two in mind.<br>The epic story features a range of iconic characters and locations. During your journey you must strategize, survive ambushes, uncover secrets and wage war – always with the option to experience the story together with another player.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/Competition.gif?t=1588807585" /><h2 class="bb_tag">Competitive Multiplayer</h2><br>The classic skirmish mode is being developed for competitive matches from the very start. Those new to the genre can use integrated build orders to get their bearings, while seasoned players will find detailed match statistics to further improve their game – easy to learn, hard to master!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/319540/extras/Factions.gif?t=1588807585" /><h2 class="bb_tag">Factions and Heroes</h2><br>In the world of A Year Of Rain, three unique factions find themselves in a struggle for power. Each faction features three powerful heroes to spearhead your armies.<br><br><i>House Rupah</i> is led by an ambitious man from the northwest, called Jaidee Rupah. He is ready to claim unclaimed lands to make a name and a legacy.<br><br><i>The Restless Regiment</i>. Led by the infamous Lady Llorona, they all dance on her strings and either serve her in mindless obedience or zealous devotion fueled by singular, driving purpose or the torment of martial memories.<br><br><i>The Wild Banners</i> are a coalition of nomads, hunters, tribes, forgotten and fallen civilizations as well as lone wanderers. They chose not to belong where so called civilization thrives. They are beastly savages for some, and tenacious survivalists for others.<h2 class="bb_tag">Features</h2><br><ul class="bb_ul"><li>The ultimate Team RTS. Play together across all game modes.<br></li><li>Ambitious campaign, designed for co-op experience<br></li><li>A 2v2 skirmish mode that is truly designed for team play<br></li><li>Three unique factions: House Rupah, the Wild Banners and the Restless Regiment<br></li><li>Compelling, multi-layered story<br></li><li>Elaborate, stylized art<br></li><li>Powerful iconic heroes to lead your army<br></li><li>Soundtrack by award-winning composer Neal Acree</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

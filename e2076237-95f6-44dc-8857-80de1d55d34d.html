@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mini Metro</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e2076237-95f6-44dc-8857-80de1d55d34d/02cc0e97-f8e3-43a5-b929-53afc5c67365.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e2076237-95f6-44dc-8857-80de1d55d34d/b65f78de-d442-45be-a3c6-456251b475c9.ico"/> Mini Metro</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e2076237-95f6-44dc-8857-80de1d55d34d/f2834beb-d4d1-4dc1-82be-7a42636500c6.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>3m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-31/08/2019">31/08/2019</a> 19:56:06</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:07</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:38:25</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-22/10/2015">22/10/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-100">100</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Arcade">Arcade</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Dinosaur Polo Club">Dinosaur Polo Club</a><br/><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Radial Games">Radial Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-AGM Playism">AGM Playism</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Dinosaur Polo Club">Dinosaur Polo Club</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Playdigious">Playdigious</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Radial Games">Radial Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/287980" target="_blank">Steam</a><br/><a href="http://dinopoloclub.com/minimetro" target="_blank">Official Website</a><br/><a href="https://itunes.apple.com/us/app/mini-metro/id837860959?mt=8&uo=4" target="_blank">iPhone</a><br/><a href="https://play.google.com/store/apps/details?id=nz.co.codepoint.minimetro&hl=en&gl=us" target="_blank">Android</a><br/><a href="https://www.gog.com/game/mini_metro" target="_blank">GOG</a><br/><a href="https://dinopoloclub.itch.io/minimetro" target="_blank">Itch</a><br/><a href="https://en.wikipedia.org/wiki/Mini_Metro_(video_game)" target="_blank">Wikipedia</a><br/><a href="https://twitter.com/dinopoloclub" target="_blank">Twitter</a><br/><a href="https://www.facebook.com/dinopoloclub" target="_blank">Facebook</a><br/><a href="https://nexusmods.com/minimetro" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.cloudflare.steamstatic.com/steam/apps/287980/extras/MM_SteamHeaderGIF03.gif?t=1629941941" /><br>In Mini Metro, you take on the task of designing the subway layout for a rapidly expanding city. Your city starts with three stations. Draw routes between these stations to connect them with subway lines. Commuters travel along your lines to get around the city as fast as they can. Each station can only hold a handful of waiting commuters so your subway network will need to be well-designed to avoid delays.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/287980/extras/MM_SteamHeaderGIF02.gif?t=1629941941" /><br>The city is growing. More stations are opening, and commuters are appearing faster. The demands on your network are ever-increasing. You'll be constantly redesigning your lines to maximise efficiency. The new assets you earn every week will help immensely — as long as they're used wisely.<br><br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/287980/extras/MM_SteamHeaderGIF01.gif?t=1629941941" /><br>Eventually your network will fail. Stations will open too quickly. Commuters will crowd the platforms. How long the city keeps moving is up to you.<h2 class="bb_tag">Key Features</h2><ul class="bb_ul"><li>Compelling, constructive, hectic, relaxed gameplay. If that makes sense. It doesn't though, aye? You just gotta play it.<br></li><li>Three game modes: Normal for quick scored games, Endless for stress-free sandbox play, and Extreme for the ultimate challenge.<br></li><li>Build your metro exactly how you want to with the all-new Creative mode.<br></li><li>Over two dozen real-world cities! Design subways for London, Paris, New York City, Osaka, Saint Petersburg, São Paulo, Istanbul, Auckland and many more! Each has a unique colour theme, set of obstacles, and pace.<br></li><li>Random city growth, so each game plays out differently. A strategy that proved successful last game may not help you in the next.<br></li><li>Each game's map is a work of art, built by you in the classic abstract subway style of Harry Beck. If you think it's a keeper, save it, tweet it, show it off, or make it your desktop background!<br></li><li>Responsive soundtrack created by your metro system, engineered by Disasterpeace.<br></li><li>Colorblind and night modes.<br></li><li>Trains! Did we mention them yet?<br></li><li>Vast library of player-created maps for you to explore in Steam Workshop!</li></ul><h2 class="bb_tag">More from Dinosaur Polo Club</h2>You can find us on all the usual social media haunts like <a href="https://steamcommunity.com/linkfilter/?url=http://www.facebook.com/dinopoloclub" target="_blank" rel="noopener"  >Facebook</a> and <a href="http://twitter.com/dinopoloclub" target="_blank" rel="noreferrer"  >Twitter</a>. <br><br>If you love Mini Metro, check out the highway-planning follow up <a href="https://store.steampowered.com/app/1127500/Mini_Motorways/" target="_blank" rel="noreferrer"  >Mini Motorways</a>!<br><a href="https://store.steampowered.com/app/1127500/Mini_Motorways/" target="_blank" rel="noreferrer"  ><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/287980/extras/SteamStore_Footer.gif?t=1629941941" /></a><br><br>&quot;Mini Metro’s clean, stylish interface encourages me over and over again to make the trains run on time, and there’s a deeper amount of strategy to growing a sprawling metro system than meets the eye. I wasn’t just hypnotized by the rhythmic movement of trains from station to station, I was completely absorbed in making them perfect.&quot; - <strong>IGN</strong><h2 class="bb_tag">Demo</h2>You can check out Mini Metro for yourself and play a game on the London map in the <a href="https://steamcommunity.com/linkfilter/?url=http://old.dinopoloclub.com/minimetro/" target="_blank" rel="noopener"  >demo</a>.
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Suzerain</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e395da5d-db21-4684-8f50-8cef6b951c38/8f507800-e77d-4b42-ac2a-f0f540a40d79.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e395da5d-db21-4684-8f50-8cef6b951c38/be9ed180-1809-46fc-9232-42ed8a688de3.ico"/> Suzerain</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e395da5d-db21-4684-8f50-8cef6b951c38/daf5e46a-fa85-455b-9779-9f31d70f2d34.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-18/04/2022">18/04/2022</a> 13:30:43</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:56:09</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-04/12/2020">04/12/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-72">72</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Torpor Games">Torpor Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Fellow Traveller">Fellow Traveller</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.suzeraingame.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/torporgames" target="_blank">Facebook</a><br/><a href="https://twitter.com/TorporGames" target="_blank">Twitter</a><br/><a href="https://www.reddit.com/r/suzerain" target="_blank">Reddit</a><br/><a href="https://store.steampowered.com/app/1207650/Suzerain/" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/suzerain" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/p/suzerain" target="_blank">Epic</a><br/><a href="https://discord.gg/fellowtraveller" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Alternate History">Alternate History</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Choose Your Own Adventure">Choose Your Own Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Difficult">Difficult</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Diplomacy">Diplomacy</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Economy">Economy</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Historical">Historical</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Immersive Sim">Immersive Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Interactive Fiction">Interactive Fiction</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Management">Management</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Multiple Endings">Multiple Endings</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Point & Click">Point & Click</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Political">Political</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Political Sim">Political Sim</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Politics">Politics</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Story Rich">Story Rich</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Text-Based">Text-Based</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/You_Are_the_President_4.png?t=1640820900" /><br>As President Anton Rayne, lead Sordland during your first term of this text-based narrative RPG. Navigate a political drama, driven by conversations with your cabinet members and other significant figures in a country with its own complicated history. With looming border conflicts, entrenched corruption, economic crisis and people desperate for reform, as leader the difficult choices fall on your shoulders as you strive to uphold your election promises.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/A_country_in_turmoil_2.png?t=1640820900" /><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/Headlines_Windowed_Larger_-_600x338.gif?t=1640820900" /><br><br>In 1954, the country of Sordland is emerging from a 20-year dictatorship, following a bloody civil war. You play as a charismatic young man, Anton Rayne, who has surprised everyone by rising to the top of the party in power and getting elected as the new President of Sordland.<br> <br>The people are hungry for democratic reforms after decades under a traditionalist power. The economy is in shambles and the political landscape is shifting. Neighboring superpowers are watching closely, and there are military threats on the horizon.<br> <br>As President, you have the final say but every choice you make has an impact. Your colleagues, the opposition, corporations; everyone has a point of view. Think and act carefully: once enacted your choices can not be reversed. <br>Good luck, Mr. President.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/Law_Order_Welfare_windowed.gif?t=1640820900" /><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/whoisantonrayne.png?t=1640820900" /><br><br>The game opens with a prologue in which Anton lives through formative events that shape his history from childhood through to the moment he is elected. <br><br>Take this further by customising your look and style.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/customisation_border.gif?t=1640820900" /><br><br>At the end of Anton’s term, visualize how his choices impacted the country and how he lands on the Sordish political spectrum. <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/Who_Will_You_Trust_2.png?t=1640820900" /><br>Work closely with the Cabinet and prominent figures to forge strong policies and practices. You will need to keep your allies on your side and carefully consider where you will compromise your values and who you will make an enemy of. Everyone has their own ambitions in play. <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/Character_Quote_Windowed.gif?t=1640820900" /><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/What_Will_You_Sacrifice_2.png?t=1640820900" /><br>Leading a country is demanding. Face constant conflict about which is more important, serving the country or supporting your family. Is it possible to be a good father and a good president at the same time?  <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/Monica_Worried_-_Black_Background_-_Fade.gif?t=1640820900" /><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/How_Will_you_Lead_2.png?t=1640820900" /><br><ul class="bb_ul"><li><strong>Weighty, dramatic conversations</strong>: Navigate intricate conversations in this 400K-word branching political drama.<br></li><li><strong>Every choice has consequences</strong>: Make difficult choices on security, economy, diplomacy and more. Even outside the office, your values and beliefs will be challenged. <br></li><li><strong>Make allies and enemies</strong>: Interact with a wide array of characters with different personalities and ideologies.<br></li><li><strong>The oath of office versus family and values:</strong> See the real impact of the choices made in office on your family and close relationships <br></li><li><strong>Pay attention to current events</strong>: Follow the situation in Sordland through reports and news.<br></li><li><strong>What will your legacy be?</strong>: You can take the country in many different directions, resulting in one of 9 different major endings.<br></li><li><strong>Every decision you make is final:</strong> there is an autosave feature that does not allow loading earlier saves. Make choices carefully. </li></ul><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1207650/extras/Rumberg_Converdsation_Windowed.gif?t=1640820900" /><br><br><a href="https://store.steampowered.com/app/1207650/Suzerain" target="_blank" rel="noreferrer"  id="dynamiclink_1" >https://store.steampowered.com/app/1207650/Suzerain</a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

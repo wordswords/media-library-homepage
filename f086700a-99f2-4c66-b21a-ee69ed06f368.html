@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>From Space</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('f086700a-99f2-4c66-b21a-ee69ed06f368/49b7b934-dbdd-4477-8904-5bf1545cc867.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="f086700a-99f2-4c66-b21a-ee69ed06f368/381e8010-7d46-4a85-8f6f-86ab3f4870b7.ico"/> From Space</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="f086700a-99f2-4c66-b21a-ee69ed06f368/7c9a5f43-55e3-40e4-aa3b-fbea115244c9.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-07/12/2023">07/12/2023</a> 10:40:34</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-07/12/2023">07/12/2023</a> 10:42:07</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-03/11/2022">03/11/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-60">60</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1502190" target="_blank">Steam</a><br/><a href="https://www.itcamefromspaceandateourbrains.com/" target="_blank">Official</a><br/><a href="https://twitter.com/trianglestudios" target="_blank">Twitter</a><br/><a href="https://discord.gg/chJzFVUDDv" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/From%20Space" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action RPG">Action RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action-Adventure">Action-Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Atmospheric">Atmospheric</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Controller">Controller</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Co-op">Co-op</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Family Friendly">Family Friendly</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Funny">Funny</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Looter Shooter">Looter Shooter</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Online Co-Op">Online Co-Op</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Team-Based">Team-Based</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Top-Down">Top-Down</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Top-Down Shooter">Top-Down Shooter</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Twin Stick Shooter">Twin Stick Shooter</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					That's no bubblegum army, that's an endless horde of menacingly pink aliens taking over our planet! Enough sweet talk, grab your gear, we need you and your squad to defeat the pink pests!<br> <br>YOUR MISSION: Liberate Earth from the Alien horde!<br> <br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/1_FS_storeheading_HordeMode_ENGLISH.png?t=1700579162" /><br><br>We have an emergency on our hands! Resistance is a high-energy “Horde Mode” where you and your (extremely qualified) team will be deployed into unique locations, completing objectives, while surviving waves of pink life forms that increase in difficulty. It’s down to you to save the world. <br> <br>Collect Tokens to unlock weapons, items, and perks to boost your stats and build the ultimate loadout based on your playstyle. Complete formidable missions and extract with your squad to gain well-earned experience to level up your character. Additionally, for those that love to flaunt, you can show off your skill to other players in the session with 26 different ranks to work towards! Get out there and make us proud, recruit! <br> <br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/2_FS_storeheading_StoryMode_ENGLISH.png?t=1700579162" /><br><br><br>It’s time to save the world! Embark on a journey to meet fellow earthlings that require your assistance, you virtuoso. You’ll be completing a wide range of exciting missions, usually, through chaotic combat, and yes, you have full permission to destroy everything in your path. <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/3_FS_storeheading_SquadUp_ENGLISH.png?t=1700579162" /><br>While you can play From Space solo (if you're brave enough) you'd be wise to invite some friends to help you out. With online play you can create a four-person squad. Look, there's a lot of those pink pests out there so the more people, the better. Oh, and with a squad, you'll have some witnesses to tell everyone how awesome you are. It's basically a win-win scenario.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/FS_Steam_Gif_1.gif?t=1700579162" /><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/4_FS_storeheading_ShootExploreStab_ENGLISH.png?t=1700579162" /><br>With a variety of weapons (Rocket Launchers, Miniguns, Flamethrowers and more!) there’s no excuse not to annihilate those aliens! Build your ideal spec and use tactical items such as grenades and mines, or slow down the hordes with barbed wire and machinegun turrets. Remember to scavenge the world for loot, you'll need it!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/FS_Steam_Gif_2.gif?t=1700579162" /><br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/5_FS_storeheading_YoureSpecial_ENGLISH.png?t=1700579162" /><br>No matter what type of player you are, there’s a wide range of characters in From Space's roster, each with their own unique ability and weapons. Find the perfect balance with your friends as you build the ultimate super squad.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/FS_Steam_Gif_3.gif?t=1700579162" /><br><br> <br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/6_FS_storeheading_LevelUp_ENGLISH.png?t=1700579162" /><br>As you level-up, you’ll be able to attach special perks to your character, helping you to master the art of destroying aliens. You'll need to find ways to combat increasingly more powerful aliens, and perks will help you accomplish all of your pink alien squashing dreams. Need to rethink your strategy? No problem! We like innovators! Perks can be swapped around, even between your squad!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/FS_Steam_Gif_4.gif?t=1700579162" /><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/7_FS_storeheading_TheApocalipse_ENGLISH.png?t=1700579162" /><br>We’re going to level with you... an alien threat is terrifying, terrifyingly fun! Look, the world is already pretty beat up as it is. Who's going to notice if you cause a little bit more destruction while saving the day? People have insurance it's fine...<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1502190/extras/FS_Steam_Gif_5.gif?t=1700579162" />
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

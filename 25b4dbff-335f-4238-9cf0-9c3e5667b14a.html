@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Beyond: Two Souls</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('25b4dbff-335f-4238-9cf0-9c3e5667b14a/a97435d6-35fc-4bdd-a143-8d4f50e4de65.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="25b4dbff-335f-4238-9cf0-9c3e5667b14a/734d8b55-dcde-4ee8-acb8-64a490607cc2.ico"/> Beyond: Two Souls</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="25b4dbff-335f-4238-9cf0-9c3e5667b14a/33f49068-0e7f-487a-8636-523e49e26213.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/09/2023">23/09/2023</a> 15:48:15</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-23/09/2023">23/09/2023</a> 15:49:21</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-08/10/2013">08/10/2013</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-73">73</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-66">66</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.playstation.com/en-us/games/beyond-two-souls-ps4/" target="_blank">Official</a><br/><a href="http://beyondtwosouls.wikia.com" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Beyond:_Two_Souls" target="_blank">Wikipedia</a><br/><a href="https://twitter.com/QUANTIC_DREAM" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/960990" target="_blank">Steam</a><br/><a href="https://www.epicgames.com/store/product/beyond-two-souls" target="_blank">Epic</a><br/><a href="https://www.instagram.com/quanticdreamgames/" target="_blank">Instagram</a><br/><a href="https://www.facebook.com/officialquanticdream/" target="_blank">Facebook</a><br/><a href="https://www.twitch.tv/directory/game/Beyond:%20Two%20Souls" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/channel/UCf1dGULY0opzBbE3XEXWvWg" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Atmospheric">Atmospheric</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Beautiful">Beautiful</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Choices Matter">Choices Matter</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cinematic">Cinematic</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Co-op">Co-op</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Drama">Drama</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dynamic Narration">Dynamic Narration</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Emotional">Emotional</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Female Protagonist">Female Protagonist</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Great Soundtrack">Great Soundtrack</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Horror">Horror</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Narration">Narration</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Quick-Time Events">Quick-Time Events</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Story Rich">Story Rich</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Third Person">Third Person</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Thriller">Thriller</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Violent">Violent</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.akamai.steamstatic.com/steam/apps/960990/extras/logo.png?t=1667468566" /><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/960990/extras/stars2.png?t=1667468566" /><br>Triple-A talent and storytelling brings you a video game experience like you’ve never had before.<h2 class="bb_tag">LIVE AN EXTRAORDINARY LIFE: ONE LIFE, TWO SOULS</h2><img src="https://cdn.akamai.steamstatic.com/steam/apps/960990/extras/ligne.png?t=1667468566" /><br>A unique psychological action thriller delivered by A-list Hollywood performances by<strong> Elliot Page</strong> and <strong>Willem Dafoe</strong>, <strong>Beyond: Two Souls™</strong> takes you on a thrilling journey across the globe as you play out the remarkable life of Jodie Holmes.<br><br>Born with a connection to a mysterious entity with incredible powers, Jodie is different.<br><br>Your actions will determine Jodie's fate as she faces extraordinary challenges, danger, and heart-wrenching loss on a journey to discover the truth of who she is.<br><br>Create an action-packed story through your choices and actions as you live her life – a girl born with a link to a supernatural entity called Aiden.<br><br>By playing as both Jodie and Aiden, you will face spectacular physical and psychological challenges to understand what truly lies… beyond.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/960990/extras/beyond2.jpg?t=1667468566" /><h2 class="bb_tag">TEST YOUR SKILLS WITH ‘ADVANCED EXPERIMENTS’</h2>The original DLC mission from the PlayStation™ releases is included in the full PC game. The entire game is playable in two difficulty modes, and in Solo or Duo mode.<h2 class="bb_tag">PLAY THE STORY THE WAY YOU WANT</h2>Cinematic or chronological order? Select the way you want to experience the story, and even play in local co-op mode using two different controllers for each player – one to play as Jodie and the other to play as Aiden. Play the way you want to play.<h2 class="bb_tag">FULLY OPTIMIZED FOR PC</h2>Beyond: Two Souls is brought to PC with stunning visuals including 4K resolution, widescreen 21:9 compatibility, and 60 fps framerate.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/960990/extras/b2sok.gif?t=1667468566" />
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Command &amp; Conquer Remastered Collection</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('a3d26c46-5877-4a91-9fc0-ddc436c1fe12/c6e3e7ce-c851-4817-ae96-dd378e6c79c7.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="a3d26c46-5877-4a91-9fc0-ddc436c1fe12/51559ca4-2dec-4aa1-83f1-f384b92ebb92.ico"/> Command &amp; Conquer Remastered Collection</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="a3d26c46-5877-4a91-9fc0-ddc436c1fe12/6da88cf3-b1ce-4a9e-8587-5bf7db879c12.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-22/10/2021">22/10/2021</a> 21:20:36</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:06</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:42:51</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-05/06/2020">05/06/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-EA">EA</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/1213210" target="_blank">Steam</a><br/><a href="https://nexusmods.com/commandandconquerremastered" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>Steam Workshop</h1><p>Steam workshop support for User Maps</p><br><h1>About the Game</h1>Command &amp; Conquer and Red Alert defined the RTS genre 25 years ago and are now both fully remastered in 4K by the former Westwood Studios team members at Petroglyph Games. Includes all 3 expansion packs, rebuilt multiplayer, a modernized UI, Map Editor, bonus gallery of unreleased FMV footage, and over 7 hours of legendary remastered music by Frank Klepacki. Welcome back, Commander.<h2 class="bb_tag"><h2 class="bb_tag"><strong>New and Remastered Features</strong></h2></h2><ul class="bb_ul"><li><strong>Graphics Switching</strong> — Switch in real-time between legacy and remastered 4K graphics when in solo play.<br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1213210/extras/Graphics_Switching_610.png?t=1627333457" /><br><br></li><li><strong>Bonus Gallery</strong> — Contains over 4 hours of B-roll footage, making-of photos, and unreleased music tracks.<br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1213210/extras/Bonus_Gallery_610.png?t=1627333457" /><br><br></li><li><strong>Music</strong> — Enjoy over 7 hours of remastered music, including 20 music tracks re-recorded live by original composer Frank Klepacki and the Tiberian Sons.<br><img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1213210/extras/Tiberian_Sons_610.png?t=1627333457" /><br><br></li><li><strong>Mod Support</strong> — Create, share, and play mods with the Steam Workshop.<br><br></li><li><strong>Cinematics</strong> — Immerse yourself in hours of upscaled full-motion video cinematic footage.<br><br></li><li><strong>Enhanced Sidebar UI</strong> — The fully redesigned Sidebar UI embraces a modern approach with less scrolling.<br><br></li><li><strong>Jukebox</strong> — Customize your entire soundtrack via an enhanced Jukebox with playlist support.<br><br></li><li><strong>Custom Game Lobbies</strong> — Host and join custom game lobbies to set game rules, teams, and maps.<br><br></li><li><strong>Rise Through the Ranks</strong> — Go head to head in 1v1 Quickmatches, and fight your way to the top of the Leaderboard.<br><br></li><li><strong>See All the Action</strong> — Don’t miss a minute of combat with Replays and Observer mode.<br><br></li><li><strong>From Console to PC</strong> — Experience the original console missions now on PC.<br><br></li><li><strong>Console Cinematics</strong> — Watch the original console cinematic videos now on PC, featuring community favorite General Carville.<br><br></li><li><strong>Maps</strong> — Take control of the terrain with the Map Editor, available on both Origin and Steam versions.<br><br></li><li><strong>Mission Selection</strong> — Track your campaign progress on the new Mission Selection Screen.<br><br></li><li><strong>Camera Zoom</strong> — Zoom the camera between the legacy DOS and Gold distances for a better look at the battlefield.<br><br></li><li><strong>Skirmish Mode</strong> — Take on the AI — with controllable difficulty settings — in Skirmish mode, new for Tiberian Dawn.<br><br></li><li><strong>Customizable Hotkeys</strong> — In-game Hotkey customization, now with support for the new Sidebar UI.<br><br></li><li><strong>EVA</strong> — Your battle interface sounds better than ever! The original voice-over actress, Kia Huntzinger, reprised her role as EVA and re-recorded her lines in high definition for Tiberian Dawn.<br><br></li><li><strong>Control Improvements</strong> — Enjoy updated mouse controls, camera movement, unit queueing, and selection improvements.</li></ul>     <br>Additional features and content:<br><ul class="bb_ul"><li>Over 100 campaign missions<br></li><li>Over 250 multiplayer maps<br></li><li>In-game tooltips<br></li><li>Accessibility features<br></li><li>Quicksave and Autosave support<br></li><li>Cinematic subtitles for both games<br></li><li>Text localization in French, German, Russian, Spanish, Polish, Simplified Chinese, and Traditional Chinese<br></li><li>Voice-over in English, French, and German</li></ul>The Steam version includes:<br><ul class="bb_ul"><li>Steam achievements<br></li><li>Steam friends lists<br></li><li>Steam Trading Cards<br></li><li>Steam Workshop support for User Maps</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

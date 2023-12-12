@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ghost Song</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('3f499c8d-485d-4a50-a2e3-35f97b0df7ac/fc278c48-83ef-4489-bd9a-2719e00350a9.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src=""/> Ghost Song</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="3f499c8d-485d-4a50-a2e3-35f97b0df7ac/d02d90ac-808c-4465-810a-3f160211332a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-05/11/2022">05/11/2022</a> 18:07:48</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:21:22</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Humble">Humble</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Humble">Humble</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-03/11/2022">03/11/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-95">95</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Platform">Platform</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Old Moon">Old Moon</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Humble Games">Humble Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://ghostsonggame.com/" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/347800" target="_blank">Steam</a><br/><a href="https://discord.gg/ghostsong" target="_blank">Discord</a><br/><a href="https://twitter.com/mattwhitedev" target="_blank">Twitter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D Platformer">2D Platformer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action-Adventure">Action-Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Atmospheric">Atmospheric</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Controller">Controller</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dark">Dark</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Difficult">Difficult</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Female Protagonist">Female Protagonist</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Hand-drawn">Hand-drawn</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Horror">Horror</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Metroidvania">Metroidvania</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Platformer">Platformer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Post-apocalyptic">Post-apocalyptic</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Robots">Robots</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Side Scroller">Side Scroller</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					On the desolate moon of Lorian V, a long-dormant Deadsuit awakens from slumber—armed and combat-ready, memory clear of purpose. But something new is stirring…
+<br>
+<br>
+Strike out beneath the surface in search of answers in <i>Ghost Song</i>, an atmospheric 2D adventure of self-discovery, ancient mysteries, and cosmic terror. Explore winding caverns lit only by bioluminescent flora, battle strange and powerful creatures, and acquire new abilities to help you unearth this alien world’s long-buried secrets.
+<br>
+<br>
+Descend deep into the darkness—only then will you learn (or is it remember?) the truth.
+<br>
+<br>
+<strong>
+ FEATURES
+ <br>
+ Discover what lies below
+</strong>
+<br>
+Explore the twisting alien tunnels and long-abandoned labs of an expansive, beautifully illustrated Metroidvania-inspired 2D world filled with secret chambers and a haunting history.
+<br>
+<br>
+<video autoplay loop="loop" muted="muted" preload="auto" style="">
+ <source src="https://hb.imgix.net/3e7eb05a4469562c3eef6bbd804c5aa587f68eae.gif?auto=format&amp;fm=mp4&amp;s=006d55023d2336258b24c45c0d9fc315" type="video/mp4">
+</video>
+<br>
+<br>
+<strong>
+ Power up and progress
+</strong>
+<br>
+Acquire potent weapons and game-changing new abilities in the depths, unlocking access to new strata of the moon and optional hidden areas.
+<br>
+<br>
+<video autoplay loop="loop" muted="muted" preload="auto" style="">
+ <source src="https://hb.imgix.net/dd6134686f6d838f95ebe488d20f48e99775098e.gif?auto=format&amp;fm=mp4&amp;s=fbb5229710c4d25953d5ab95813e3d4c" type="video/mp4">
+</video>
+<br>
+<br>
+<strong>
+ Face challenging foes
+</strong>
+<br>
+Combat the fungal aliens and metal husks of Lorian V with responsiveness and precision. Level up your power, and customize your suit and blaster with an arsenal of modules.
+<br>
+<br>
+<video autoplay loop="loop" muted="muted" preload="auto" style="">
+ <source src="https://hb.imgix.net/25b1374fade527a994bfc09b9c2df098de447f4b.mp4?auto=compress,format&amp;s=237174507a23dfeddb9e258929dd6a22" type="video/mp4">
+</video>
+<br>
+<br>
+<strong>
+ Blast and smash
+</strong>
+<br>
+Master the distinctive rhythm of Deadsuit’s core combat. Pummel enemies with your rapid-fire blaster, building up barrel heat that empowers your melee attacks.
+<br>
+<br>
+<video autoplay loop="loop" muted="muted" preload="auto" style="">
+ <source src="https://hb.imgix.net/0a124bd4a9160b459f91bc09afbde70ba1879fe1.mp4?auto=compress,format&amp;s=f7d483fab950a92cf19b214b085532b0" type="video/mp4">
+</video>
+<br>
+<br>
+<strong>
+ You are not alone
+</strong>
+<br>
+You’re not the only entity trapped in this unfamiliar place. Encounter a cast of voiced characters and discover their own tales of survival, courage, abandonment, and redemption.
+
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

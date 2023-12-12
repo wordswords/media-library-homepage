@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Time At Portia</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('b536f9be-60b1-4d85-80d4-0a4cae10e4c0/541cda44-cd77-45dd-a93f-7f9e1072b7b9.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="b536f9be-60b1-4d85-80d4-0a4cae10e4c0/9144f766-5ab3-4c76-9d64-873b7878c1e3.ico"/> My Time At Portia</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="b536f9be-60b1-4d85-80d4-0a4cae10e4c0/e55f93d2-9027-48ea-97d3-2e089e74ba1a.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-23/11/2021">23/11/2021</a> 11:42:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-19/02/2023">19/02/2023</a> 4:58:18</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-15/01/2019">15/01/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Pathea Games">Pathea Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Team17">Team17</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/666140" target="_blank">Steam</a><br/><a href="http://portia.pathea.net" target="_blank">Official Website</a><br/><a href="http://mytimeatportia.wikia.com/" target="_blank">Wikia</a><br/><a href="https://www.facebook.com/PatheaGames" target="_blank">Facebook</a><br/><a href="https://twitter.com/PatheaGames" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/patheagames" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/patheagames" target="_blank">Youtube</a><br/><a href="https://www.epicgames.com/store/en-US/product/my-time-at-portia/home" target="_blank">Epic</a><br/><a href="https://www.gog.com/game/my_time_at_portia" target="_blank">GOG</a><br/><a href="http://itunes.apple.com/us/app/id1555184523#?platform=iphone" target="_blank">iPhone</a><br/><a href="http://itunes.apple.com/us/app/id1555184523#?platform=ipad" target="_blank">iPad</a><br/><a href="https://nexusmods.com/mytimeatportia" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Logo Missing">[EMT] Logo Missing</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h1>INTRODUCING: EPIC CHEF</h1><p><a href="https://store.steampowered.com/app/1312960/Epic_Chef/" target="_blank" rel="noreferrer"  id="dynamiclink_0" >https://store.steampowered.com/app/1312960/Epic_Chef/</a><br><br>Epic Chef is a story-driven adventure game flavoured with life-sim farming, and crafting elements, blended together into one delicious dish via an interactive cooking experience - all served with a side of humour and elaborate cast of characters.<br><br><a href="https://store.steampowered.com/app/1312960/Epic_Chef/" target="_blank" rel="noreferrer"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/SteamDiscount.png?t=1636724347" /></p><br><h1>DEMO INSTRUCTIONS</h1><p><strong>*PLEASE NOTE*</strong> Game saves from the My Time at Portia Demo <strong>ARE NOT COMPATIBLE</strong> with the full version of the game.<br><br>Please start a New Game and remove any previous saves.</p><br><h1>About the Game</h1>Start a new life in the enchanting town of Portia! Restore your Pa's neglected workshop to its former glory by fulfilling commissions, growing crops, raising animals, and befriending the quirky inhabitants of this charming post-apocalyptic land!<br><br>Armed with your Pa's old handbook and workbench, you must gather, mine and craft your way to being crowned the number one workshop in Portia. Help the locals rebuild the town and uncover the secrets locked deep away beneath it. Be prepared though…it won't be easy!<br><br>The town of Portia is full of friendly new faces for you to meet. Make friends, complete requests, exchange gifts, go on dates and let romance blossom!<br><br>Inspired by the magic of Studio Ghibli, My Time at Portia whisks you away to a world of wonder that you won't forget. How will you spend your time at Portia?<h2 class="bb_tag"><strong>Key Features:</strong></h2><br><strong>BUILD YOUR WORKSHOP:</strong> Build your Pa's derelict workshop into the best in Portia! Gather resources and craft your way into the hearts of the local community, as you work through daily commissions and villager requests.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/Chopping_Tree.gif?t=1636724347" /><br><br><strong>RUN YOUR OWN FARM:</strong> Grow and nurture your own crops, raise animals and convert the empty woodland surrounding your workshop into a quaint little farm! My Time at Portia offers an innovative approach to farming, allowing you to take advantage of planter boxes and semi-automatic irrigation systems. You can even take your horse or llama out for a ride around the town!<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/Run_your_farm.gif?t=1636724347" /><br><br><strong>GET CREATIVE: </strong> Make your house a home! Apply your personal touch with an exciting range of craftable furniture, decorations and workshop upgrades. Not only will it look great, but each piece will add stat boosts to your character!<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/Housing_Arranging.gif?t=1636724347" /><br><br><strong>JOIN THE COMMUNITY: </strong> Become a part of Portia's extraordinary community! Filled with a vibrant cast of unforgettable faces all with energetic personalities, daily routines and exciting stories to share. They go to work, have dinner in restaurants, exercise and interact with each other in lots of interesting ways - make sure you take the time to get to know them all! Who knows, maybe romance could be in the air?<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/Join_the_Community.gif?t=1636724347" /><br><br> <strong>EXPLORE AND BATTLE: </strong> Delve deep into the ancient ruins and dungeons of Portia. Grab your pickaxe and Relic Scanner and mine for resources and treasures from the past. Make sure that you equip a weapon, there’s hordes of fearsome monsters and deadly bosses that stand between you and that precious loot!<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/Explore_and_Battle.gif?t=1636724347" /><br><br> <strong>SKILL UP:</strong> Level up your character with a variety of skills to aid you in your adventures. Decide on whether to boost your crafting, combat or social skills depending on your play style.<br><br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/Level_up!_take_2.gif?t=1636724347" /><br><br><strong>AND THERE’S MORE:</strong> My Time at Portia has something for everyone! Find and explore new lands, take part in regular in-game festivals and many other activities it’s up to you how you spend your time. Why not hone your culinary skills and cook up some tasty food? Take on one of the many mini-games? Or perhaps just kick back and spend the afternoon fishing? The choice is yours!<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/666140/extras/And_theres_more.gif?t=1636724347" /></a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
