@@ -6,7 +6,12 @@ set -x
 tmpdir=$(mktemp -d)
 cd $tmpdir
 git clone git@github.com:wordswords/media-library-homepage.git ./hp
+cd ./hp
+./remove-all-image-links-from-playnite-export.sh
+cd -
 rm -f ./hp/*.sh
-rsync -avhH --delete --remove-source-files ./hp /var/www/html
+cd ./hp
+rsync -avhH --delete --remove-source-files . /var/www/html
+cd -
 rm -rf ./hp
 
