@@ -11,7 +11,7 @@ cd ./hp
 cd -
 rm -f ./hp/*.sh
 cd ./hp
-rsync -avhH --delete --remove-source-files . /var/www/html
+rsync -avhH --delete --remove-source-files . /var/www/html || true
 cd -
 rm -rf ./hp
 
