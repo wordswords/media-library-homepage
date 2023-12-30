@@ -8,4 +8,9 @@ if [ "$(id -u)" -ne 0 ] ; then
     exit 1
 fi
 
-sudo export tmpdir=$(mktemp -d) && cd $tmpdir && git clone git@github.com:wordswords/media-library-homepage.git ./hp && sudo rm -f ./hp/*.sh  && sudo rsync -avhH --delete --remove-source-files ./hp /var/www/html && sudo rm -rf ./hp'
+rm -rf /var/www/html/*
+chown -R root:users /var/www/html
+chmod 775 -R /var/www/html
+runuser david -- ./deploy-media-library-homepage-as-user.sh
+
+

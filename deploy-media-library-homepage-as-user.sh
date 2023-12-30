@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+set -x
+
+tmpdir=$(mktemp -d)
+cd $tmpdir
+git clone git@github.com:wordswords/media-library-homepage.git ./hp
+cd ./hp
+./remove-all-image-links-from-playnite-export.sh
+cd -
+rm -f ./hp/*.sh
+cd ./hp
+rsync -avhH --delete --remove-source-files . /var/www/html || true
+cd -
+rm -rf ./hp
+
