@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Low Magic Age</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('65a914f8-31f6-49fc-a6ef-57f9486dd8d1/011bfcf7-f8b9-49ec-bdf5-52c4dfdc333a.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Low Magic Age</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-30/12/2023">30/12/2023</a> 17:43:00</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-30/12/2023">30/12/2023</a> 17:46:14</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-10/01/2017">10/01/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Tactical">Tactical</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/576770" target="_blank">Steam</a><br/><a href="http://www.lowmagicage.com" target="_blank">Official</a><br/><a href="https://old.reddit.com/r/LowMagicAge/" target="_blank">Reddit</a><br/><a href="https://www.gog.com/game/low_magic_age" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Low%20Magic%20Age" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Character Customization">Character Customization</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-CRPG">CRPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dungeon Crawler">Dungeon Crawler</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dungeons & Dragons">Dungeons & Dragons</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Early Access">Early Access</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Grid-Based Movement">Grid-Based Movement</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Medieval">Medieval</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Old School">Old School</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Party-Based RPG">Party-Based RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Roguelike">Roguelike</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sandbox">Sandbox</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy RPG">Strategy RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Tactical RPG">Tactical RPG</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Team-Based">Team-Based</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Traditional Roguelike">Traditional Roguelike</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based">Turn-Based</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Combat">Turn-Based Combat</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Strategy">Turn-Based Strategy</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Tactics">Turn-Based Tactics</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Adventure and fight in a medieval fantasy open world! Build heroic characters with various abilities, travel through villages, cities, or perilous dungeons. In this world of sword and magic, you can choose your own way of life freely.<br><br><br>As one of the core gameplays, Low Magic Age owns a strategic turn-based combat system and advanced character building. Field of view, fog of war, charging and flanking, spells, and combat maneuvers, you can experience more exciting game features in the fast-paced Arena mode.<br><h2 class="bb_tag">Features:</h2><ul class="bb_ul"><li><strong>Adventure mode:</strong><br><br>	Open Sandbox World: A replayable open sandbox world with various landforms and adventure elements.<br><br>	Cities and Villages: Villages, towns, cities, and metropolis of different community sizes. In these places, adventurers can replenish supplies, purchase equipment and other services.<br><br>	Random Dungeons: Numerous random dungeons, such as caves and ancient ruins, that fraught with danger and tempting treasures (traps?).<br><br>	Town Quests: Cities, villages and other human settlements regularly issue various kinds of jobs and tasks. To help towns to accomplish these tasks is an important way to improve reputation and relationship with locals.<br><br>	Trade Goods and Specialties: A wide variety of trade goods are distributed all over the world by region and town. Buying local specialties and then reselling to distant regions to earn the difference is a very profitable business.<br><br></li><li><strong>Arena mode:</strong> Fast-paced combat, looting, and character developing experience.<br><br></li><li><strong>Inherited from classic game rules:</strong> Evolved from the Open Game License (OGL) of <i>Wizards of the Coast</i>, the set of rules based on the pen-n-paper version of fantasy role-playing games of all time. Plus well designed information display UI, clear prompt of hit percent and damage range, help players to study and immerse in the fantasy world. The innovative combat system, full-attack, covering, in-melee, prone, etc., various circumstance modifiers bring more meaningful tactical choices.<br><br></li><li><strong>Classical fantasy monsters:</strong> 7 categories, 100+ classical fantasy monsters. Goblins, trolls, giant ants, basilisks and much much more. Different monsters need different strategies and tactics to defeat.<br><br><br><br></li><li><strong>Tons of equipment and wondrous items:</strong> 60+ common items, 90+ wondrous items, 80+ enchantments. Slashing, piercing and bludgeoning, different weapons against different monsters. Gloves of Dexterity, Counterstrike Bracers, Ring of Regeneration, Belt of Magnificence, Cloak of Thorns, Elemental Gem, collecting powerful magical artifacts to create the heroic character in your mind.<br><br><br><br></li><li><strong>Well designed skills and spells:</strong> Fighters own a variety of martial arts movements, not only basic attacks. All of the arcane spells and divine spells of caster classes are greatly improved, too.</li></ul><br><h2 class="bb_tag">About graphics similarity with another game ToME4:</h2>We purchased and used a tileset of monsters/items from the Norwegian artist Raymond E. Gaustadnes (Shockbolt). He made another tileset for ToME4. So, both tilesets share the similar style and a few same tiles.<h2 class="bb_tag">Thanks to the Open Gaming License (OGL) from <i>Wizards of the Coast</i>:</h2>It has been stated explicitly by <i>Wizards of the Coast</i> that anyone can make a computer game using the open game content under the terms of the OGL. The OGL can be found in the OGL section of their official website, or the in-game Wiki system.<br><br>In order to apply a set of rules designed for a pen-and-paper game to a computer game, many rules in the OGL had been adjusted or improved.
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
