@@ -9,8 +9,8 @@ if [ "$(id -u)" -ne 0 ] ; then
 fi
 
 rm -rf /var/www/html/*
+runuser david -- ./deploy-media-library-homepage-as-user.sh
 chown -R root:users /var/www/html
 chmod 775 -R /var/www/html
-runuser david -- ./deploy-media-library-homepage-as-user.sh
 
 
