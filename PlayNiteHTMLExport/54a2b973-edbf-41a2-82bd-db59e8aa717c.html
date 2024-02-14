@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Turbo Overkill</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('54a2b973-edbf-41a2-82bd-db59e8aa717c/e770a85d-2770-4e88-97f8-26bc0ea912dc.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Turbo Overkill</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-02/01/2024">02/01/2024</a> 17:12:34</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-02/01/2024">02/01/2024</a> 17:15:55</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-22/04/2022">22/04/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-100">100</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1328350/Turbo_Overkill" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/turbo_overkill" target="_blank">GOG</a><br/><a href="https://twitter.com/turbo_overkill" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/game/Turbo%20Overkill" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/en-US/p/turbo-overkill-c5e3c7" target="_blank">Epic</a><br/><a href="https://www.apogeeent.com/" target="_blank">Official</a><br/><a href="https://facebook.com/ApogeeEntertainment" target="_blank">Facebook</a><br/><a href="https://instagram.com/apogeeentertainment" target="_blank">Instagram</a><br/><a href="https://discord.com/invite/22xvVZg" target="_blank">Discord</a><br/><a href="https://www.youtube.com/channel/UCCKe3ITPoQc_f0Ftbg-dpBg" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Arena Shooter">Arena Shooter</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Blood">Blood</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Casual">Casual</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Combat">Combat</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cyberpunk">Cyberpunk</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Difficult">Difficult</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fast-Paced">Fast-Paced</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-First-Person">First-Person</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-FPS">FPS</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Gore">Gore</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Great Soundtrack">Great Soundtrack</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Pixel Graphics">Pixel Graphics</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Retro">Retro</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Violent">Violent</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br><a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.fanbyte.com%2Ffeatures%2Fturbo-overkill-is-the-best-tony-hawk-game-in-years%2F" target="_blank" rel=" noopener"  >&quot;<i>Turbo Overkill</i> is the best <i>Tony Hawk</i> game in years.&quot;</a><br>- Fanbyte<br><br><a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.sportskeeda.com%2Fesports%2Fturbo-overkill-review-hail-leg-chainsaw-baby" target="_blank" rel=" noopener"  >&quot;If Sam Raimi's <i>Evil Dead</i> movie made the Chainsaw Arm an iconic piece of weaponry, wait till you see the leg chainsaw.&quot;</a><br>- Sportskeeda<br><br><a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.superjumpmagazine.com%2Fturbo-overkill-review%2F" target="_blank" rel=" noopener"  >&quot;Turbo Overkill isn't just one of the best boomer shooters on the market right now - this is one of the best games on the market, full stop.&quot;</a><br>- <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2FSuperjumpmagazine.com" target="_blank" rel=" noopener"  >Superjumpmagazine.com</a><br><br><strong><h2 class="bb_tag">Half-metal, half-human, all murder machine</h2></strong>Heavily inspired by some of the all-time greats like Id's <i>Doom</i> &amp; <i>Quake</i>, and Apogee's <i>Duke Nukem 3D</i>, with stunning cyberpunk visuals, <i>Turbo Overkill</i> is the most savage FPS ever released by Apogee. You play as Johnny Turbo, augmented with hidden arm rockets and a chainsaw that extends from your lower leg allowing you to slide-slice enemies wide open.<br><br>In this <i>Blade Runner</i>-meets-<i>DOOM</i> hellscape, Johnny returns to his hometown of Paradise and finds its entire population possessed by Syn, a rogue AI, and its army of augmented minions. Desperate for enough money to outrun his past mistakes, Johnny takes on the impossible job of destroying the greatest AI ever created. Rival bounty hunters want to claim the prize first. Nothing is easy in paradise.<br><strong><h2 class="bb_tag">Turbo Time, wall-running, dashing and grappling hooks, oh my</h2></strong><i>Turbo Overkill</i> takes over-the-top to never-before-reached heights. Activate Turbo Time(™), a new form of slow motion with a twist. Build incredible speed by wall-running and dashing. Slide on your chainsaw leg, eviscerating foes and opening up bosses for critical damage, and go car-surfing on the hoods of flying cars. Blast away with the Twin Magnums, which lock-on and instagib several foes, the Boomer Shotgun and its attached grenade launcher, or the Telefragger sniper rifle, which teleports Johnny inside an enemy before they explode from within.<br><br>Race through two dozen stages packed with secrets, bonus arena stages, and white-knuckle combat puzzles. Find game-changing collectibles to unlock punishing modifiers like triple-monster-speed and insta-kill. Combine all of Johnny’s weapons and powers to outsmart, outgun and outrun the corrupted legions.<br><strong><h2 class="bb_tag">TL;DR:</h2></strong>o Kill a boss, get its augment (special power)<br>o Play Spider-Man with your grappling hook<br>o One-up Duke Nukem with your chainsaw slide-slice kick<br>o Kills = cash. Use cash to install augments, upgrade your weapons, and add new abilities in your talent tree<br>o Be a ghost runner while wall running<br>o Attack from above riding the hood of your flying car like a kung-furious badass<br>o Mini-rockets built into your robotic arm? ✔<br>o This. List. Will. Grow. Wishlist the game to see it happen<br><strong><h2 class="bb_tag">Don't quote us on nuthin'</h2></strong>“<i>Turbo Overkill</i> is fast, frenetic and ferocious—excess personified,” said Sam Prebble, one half of Trigger Happy Interactive. “This is the game we’ve always wanted to play; making it is a dream project. Relentless enemies, extremely deadly and fun weapons, speed and precision above all else—if you love <i>Quake III Arena</i>, modern and classic <i>DOOM</i>, or Apogee’s legendary first-person shooters, you’ll feel right at home in Paradise.”<br><br>“As the guy who helped launch the shooter genre with <i>Wolfenstein 3D</i>, <i>Rise of the Triad, Duke Nukem 3D, Max Payne</i>, and <i>Prey</i>, I haven’t been this excited about an FPS since the golden era of Apogee/3D Realms,” wrote Scott Miller, founder. “<i>Turbo Overkill</i> is a sandbox of fun and original gameplay ideas that come together like a night of melty hot pizza and your favorite cold, frothy brew. Playing this game made me a Turbo Lover all over again.”
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
