@@ -8,4 +8,4 @@ set -x
 find ./PlayNiteHTMLExport -name '*.html' -exec sed -i 's/<img[^>]*>&gt;//g' {} \;
 find ./PlayNiteHTMLExport -name '*.html' -exec sed -i 's/<img[^>]*>//g' {} \;
 find ./PlayNiteHTMLExport -name '*.html' -exec sed -i 's/270px/20px/g' {} \;
-find ./PlayNiteHTMLExport -name '*.html' -exec sed -i 's/180px/400px/g' {} \;
+find ./PlayNiteHTMLExport -name '*.html' -exec sed -i 's/180px/600px/g' {} \;
