@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zwei: The Arges Adventure</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Zwei: The Arges Adventure</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:42:34</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-30/12/2001">30/12/2001</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Nihon Falcom">Nihon Falcom</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-XSEED Games">XSEED Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Marvelous USA, Inc.">Marvelous USA, Inc.</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Taito">Taito</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.twitch.tv/directory/game/Zwei!!" target="_blank">Twitch</a><br/><a href="https://store.steampowered.com/app/427680" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/zwei_the_arges_adventure" target="_blank">GOG</a><br/><a href="http://visitarges.com/" target="_blank">Official</a><br/><a href="https://en.wikipedia.org/wiki/Zwei:_The_Arges_Adventure" target="_blank">Wikipedia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Pokkle and Pipiro are two step-siblings living by themselves in the ho-hum village of Puck on the time-forgotten floating continent of Arges. Pokkle loves making terrible puns and wears a tail for funsies, and Pipiro loves buying fashionable clothes and has no filter whatsoever. Together, they meander through what seems to be a peaceful, monotonous existence in their sleepy little burg where nothing interesting ever happens.<br><br>Until something does, anyway! A mysterious masked figure shows up one night and steals six holy idols from the local shrine. The self-proclaimed “Archduke of Arges” tenders a hefty reward for their return, and our “brave” duo jumps at the chance to go find them – Pokkle for the glory, and Pipiro strictly for the cash moneys.<br><br>Their journey will take them to every last nook and cranny across the land and lead to confrontations with a wide variety of friends and foes, each more ludicrous than the last, as a sinister plot to revive an ancient “Demon Lord” unfolds and 500 years’ worth of history comes into focus. Can two 14-year-olds with limited abilities and almost no social skills truly save the day? Or is Arges just pretty much screwed?<br><br>Released in Japan simply as <i>Zwei!!</i>, <i>Zwei: The Arges Adventure</i> is the direct predecessor to the previously released Nihon Falcom action RPG <i>Zwei: The Ilvard Insurrection</i>, from the creators of the popular <i>Ys</i> and <i>The Legend of Heroes</i> franchises.<br><br>Boasting a completely standalone story set on a mysterious “low fantasy” island floating amongst the clouds, <i>Zwei: The Arges Adventure</i> plays out as a classically styled action-oriented 2D dungeon crawler with oodles of optional content and unlockables, player-defined challenge through a unique food-based experience system, and a pervading tongue-in-cheek humor style that helps set it apart from other entries in the genre. Although released on several different platforms in Japan over the years, this is the first time it’s ever been officially released in English, and is the most feature-complete version of the game to date.<br><br>So what are you waiting for? There’s no need to ask Zwei; you Arges gonna have to play this game right now!<h2 class="bb_tag">FEATURES</h2><ul class="bb_ul"><li><i>SD Anime-Style Characters Inhabiting a Colorful Hand-Drawn 2D World</i><br>Boasting beautiful painterly art rife with detail and animations, and populated with an equally colorful cast of super-deformed anime characters who are constantly on the move, the world of Arges feels perpetually alive and energetic.<br></li><li><i>Fast and Chaotic Combat Featuring a Plucky Duo of Protagonists (and One Pet)</i><br>Fend off merciless enemies in real time with Pokkle’s melee attacks and Pipiro’s myriad magics, and solve puzzles to progress through the game’s many dungeons, all while either flanked by a loyal pet or while monitoring said pet from afar as it goes off on its own adorable little journeys.<br></li><li><i>Tongue-in-Cheek Story and Characters Providing Genuine Humor</i><br>Pokkle’s terrible puns and Pipiro’s all-encompassing snark combine with quirky NPCs, self-aware dialogue, weird and unlikely locations, over-the-top situations, fourth-wall breaking, optional side-quests, and more to provide a genuinely funny and dynamic RPG experience.<br></li><li><i>Food-Based Leveling System Allowing Players to Challenge the Game on Their Own Terms</i><br>Eat food to level-up, or hoard your food so you can exchange it in town for even better food down the line that grants even more experience. Will you stay low-level and challenge dungeons well beyond your means for the promise of more level-ups to come, or will you engorge yourself on demand to make the road ahead a little easier?<br></li><li><i>Minigames, Music, Achievements, Art, and More, Creating the Definitive Zwei Experience</i><br>Play an <i>Ys</i>-inspired typing tutor, an adorable yet savage aeroplane shmup, or a block puzzler that rewards you for <i>not</i> making combos – or maybe just take the time to help guide your pet through the harsh wilderness for various spoils! If that’s not enough, why not try for one of the myriad new achievements, seek out one of the newly illustrated character bromides, or switch out the regular soundtrack for its 2008 arranged version? You can even play the game with Japanese text if you want! Add to that a bevy of control improvements and other modernizations, and you have the ultimate update to this unsung Falcom classic!</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

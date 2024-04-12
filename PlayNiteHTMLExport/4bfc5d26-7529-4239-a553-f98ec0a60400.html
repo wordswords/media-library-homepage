@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Panzer Paladin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Panzer Paladin</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 21:02:51</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-21/07/2020">21/07/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Arcade">Arcade</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Platform">Platform</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Tribute Games">Tribute Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Tribute Games">Tribute Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://tributegames.com/" target="_blank">Official</a><br/><a href="https://www.facebook.com/TributeGames" target="_blank">Facebook</a><br/><a href="https://twitter.com/TributeGames" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/975510/Panzer_Paladin/" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Panzer%20Paladin" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					The sight of giant swords blazing through the night sky might be hair-raising, but stand your ground! The sinister Ravenous and his legions of brutal demons are poised for battle. Even all the armies of the world can’t stop them, but humanity has one final ace in the hole: cutting-edge power armor called Paladin.<br><br>It's now up to a strong-willed android named Flame to become a Squire, pilot the Paladin and track down all Weapon Keepers and their diabolical leader. The showdown between mankind’s technological prowess and the powerful forces of the occult has begun!<br><br>Seize weapons from the denizens of the Netherworld and give them a taste of their own medicine! Show them the power of cutting-edge technology fused with masterful swordplay. Slash, bash and thrust your way through a series of mind-blowing levels around the world, all of it rendered in glorious 8-bit graphics! Hop in your Paladin and take up arms!<br><br><br><ul class="bb_ul"><li>An engaging action-platformer with fun and intuitive swordplay!<br></li><li>Take control of Grit, the mighty Paladin power armor, or eject and play as Flame, the small-but-swift Squire pilot!<br></li><li>Robots meet demons! Crush the forces of the occult with the power of cutting-edge technology!<br></li><li>Over 100 melee weapons to seize from enemies!<br></li><li>Forge your own custom melee weapons with the Blacksmith and find them on the Panzer Paladin Steam Workshop. <br></li><li>Use weapons profusely: wield, throw, or shatter them!<br></li><li>Snap a weapon in half to cast a powerful spell!<br></li><li>Slash, bash and thrust your way through 17 mind-blowing levels located around the world!<br></li><li>Carefully crafted 8-bit graphics, just like you remember them!</li></ul><h2 class="bb_tag">CHALLENGE CORE CONTENT UPDATE</h2>This free content update includes the following new features:<br><ul class="bb_ul"><li>New Challenge Mode with 11 rooms to truly test your skills <br></li><li>Speedrun replay and leaderboard now available for all new rooms<br></li><li>Brand new Classic 8-bit Soundtrack option <br></li><li>Blacksmith weapons storage increased </li></ul><br><br>Panzer Paladin is an action-platformer game featuring intuitive swordplay mechanics. The protagonist pilots the Paladin power armor to fight giant demons by using their own weapons against them.<br><br>Swordplay is the core of the game mechanics in Panzer Paladin. The player can equip and use any weapon dropped by defeated enemies, attack or block, aim high or low, use weapons advantageously through a rock-paper-scissors style weapon type system, and cast spells by breaking weapons. Weapons abound in levels, so the player is encouraged to use them profusely. The Paladin is the main way to fight enemies, but players can also eject and control Flame, the small-but-swift Squire pilot. Flame uses a laser whip to attack enemies, swing across gaps, and even recharge the Paladin’s energy.<br><br><br>Giant weapons — swords, lances, hammers — hailing from the dark depths of space, blazed across the sky and pierced their way through historic locations all around the world. As a declaration of war against mankind, the Parthenon, atop the Acropolis of Athens, was first to be cut through by an ominous blade. Upon impact, each of the weapons opened a breach in the fabric of reality and unleashed legions of colossal demons. <br><br>In anticipation of such unforeseen Earth-threatening events, the International Security Council formed Gauntlet, a science committee developing super-sophisticated defense technologies. Gauntlet discovers that denizens of the Netherworld can only be defeated by their own weapons. Spirit Weapons are forged with spirits of the deceased and humans can’t brandish them without becoming corrupted by their foul energy... However, a machine would be immune to demonic corruption! Gauntlet recommissions Flame, a former rescue operations android, to become a Squire. She takes control of Grit, the last remaining Paladin unit — a state-of-the-art suit of power armor capable of wielding Spirit Weapons.<br><br>To arms! Overseeing operations from aboard the Avalon, their flying headquarters, Gauntlet is ready. The showdown between mankind’s technological prowess and the powerful forces of the occult has begun! It's up to Flame and Grit to defeat the Weapon Keepers, and ultimately face off against Ravenous, the sinister leader of the invasion.<h2 class="bb_tag">JOIN THE COMMUNITY</h2><a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdiscord.gg%2Ftributegames" target="_blank" rel=" noopener"  ></a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

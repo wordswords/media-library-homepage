@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Demon Turf</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Demon Turf</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 21:11:04</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-04/11/2021">04/11/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Platform">Platform</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Fabraz">Fabraz</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Playtonic Friends">Playtonic Friends</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://demonturf.com/" target="_blank">Official</a><br/><a href="https://twitter.com/Fabrazz" target="_blank">Twitter</a><br/><a href="https://www.epicgames.com/store/product/demon-turf" target="_blank">Epic</a><br/><a href="https://discord.gg/fabraz" target="_blank">Discord</a><br/><a href="https://store.steampowered.com/app/1325900" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/demon_turf" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Demon%20Turf" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br><strong>DEMON TURF</strong><br>The Demon World is inhabited by all kinds of nasties... Most of them lumped into gangs battling for dominion, each led by its own head honcho. Yet even these bad dudes are no match for the Demon King himself! Instead the task falls to Beebz, a young demon barely a thousand years old, who decides it’s time for her to kick every turf leader’s butt and become the Demon Queen herself.<br><br><ul class="bb_ul"><li>A unique aesthetic combining the expressiveness of 2D illustrations with the depth and sense of exploration 3D environments can offer!<br></li><li>A world chock-full of humor and style, from the music accompanied by the protagonist’s rapping to the colorful characters inhabiting the world!<br></li><li>A unique take on progression! Take a victory lap and explore previously beaten levels to discover their liberated state, with plenty of mechanical and environmental changes to uncover. Or take some time off in the hub town taking on sidequests and other distinct challenges instead.<br></li><li>Pull off some clever platforming combinations or get physical with a special physics-driven combat system that ramps up the chaos and fun. Push, pull and spin your enemies out of your way.<br></li><li>A different take on checkpoints, freeing the player to place them wherever they want. Show off without them for a perfect run, or place one in preparation for a challenging section.<br></li><li>Unique challenges like the “Photo Hunt” mode where you’re tasked to take pictures of hidden locations &amp; surprising moments! Or simply take picures and selfies for fun and share them across all social media!<br></li><li>An awesome collection of purchasable mods that can be combined in clever ways to completely change your play style! Or you could buy some dyes &amp; pets instead, the world's your oyster!<br></li><li>Tons of carefully crafted levels that constantly introduce new challenges as well as en- gaging bosses full of character and life! Until Beebz gets to them...<br></li><li>Level Creator! Create and share your own custom levels with the world! Includes all the standard assets, allows you to import your own and even features LUA scripting support.</li></ul><br><br><br><strong>DEMON TURF: NEON SPLASH</strong><br>Maintain a constant momentum of precision platforming through surreal worlds, filled with bright neon colors, and enjoy the intoxicating combination of 2D &amp; 3D art! Explore and hunt collectables or knuckle-down and master satisfying mechanics to compete for the best times across the world!<br><br><ul class="bb_ul"><li>This painting is no joke! Explore these surreal worlds, filled with bright neon colors, and enjoy the intoxicating combination of 2D &amp; 3D art!<br></li><li>Beebz will focus on what she does best! Platforming! Maintain a constant momentum with no stopgaps or combat, it's all about the platforming that is faster &amp; better than ever before!<br></li><li>A unique checkpoint system, tweaked to perfection! Place your own checkpoints at any time with no limit! Retreading is for losers!<br></li><li>Lots to do! Explore 10 finely crafted levels with a plethora of unique challenges and hazards that are constantly introduced to you at a record pace!<br></li><li>Setpiece levels with a fun narrative to boot! After all, Beebz didn't get sucked into the painting alone and her friends certainly are characters!<br></li><li>A ton of additional goals for you to complete, such as: Collecting all the sweets in a level, finding the hidden vinyl which unlocks 10 more remix levels &amp; getting all the trophy times!<br></li><li>Remix levels?! You betcha! And don't be fooled, these are expertly crafted to be entirely new levels with brand new challenges! Better bring your A-game!<br></li><li>Who knows what awaits you if you complete the game 100%? We do, and it's pretty sweet, so you should do it.<br></li><li>6 finely tuned modifications you can buy with your collectables: Sweets! Only the best of the best, such as mods that add an extra hit point, tweak or add new movesets etc. They even change your looks!<br></li><li>Leaderboards, baby! That's right, compete for the best times across the world and show off your mettle!<br></li><li>Photo Mode! Look, at this point it's mandatory and Beebz is really good at taking selfies! So snap away!<br></li><li>Settings galore! Seriously, this thing's packed with options, so customize your game the way YOU want it to be!</li></ul><br><br><br><strong>DEMON TURF: TOWER</strong><br>You've been stripped of all your powers and there's only one way to regain them: Climb the Jester's impossibly high tower! Can you overcome all of the hazardous challenges and gain back your abilities, one by one? All it takes is one slip up and you'll have to start over... You'll be sweating, you'll be swearing but with each attempt you'll climb just a bit higher... And just that much closer to beating this incredibly tough challenge! Good luck, fellow demon!<br><br><ul class="bb_ul"><li>Roguelite-lite-esque gameplay! That's a mouthful, what does that mean exactly youy ask? You HAVE to beat the tower in one run but it is NOT randomized. And the higher you get, the more powers you'll permanently unlock to help you in your next climb!<br></li><li>One huge level with no loading zones and full of new challenges, hazards and platforming goodness!<br></li><li>Ability loadout! Pick &amp; adjust how your unlocked powers work to best fit your playstyle!<br></li><li>Any% leaderboard! It'll be tough to beat the tower, but even if you do, can you be the fastest at it?<br></li><li>Each time you retry, you'll see where you died last! *Feel* your progress!<br></li><li>A brand new story featuring characters new and old!<br></li><li>Photo Mode, of course!<br></li><li>Settings galore!</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

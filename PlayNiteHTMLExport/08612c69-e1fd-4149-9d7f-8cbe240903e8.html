@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Out of the Park Baseball 17</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Out of the Park Baseball 17</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:40:36</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-22/03/2016">22/03/2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Sport">Sport</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/402430" target="_blank">Steam</a><br/><a href="http://www.ootpdevelopments.com/out-of-the-park-baseball/" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/OOTP%20Baseball%2017" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Out of the Park Baseball 17 - winner of<strong> Metacritic's PC Game of the Year 2016</strong> award and now officially licensed by <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2FMLB.com" target="_blank" rel=" noopener"  >MLB.com</a> and the MLBPA - is the best baseball strategy game ever created!<br><br>&quot;OOTP is an astonishing accomplishment!&quot; - Boston Red Sox Principal Owner John W. Henry<br><br>Out of the Park Baseball 17 is a baseball fan’s dream. Step into the shoes of a GM and/or field manager to own the future or rewrite the past of your favorite real-world franchise. Build the team the way you want to. Start a new career with your favorite 2016 MLB team or span through almost 150 years of baseball history and run any team from the past! You can even set up your own fictional baseball universe or compete in online leagues against other OOTP players. The possibilities in OOTP 17 are endless.<br><br>The brand new 2016 MLB roster set will include all projected Opening Day MLB rosters as well as the complete minor league system down to the rookie leagues and even future draft classes. Can Jake Arrieta, David Price, and Johnny Cueto give their teams the pitching boosts they need? Will Albert Pujols, Chris Davis, and Bryce Harper once again help power their clubs to victory? Can the Kansas City Royals repeat or will the Chicago Cubs finally win the World Series again? Find out and guide your favorite MLB franchise to glory! <br>  <br>Dive into the more hands-on management and set your team's lineups, pitching staffs, and in-game strategy. You can oversee your league at a high level, or play out each game, managing play by play or even pitch by pitch. OOTP players progress realistically over time. Build a team through the draft, or sign big free agents to put you over the top! <br><br>New Features in OOTP 17 include:<br><br><ul class="bb_ul"><li>The all-new MLBPA license lets players come alive. For the first time ever, Out of the Park Baseball features authentic FaceGen images of real players. With player aging, real-time emotion, and automatic uniform adjustment based on trades and free agency for most major leaguers, you’re more in touch with your club than ever.<br></li><li>New 3D animation with moving player symbols making plays and greatly improved authentic 3D major league ballparks deliver the most powerful in-game experience yet. <br></li><li>All-new Historical Exhibition mode allows you to pit any two major league teams from 1901 to 2015 against each other in a single game or series of multiple lengths. Or set up any past World Series matchup with authentic rosters automatically imported. What if...?<br></li><li>Authentic historical minor league systems from 1919 through 2015 with a database of more than 100,000 real players let you navigate farm systems to unprecedented levels. <br></li><li>New support for multi-core processors means that Out of the Park Baseball 17 cranks through simulations and other tasks at up to 60% better speeds than last season.<br></li><li>Automatically generated game recap headlines and stories report on key events throughout the games and your overall experience.<br></li><li>GMs will face smarter, more cunning AI GMs and managers that have individualized, personal approaches to roster-building, scouting, and finances. <br></li><li>A beautiful, redesigned game interface makes it easy for armchair GMs and managers to build their baseball empire. <br></li><li>And much more, like recoded scouting, better AI, more realistic player development, definable trade needs etc. Dozens of new features await you!</li></ul><br>Own the future - rewrite the past!<br><br>Visit us on <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.ootpdevelopments.com" target="_blank" rel=" noopener"  >www.ootpdevelopments.com</a><br><br>Facebook: <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.facebook.com%2Footpbaseball" target="_blank" rel=" noopener"  >http://www.facebook.com/ootpbaseball</a><br><br>Twitter: <a href="http://twitter.com/ootpbaseball" target="_blank" rel=""  >http://twitter.com/ootpbaseball</a><br><br>Major League Baseball trademarks and copyrights are used with permission of MLB Advanced Media, L.P. All rights reserved.<br><br>OFFICIALLY LICENSED PRODUCT OF MAJOR LEAGUE BASEBALL PLAYERS ASSOCIATION - MLBPA trademarks and copyrighted works, including the MLBPA logo, and other intellectual property rights are owned and/or held by MLBPA and may not be used without MLBPA’s written consent. Visit <a href="https://steamcommunity.com/linkfilter/?u=http%3A%2F%2Fwww.MLBPLAYERS.com" target="_blank" rel=" noopener"  >www.MLBPLAYERS.com</a>, the Players Choice on the web.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

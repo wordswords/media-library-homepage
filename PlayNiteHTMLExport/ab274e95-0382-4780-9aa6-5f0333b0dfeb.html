@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Super Bit Blaster XL</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Super Bit Blaster XL</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:43:38</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-16/03/2020">16/03/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Arcade">Arcade</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Nickervision Studios">Nickervision Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Nickervision Studios">Nickervision Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/865040" target="_blank">Steam</a><br/><a href="http://www.nickervisionstudios.com" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/Super%20Bit%20Blaster%20XL" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/en-US/p/super-bit-blaster-xl-35d206" target="_blank">Epic</a><br/><a href="https://twitter.com/theadamvision" target="_blank">Twitter</a><br/><a href="https://instagram.com/theadamvision" target="_blank">Instagram</a><br/><a href="https://discord.gg/adamvision" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">DEVELOPERS NOTE:</h2>I began creating Bit Blaster XL for Steam on a whim back in late 2015. I never could have imagined how its release would alter the direction of my life. Through it's success I was able to  now support myself as a full-time game developer. These last few years in game development have provided me with so many amazing opportunities. I couldn't have done the majority of this without the great support of the community that appeared out of nowhere to play my silly little arcade game.<h2 class="bb_tag"></h2>Super Bit Blaster XL is the next evolution Bit Blaster. Since it's release I have learned a lot more about Unity and C# and so I have reworked many aspects of the game. I added a new Co-Op mode, Vs Mode, improved the GFX, new translations, new Easter eggs, and various other new things. I also completely overhauled the control scheme due to feedback; while it's still not a Twin-Stick shooter, overall control is so much more responsive.<h2 class="bb_tag"></h2><h2 class="bb_tag"></h2>My decision to release this as a separate title as opposed to an update on the original is because the changes are all so drastic I wouldn't want to upset the flow of the original Steam game that people seem to love. I also have learned a lot from (fellow) developers about self worth so the price will be higher than a single dollar this time around. i'm sure there will be folks keen to pick apart this decision as greedy or selfish but I imagine the people that really enjoyed the original and want to support indie creators will understand my choices.<h2 class="bb_tag"></h2>I greatly appreciate your feedback and will do my best to ensure lengthy support for my games. Please contact me through Twitter, My Website, Nickervision Studios Discord, or the forums if you want to discuss an issue with the game, something misleading on the store page, or you just want to say hello.<h2 class="bb_tag"></h2>Thank you for taking a moment to read this<br><br><i>Adam Nickerson - Adamvision Studios</i><h2 class="bb_tag"></h2><h2 class="bb_tag"></h2><h2 class="bb_tag">GAMEPLAY:</h2><ul class="bb_ul"><li>Your ship can not stop moving; so you must turn and use your boost/brake to keep from crashing into an ever increasing amount of enemies and obstacles<br></li><li>Your ship is always shooting, so make sure to pick up more ammo and the wide variety of awesome power ups, pick ups and boosts to help you survive longer<br></li><li>Get the highest score you can while collecting coins to buy more ships that are faster, shoot faster, or have more shields</li></ul><h2 class="bb_tag"></h2><h2 class="bb_tag"></h2><h2 class="bb_tag">FEATURES:</h2><ul class="bb_ul"><li>A throwback to the classic quarter eating arcade games of the 80's. Bit Blaster XL is a retro styled, addictive, and fast paced arcade shoot 'em up!<br></li><li>Easy to learn, simple Controls to fly your ship, boost, and brake. Keyboard + Gamepad Support <i> (not a twin stick shooter)</i><br></li><li>A variety of wicked Power ups like Spread Shot, Heat seekers, Laser, Blast Shot and much more to assist your survival<br></li><li>Screen clearing Bombs, Ship Shields and Boost Pickups to help you survive longer<br></li><li>Collect coins to unlock new ships with unique attributes to give you an edge in the Leaderboards<br></li><li>Endless survival (infinite) score chasing game play with a classic 'bullet hell'-like arcade style<br></li><li>Steam achievements to earn and leaderboards to compete with friends and the world<br></li><li>Steam Cloud save file support<br></li><li>Retro pixel Graphics made by someone that mostly has no idea what they're doing<br></li><li>Language translations available in English, Russian, German, Italian, Portuguese, French, Simplified Chinese, Spanish, Japanese, and Korean<br></li><li>Featuring gameplay directly inspired by some of my favorites, such as; Luftrausers, Asteroids, Space Invaders, Galaxian, Defender, and Geometry Wars.<br></li><li>Unique chip tune songs for each ship by Spiff Tune<br></li><li>An alternate Manual Fire mode for those that want a different experience<br></li><li>The in game audio/SFX was provided by my mouth and some royalty free SFX from FreeSFX<br></li><li>The soundtrack is by the artist &quot;Spiff Tune&quot;</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

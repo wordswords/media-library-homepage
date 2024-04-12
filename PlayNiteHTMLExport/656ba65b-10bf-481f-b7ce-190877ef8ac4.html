@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Caves of Qud</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Caves of Qud</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>2h 4m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-05/06/2023">05/06/2023</a> 18:42:12</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:08</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:35:12</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-15/07/2015">15/07/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Freehold Games">Freehold Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Freehold Games">Freehold Games</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Kitfox Games">Kitfox Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://cavesofqud.wikia.com/wiki/Caves_Of_Qud_Wiki" target="_blank">Wikia</a><br/><a href="http://www.cavesofqud.com" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/333640" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/caves_of_qud" target="_blank">GOG</a><br/><a href="https://freeholdgames.itch.io/cavesofqud" target="_blank">Itch</a><br/><a href="https://en.wikipedia.org/wiki/Caves_of_Qud" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Caves%20of%20Qud" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br><br><br>Caves of Qud is a science fantasy roguelike epic steeped in retrofuturism, deep simulation, and swathes of sentient plants. Come inhabit a living, breathing world and chisel through layers of thousand-year-old civilizations. Decide: is it a dying earth, or is it on the verge of rebirth?<br><br><br><br>Do anything and everything. Caves of Qud is a deeply simulated, biologically diverse, richly cultured world.<br><br><strong>DEEP PHYSICAL SIMULATION</strong> — Don’t like the wall blocking your way? Dig through it with a pickaxe, or eat through it with your corrosive gas mutation, or melt it to lava. Yes, every wall has a melting point.<br><br><strong>FULLY SIMULATED CREATURES</strong> — Every monster and NPC is as fully simulated as the player. That means they have levels, skills, equipment, faction allegiances, and body parts. So if you have a mutation that lets you, say, psionically dominate a spider, you can traipse through the world as a spider, laying webs and eating things.<br><br><strong>DYNAMIC FACTION SYSTEM</strong> — Pursue allegiances with over 70 factions: apes, crabs, trees, robots, and highly entropic beings, just to name a few.<br><br><strong>RICHLY DETAILED SCIENCE FANTASY SETTING</strong> — Over fifteen years of worldbuilding have led to a rich, weird, labyrinthine, one-of-a-kind storyworld, layered on top of the simulation, all for you to explore. Live and drink, friend.<br><br><strong>TACTICAL GAMEPLAY</strong> — Turn-based, sandbox exploration and combat offers as many solutions as you and your mutations, implants, artifacts, and skills are creative enough to invent.<br><br><strong>RPG ELEMENTS</strong> — Quests, NPCs, villages, historic sites; some dynamic and some handwritten, interwoven to produce a transportative RPG experience.<br><br><strong>ATMOSPHERIC ORIGINAL SOUNDTRACK</strong> — Over two hours of otherworldly music to delve to.<br><br><br><br><br><br>Caves of Qud has one of the most expressive character creators of all time.<br><br>Play the role of a mutant indigenous to the salt-spangled dunes and jungles of Qud, or play a true kin descendant from one of the few remaining eco-domes — the toxic arboreta of Ekuemekiyye, the ice-sheathed arcology of Ibul, or the crustal mortars of Yawningmoon.<br><br>Build your character out of:<br><br><ul class="bb_ul"><li>Over 70 mutations — outfit yourself with wings, two heads, four arms, flaming hands, teleportation, the power to clone yourself…<br></li><li>Dozens of cybernetic implants (and more to find as treasure) — night vision, translucent skin, carbide fists, spring-loaded ankle tendons…<br></li><li>24 castes and kits from across the social order of Qud and beyond Moghra’yi, the Great Salt Desert<br></li><li>Too overwhelmed to build a character from scratch? Choose one of 9 preset characters and start your adventure right away. Then return to character creation when you are ready.</li></ul><br><br><br><br><br>Play one of four modes:<br><br><strong>CLASSIC</strong> — Like other traditional roguelikes, this mode has permadeath, meaning you lose your character when you die. Extremely challenging even for experts.<br><br><strong>ROLEPLAY</strong> — Play it like an RPG. Save your progress at checkpoints located in settlements.<br><br><strong>WANDER</strong> — Focus on exploration. Most creatures will not attack you, you don’t gain experience by killing, but you DO gain experience by discovering new locations and treating with legendary creatures.<br><br><strong>DAILY</strong> — One chance with a fixed character and world seed. How long will you survive?<br><br><br><br>The game is nearly complete, and there are already hundreds of hours worth of gameplay here. But before 1.0, we’ll also be adding:<br><br><ul class="bb_ul"><li>The last leg of the main quest<br></li><li>The new, fully graphical UI<br></li><li>Hundreds of visual &amp; sound effects<br></li><li>Lots of polish &amp; stability</li></ul><br><br><br><br><br>Caves of Qud is a project of epic proportions that's been in development for over fifteen years, since 2007. It began as the science fantasy roguelike dream of co-creators Jason Grinblat and Brian Bucklew, who released the first beta in 2010. Since then, it's accrued a few more contributors who have enriched the project by helping to add visual effects, sound effects, an original soundtrack, a new UI, new game systems, new lore, and half a world of content. Caves of Qud has grown into a wild garden of emergent narrative, where a handwritten story weaves a path through rich physical, social, and historical simulations. The result is a hybrid handcrafted and procedurally-generated world that's alive in a way few games are.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

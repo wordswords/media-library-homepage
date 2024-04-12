@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Fermi Paradox</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Fermi Paradox</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 21:14:07</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-01/07/2021">01/07/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Anomaly Games">Anomaly Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Anomaly Games">Anomaly Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1543150" target="_blank">Steam</a><br/><a href="https://fermi-paradox.carbonmade.com/" target="_blank">Official</a><br/><a href="https://www.twitch.tv/the_fermi_paradox" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/channel/UCFNBb4qkR9APFSwOYN0dljw" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/fermiParadoxGame" target="_blank">Facebook</a><br/><a href="https://twitter.com/FermiGame" target="_blank">Twitter</a><br/><a href="https://www.gog.com/game/the_fermi_paradox" target="_blank">GOG</a><br/><a href="https://discord.gg/ByWPcp7" target="_blank">Discord</a><br/><a href="https://www.instagram.com/fermiparadoxgame" target="_blank">Instagram</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<i>The Fermi Paradox</i> is a choice-driven narrative strategy game in which you’ll guide alien civilizations that can thrive or simply survive through the ages, picking up radio signals from distant stars and finally making contact with one another by exploring the furthest corners of the galaxy.<br><br><br><br><ul class="bb_ul"><li><strong>Galactic God game: </strong>Play as galactic gardener rather than a single faction, guiding up to 10 civilizations simultaneously<br></li><li><strong>Choice-driven gameplay: </strong>Every event presents three choices that change the course of history – every decision matters, and consequences ripple across millennia<br></li><li><strong>Many unique alien species:</strong> From nightmarish deep sea creatures to graceful sapient plant-beings, there are even strange hairless mammals called Humans<br></li><li><strong>400 different civilization-development events: </strong>Each event tells its own story and provides new choices that impact the story of that civilization – be it apocalyptic floods, sexual revolutions or conscious interstellar warships<br></li><li><strong>Distinctive societies within starships and colonies:</strong>  Life on a generation ship or on an unknown planet poses different challenges and special narrative events<br></li><li><strong>Original electronic ambient soundtrack:</strong> Music playfully follows the evolutionary steps of developing civilizations and their spiritual, technological, and energetic trajectories.<br></li><li><strong>Play again and again:</strong> Each play-through tells a different story and has its own ending. Will the people of that galaxy unite? Will they wipe out one another in a galactic war? Or will they perish, still alone, never really knowing that other alien life forms existed?<br></li><li><strong>Twitch Integration:</strong> Let your Twitch audience vote on story choices in the game.</li></ul><br><strong>Join our DISCORD COMMUNITY :</strong> <a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdiscord.gg%2Fn5bDJ7pRVM" target="_blank" rel=" noopener"  >https://discord.gg/n5bDJ7pRVM</a><br><br><br><br><i>Become the galactic gardener!</i><br><br>Guide the fate of different planets, species and civilizations. Balance technological progress, military aggression and resource waste so that alien societies survive long enough to make contact with other species. <br><br><i>Choices matter</i><br><br>Alien societies grow and develop on their own – but you can alter the path of their development during crucial moments of social upheaval. How will society change when animals are domesticated, world wars break out or if civilizations begin cloning their own people?<br><br><br><br><i>Foster multiple alien civilizations</i><br><br>Develop societies from the Stone Age to technological singularity and beyond. How will they treat their own, and what will their beliefs be? What message will their first radio waves sent out into the cosmos contain? What are their intentions when travelling thousands of years by interstellar spaceships to another star?<br><br><i>Write the galaxy’s story</i><br><br>Each play-through will become a unique interstellar saga. From the first decision of which lifeforms will evolve into sapient species, there will be numerous choices determining the history and values of that civilization – from their views on sexuality and religion to their treatment of weaker members of society.<br><br><br><br><i>Overcome the long distances of space</i><br><br>Multiple generations will live out their days on starships seeking other habitable planets, while radio signals may echo unnoticed for millennia before they reach anyone that might listen. Of course, the society that sent out a signal may have already perished, and the starship answering their call might arrive only to find alien ruins. Elsewhere, distant colonies may develop into civilizations light-years ahead of the inhabitants of their home planet.<br><br><i>Keep the Balance</i><br><br>Each technological age brings its own challenges, from nuclear war to climate catastrophe, to murderous artificial intelligence. Experience the fragility of the universe, the dangers of military power and how peace might be wrought amongst countless intersecting cultures across the galaxy.<br><br><br><br><i>Who are Anomaly Games?</i><br><br>We are a team of indie game developers in Berlin, based at the Saftladen Game Collective. We work to make thought-provoking, inspiring and progressive games, and hope to offer a new take on the space sim genre. The Fermi Paradox is our first game together, but we’ve already made our fair share of video games. Our team members have worked on titles such as Spec Ops: The Line, Kane &amp; Lynch 2, The Captain is Dead, Dreadnought and Sea of Solitude.<br><br><i>Content Warning: This is a game about the rise and fall of civilizations. This includes themes of war; oppression; and atrocities.</i>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rising Storm 2: Vietnam</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Rising Storm 2: Vietnam</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 21:05:19</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-30/05/2017">30/05/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-72">72</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Antimatter Games">Antimatter Games</a><br/><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Tripwire Interactive">Tripwire Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Tripwire Interactive">Tripwire Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Rising_Storm_2:_Vietnam" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/RS2Vietnam/" target="_blank">Facebook</a><br/><a href="https://twitter.com/rs2vietnam" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/418460" target="_blank">Steam</a><br/><a href="https://rs2vietnam.com" target="_blank">Official</a><br/><a href="https://www.epicgames.com/store/product/rising-storm-2-vietnam" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/game/Rising%20Storm%202:%20Vietnam" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<i>Rising Storm 2: Vietnam</i> is the next in the series that has twice been <strong>PC Gamer’s ‘Multiplayer Game of the Year’</strong>, bringing the franchise into the era of automatic rifles, man-portable grenade launchers and more modern weapons systems. Still with the authentic look and feel and realistic weapon handling that the series is known for.<br><br><br><br>Continuing the Tripwire tradition of providing strong support for games post-launch, Vietnam has already been updated multiple times, providing the player with:<br><ul class="bb_ul"><li>64-player battles<br></li><li>6 different armies to play, each with their own weapons and abilities:<br></li><li>United States Army and Marine Corps<br></li><li>North Vietnamese Army (PAVN) and National Liberation Front (Viet Cong)<br></li><li>Australian Army<br></li><li>Army of the Republic of Vietnam (ARVN)<br></li><li>Over 50 weapons, covering everything from rifles and pistols to flamethrowers and rocket launchers<br></li><li>4 flyable helicopters - Huey, Cobra, Loach and Bushranger<br></li><li>Asymmetric warfare - VC traps and tunnels vs. US napalm and choppers<br></li><li>More than 20 maps<br></li><li>3 distinct game-modes<br></li><li>Proximity VOIP<br></li><li>And hundreds of character customization options.</li></ul><br><br><br><i>Rising Storm 2: Vietnam</i> offers intense action for up to <strong>64 players</strong> in battles between the forces of South Vietnam (the US and their Allies) and those of the North - the regular, main-force units of North Vietnamese Army, plus the guerilla fighters of the National Liberation Front (or Viet Cong).<h2 class="bb_tag">SOUTHERN FORCES - US, Australian and ARVN</h2><br><br><br><strong>The Southern forces have firepower and mobility on their side, with each army having its own unique supporting arms:</strong><br><ul class="bb_ul"><li>US Army/Marine Corps - airburst artillery, the Spooky gunship and napalm strikes<br></li><li>Australian Army - Pair of Canberra bombers and heavy artillery<br></li><li>ARVN - medium mortar barrage and napalm strikes from older A-1 Skyraiders</li></ul><br><br><strong>For mobility, they have access to full helicopter support:</strong><br><ul class="bb_ul"><li>UH-1 “Huey”: provides rapid transport for a squad across the map<br></li><li>OH-6 “Loach”: acts as both a spotter and airborne command post, as well as a fast gunship, with its miniguns<br></li><li>AH-1G “Cobra”: heavily-armed gunship with massive firepower for a pilot and weapons officer<br></li><li>Australian “Bushranger”: a Huey, with dual M60 machine guns, minigun and rockets</li></ul><br>Tactically, the Southern squad leaders become important - so long as the squad leader is alive and in a smart location, the rest of his squad can spawn in on his location. So keep your squad leaders alive at critical moments!<br><br>As for weapons, the Southern forces had a wide range of the best weaponry of Western nations, ranging from older, WWII-era leftovers, through to the latest technology of the time:<br><ul class="bb_ul"><li>M1 Garand, M2 Carbine, M3 “grease gun”, BAR and M1919 .30-cal LMG<br></li><li>M14 Battle Rifle, M40 and XM21 sniper rifles<br></li><li>M60 LMG and M16 automatic rifle<br></li><li>For heavier support - the M79 grenade launcher and M9A1-7 flamethrower<br></li><li>Explosives - M61 frag grenade, M8 smoke, C4 explosives and M18 Claymore</li></ul><h2 class="bb_tag">NORTHERN FORCES - NVA and VC</h2><br><br><br><strong>The Northern forces offer a broader mix</strong>, with the People’s Army of Vietnam (PAVN - or NVA) as the regular, disciplined and better-equipped main fighting force, in comparison to the National Liberation Front (NLF) guerrilla fighters, equipped with whatever weaponry was passed down the chain to them from Russia and China - known as the Viet Cong. For supporting weapons each has:<br><ul class="bb_ul"><li>PAVN/NVA - heavy artillery, surface-to-air missile defenses and rapid reinforcement from the Ho Chi Minh trail<br></li><li>NLF/VC - a mix of ordnances (mortars, rockets, white phosphorous) used in a heavy barrage</li></ul><br><br><strong>To compete with the Southern forces’ mobility, the Northern forces have their own mobility - and stealth:</strong><br><ul class="bb_ul"><li>NVA and VC squad leaders can place spawn tunnels widely across the maps, allowing themselves and their squads to spawn much closer to the action - or even behind the lines<br></li><li>Given their “home field advantage”, any NVA or VC crouching or prone in cover can’t be spotted by Southern helicopters or aircraft<br></li><li>SA-2 Missiles - the quick way to counter Southern air assets is by calling on surface-to-air missiles, if the commander can time it right<br></li><li>“Ho Chi Minh Trail” ability - the NVA/VC commander can activate this ability to accelerate his team’s spawning rate, when times get desperate<br></li><li>“Ambush Spawn” ability - the NVA/VC commander can also cause anyone on his team who is waiting, to spawn on his location for potentially devastating ambushes.</li></ul><br>The weaponry for the Northern forces is wide-ranging - the PAVN well-equipped with modern weapons delivered from Russia and China, while the VC have to work with a wide variety of weapons:<br><ul class="bb_ul"><li>AK-47 and Type 56 Assault rifles<br></li><li>Russian SKS-45 and US M1 Carbines and Mosin Nagant 91/30 rifle<br></li><li>MN 91/30 and SVD sniper rifles<br></li><li>PPSh-41 and French MAT-49 SMGs<br></li><li>IZh-58 double-barrelled shotgun<br></li><li>DP-28 and RPD LMGs<br></li><li>RPG-7 rocket launcher<br></li><li>MD-82 toe-popper mines, Tripwires and Punji traps</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

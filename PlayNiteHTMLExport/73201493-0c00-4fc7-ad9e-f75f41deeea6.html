@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Juno: New Origins</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Juno: New Origins</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 20:15:09</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-27/03/2024">27/03/2024</a> 21:00:01</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-08/11/2018">08/11/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Jundroo, LLC">Jundroo, LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Jundroo, LLC">Jundroo, LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/870200" target="_blank">Steam</a><br/><a href="https://www.simplerockets.com/" target="_blank">Official</a><br/><a href="https://play.google.com/store/apps/details?id=com.jundroo.SimpleRockets2" target="_blank">Android</a><br/><a href="https://www.twitch.tv/directory/game/SimpleRockets%202" target="_blank">Twitch</a><br/><a href="https://apps.apple.com/us/app/juno-new-origins/id1294032921?platform=iphone" target="_blank">iPhone</a><br/><a href="https://apps.apple.com/us/app/juno-new-origins/id1294032921?platform=ipad" target="_blank">iPad</a><br/><a href="https://www.youtube.com/@Jundroo" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/Jundroo" target="_blank">Facebook</a><br/><a href="https://twitter.com/jundroogames" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/jundroo_games" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/simplerockets" target="_blank">Reddit</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<i>After six years of development, what began as a simple rocket simulator has become a comprehensive aerospace sandbox in which you can bring to life anything you can imagine - from rockets, airplanes, and cars to entire planets. Over time, the more we added, the more SimpleRockets 2 outgrew its name. With much consideration we have decided to change the name to &quot;Juno: New Origins&quot; - a title that symbolizes a new start.</i><br><br><br><br>Juno: New Origins is a 3D aerospace sandbox where players can use customizable parts to construct and test rockets, planes, cars, or anything they can imagine in an environment with realistic physics across land, sea, air, and space.<br><br><br><br>Take control of your own aerospace company and earn money and tech points as you progress through the game. Complete contracts to earn money, and discover a mixture of hand-crafted and procedural contracts that offer countless hours of new gameplay. Conquer milestones and explore landmarks to earn tech points and unlock new technology in the tech tree. Interactive tutorials are available to show how to build and operate rockets, cars, and airplanes.<br><br><br><br>Stretch and shape fuel tanks, wings, cargo bays, fairings, and nose cones with easy-to-use tools that help you create exactly what you want. Resize solar panels, landing gear, pistons, jet engines, etc to fit your needs. Paint your craft custom colors and tweak their reflectiveness, emissiveness, and texture styles.<br><br><br><br>Engines can be adjusted in a myriad of ways, such as changing the power cycle, combustion pressure, gimbal range, fuel type, and adjusting nozzle performance and visuals. You can customize an engine to be a power house for lift off, or to be a super optimized vacuum engine that maximizes Isp for interplanetary travel. The engine's performance affects its visuals in flight too as shown by the exhaust's expansion or contraction based on its interplay with the atmospheric pressure. Shock diamonds are pretty but they are a symptom of suboptimal engine performance! If you don't care about any of this, then you can just attach a pre-built engine and hit launch! <br><br><br><br>Easily drag and drop code blocks to program your crafts to log telemetry, automate them, design your own MFD touch screens, etc. With Vizzy, a programming language designed specifically for Juno: New Origins, you can expand the capabilities of your crafts while learning programming, maths, physics, etc.<br><br><br><br>Orbits are realistically simulated and support time-warp so you don't have to wait several months to reach another planet. The Map View makes it easy to see your orbits and plan future burns, which you can use to set up future encounters with other planets or satellites.<br><br><br><br>Using Planet Studio, an in-game design tool, you can make your own planets, stars, moons, and stellar systems, starting with a large set of templates and tools to easily make infinite unique procedural celestial bodies. For the more adventurous, Planet Studio has an advanced mode with many modifiers to add and tweak different noise layers, adjusting the terrain and the biomes, as well as a paintbrush tool to be able to achieve the most complex shapes.<br><br><br><br>Download from a huge collection of user-uploaded crafts, sandboxes, planets, and mods on <a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fwww.simplerockets.com%2FCrafts" target="_blank" rel=" noopener"  >our website</a>. Upload your own crafts and sandboxes and share them with the community. Rise through the ranks from a white level builder to a gold level builder and beyond.<h2 class="bb_tag">FEATURES</h2><br><ul class="bb_ul"><li> Career mode with tech tree, contracts, milestones, and landmarks<br></li><li> Simple to get started, but advanced players can dig into the technical details if they are interested in the math behind rocket engines and orbital mechanics.<br></li><li> Download community-made mods, planets, crafts, and sandboxes.<br></li><li> Online community where players can upvote and comment on other players' content.<h2 class="bb_tag">DESIGN</h2></li><li> Fully 3D craft designer that allows building anything from basic rockets to very complicated multi-stage rockets, airplanes, rovers, satellites, robotic mechs, and more.<br></li><li> Over 30 parts, including fairings, retractable solar panels, procedural landing gear, RCS, gyro, etc. <br></li><li> Program your rockets with Vizzy, a visual programming language, to automate your crafts.<br></li><li> Highly procedural parts that can be resized and reshaped into endless combinations, such as the resizable fuel tank and the cargo bay.<br></li><li> Design custom rocket engines and jet engines<br></li><li> Performance Analysis window makes it easy for advanced players to see how their craft's Delta-V, TWR, engine Isp, etc are changed as they build their rockets.<br></li><li> Parts support textures, reflections, and custom coloring.<br></li><li> Support for saving custom subassemblies.<h2 class="bb_tag">FLIGHT</h2></li><li> Realistic rocket physics and orbital mechanics.<br></li><li> Flight model dynamically updates drag and lift characteristics of your craft as it changes.<br></li><li> Time-Warp allows fast-forwarding while in orbit.<br></li><li> Ion Engine supports burning during time-warp.<br></li><li> Map View to navigate the solar system that displays predicted orbits and encounters. <br></li><li> Fully 3D, rotating planets that support water and multiple biomes, such as desert, grasslands, tundra, etc.<br></li><li> Includes fully controllable astronauts, or space sailors, equipped with jetpacks and a grappling hook.<br></li><li> Re-entry effects including visual effects and part damage from heat.<br></li><li> The Nav Sphere makes it easy to control your rocket's heading.<br></li><li> The traditional Navball (FDAI) provides vital attitude information.<br></li><li> Persistent sandbox that retains your previous launches.<br></li><li> Custom Launch Locations allow launching from multiple places in the solar system.<br></li><li> Crafts can dock together in orbit and transfer fuel.<br></li><li> Supports transferring fuel between tanks and advanced fuel management such as fuel cross feeds, priority, etc.<br></li><li> Built-in tutorials show you how to build a craft and how to achieve orbit.</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
