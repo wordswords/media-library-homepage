@@ -1,0 +1,44 @@
+## Nest Thermostat
+* "Hey Google, what’s the temperature inside?"
+* "Hey Google, make it warmer (or cooler)."
+* "Hey Google, set the temperature to [#] degrees."
+* 'Hey Google, raise (or lower) the temperature [#] degrees.'
+* 'Hey Google, set the thermostat to heating.'
+* 'Hey Google, turn thermostat to Heat • Cool mode.'
+
+## Nest Camera
+* 'Hey Google, play [camera's location name] camera on [display's name]. For example, 'Hey Google, play the porch camera on the living room Chromecast'.
+* Tip: If you're speaking to a Nest Hub or Nest Hub Max, you can just say, 'Hey Google, show the [camera's location name]' and it will play the video on the display.
+Hey Google, turn off [display's name]. This command will tell your display to stop showing video from your Nest camera, but it won’t turn your camera off.
+
+## Netflix
+### To use voice controls:
+* Say the assistant's "wake word" to activate it. Some devices have a button to activate the assistant without the wake word.
+* When the assistant is listening, say a supported voice command such as, "Hi Bixby, launch Netflix," or "Hey Siri, open Netflix."
+### Actions:
+Actions that can be done by voice command are:
+* Open Netflix. Say "Launch Netflix" or "Open Netflix."
+* Search or browse. We recommend adding "on Netflix" when searching, browsing, or playing a TV show or movie.
+* To browse by category, director, or actor, follow these examples:
+        "Show me comedies on Netflix."
+        "Find movies by Steven Spielberg on Netflix."
+        "Show me movies with Tom Cruise on Netflix."
+* To search for a specific title, season, or episode:
+        "Find Bird Box on Netflix."
+        "Show me Stranger Things on Netflix."
+* Play a TV show or movie. Tell your device the name of the TV show or movie you want to watch, for example, "Play The Irishman on Netflix."
+* Control playback. To pause the TV show or movie you're watching, say "Pause." You can also use other controls like "play," "fast forward," and "rewind."
+
+## Spotify
+“Okay Google…”
+* “Play Spotify.”
+* “Play my Discover Weekly.”
+* “Play hip-hop music.”
+* “Play ‘Angel’ by Lionel Richie.”
+* “Pause.”
+* “Like this song.”
+* “Skip forward 20 seconds.”
+* “Play the next song.”
+* “What’s playing?”
+* “What’s this album?”
+
