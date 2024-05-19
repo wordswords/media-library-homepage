@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Siralim Ultimate</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Siralim Ultimate</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-15/05/2024">15/05/2024</a> 1:37:49</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-15/05/2024">15/05/2024</a> 1:41:32</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-03/12/2021">03/12/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Thylacine Studios">Thylacine Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Thylacine Studios LLC">Thylacine Studios LLC</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Family Sharing">Family Sharing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Full Controller Support">Full Controller Support</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://steamcommunity.com/app/1289810" target="_blank">Community Hub</a><br/><a href="https://steamcommunity.com/app/1289810/discussions/" target="_blank">Discussions</a><br/><a href="https://steamcommunity.com/app/1289810/guides/" target="_blank">Guides</a><br/><a href="https://store.steampowered.com/news/?appids=1289810" target="_blank">News</a><br/><a href="https://store.steampowered.com/app/1289810" target="_blank">Store Page</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=1289810" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D">2D</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Character Customization">Character Customization</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Collectathon">Collectathon</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Creature Collector">Creature Collector</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dungeon Crawler">Dungeon Crawler</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Isometric">Isometric</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Loot">Loot</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Medieval">Medieval</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Party">Party</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Party-Based RPG">Party-Based RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Pixel Graphics">Pixel Graphics</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Procedural Generation">Procedural Generation</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Retro">Retro</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy RPG">Strategy RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based">Turn-Based</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Combat">Turn-Based Combat</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br>Siralim Ultimate is a monster-catching, dungeon-crawling RPG with a ridiculous amount of depth. Summon over 1200 different creatures and travel through randomly generated dungeons to acquire resources, new creatures, and loot.<br><br>If you’re looking to compare Siralim Ultimate to other games, you might think of it as Pokemon meets Diablo, or more accurately, Dragon Warrior Monsters meets Path of Exile.<br><br><br><br>Siralim Ultimate is a really, really, <i>really</i> big game. For that reason, this store description is extremely detailed to help you get a grip on exactly what you can expect from the game. If you're not up to read it all, though, here's a quick rundown of some of the main features:<br><br><ul class="bb_ul"><li>1200+ creatures to collect<br></li><li>Fuse your creatures together - the offspring inherits its parents’ stats, traits, and even the way they look!<br></li><li>Randomly generated dungeons spanning 30 unique tilesets<br></li><li>Customize your castle with thousands of different decorations<br></li><li>Engage in strategic 6v6 battles<br></li><li>Craft Artifacts and Spell Gems for your creatures<br></li><li>Choose from one of 40 specializations for your character and earn perks that change the way your creatures fight in battle<br></li><li>Insane amount of post-story content that will keep you engaged for thousands of hours (yes, really!)</li></ul><br><br><br>For the last century, the kingdoms of Nex and Siralim have enjoyed a prosperous alliance fueled by generous trade, unbiased distribution of territory, and a common goal to make the lands of Rodia safe for its inhabitants. Together, the two kingdoms have grown to become the most powerful in the world. But as we all know, power can corrupt even the most virtuous of souls.<br><br>As the ruler of Siralim, you just received word that King Lucius of Nex has obtained the Ultimate Nether Orb - a powerful relic that can be used to control the gods themselves. Worse yet, Lucius intends to manipulate the gods to aid him in conquering Siralim. You are left with no choice but to wage war on Nex and take back the Ultimate Nether Orb so that it will not be used for ill purposes.<br><br><br><br>In Siralim Ultimate, you’ll encounter over 1200 different creatures. Each creature has a unique stat spread, as well as a unique trait. And don't worry - none of these creatures are re-skins or re-colors!<br><br>A trait is a passive effect that affects that creature’s battle capabilities. For example, the Firewound Angel’s “Pyre” trait greatly increases the amount of damage it deals with basic attacks, and its attacks also afflict the target with the “Burning” debuff which causes damage over time.<br><br>Most creatures are obtained by encountering and defeating them in the wild. Afterward, you’ll be able to summon them and use them in your party. Other creatures are obtained as quest rewards or by participating in various in-game activities.<br><br><br><br>Players can fuse their creatures together. The offspring inherits the stat spreads of both parents, as well as its parents’ traits. In addition, the offspring will take on the physical appearance of both of its parents. There are over a million possible combinations, ensuring that no two players will have the same team!<br><br><br><br>In Siralim Ultimate, you’ll spend most of your time adventuring through randomly generated dungeons called Realms. There are 30 different tilesets for these Realms, and each one offers different creatures to collect, items to find, and secrets to uncover.<br><br>When you enter a Realm, you’ll also receive a randomly generated Realm Quest. These quests are short, bite-sized objectives that reward players with treasure upon completion.<br><br><br><br>Players can collect thousands of different decorations to adorn their castle. You can also change the floor and wall styles, and even unlock different songs that can be played in your castle.<br><br>You can also take on Projects to unlock new castle features, such as a battle arena, mini-games, and much more.<br><br><br><br>Battles are turn-based and pit your six creatures against six enemy creatures. Each creature takes a turn in a certain order that is determined by their Speed stat.<br><br>During a creature’s turn, they can do any of the following:<br><ul class="bb_ul"><li> Attack: deals damage to the target based on the attacker’s Attack stat.<br></li><li> Cast: choose from one of the creature’s equipped spells to devastate your enemies or boost the strength of your party.<br></li><li> Defend: drastically reduces the amount of damage the creature will take until the start of its next turn.<br></li><li> Provoke: enemies will be forced to target the creature until the start of its next turn.</li></ul><br>These actions all interact with your creatures’ traits as well. For example, one trait might cause a creature to deal damage to all enemies after it Defends.<br><br>After you win a battle, your creatures will gain experience points. In addition, you’ll receive resources (currency) and maybe even some items.<br><br><br><br>At the start of the game, players can choose from one of 40 different specializations for their character. Each specialization offers a unique list of unlockable perks that change the way your creatures fight in battle.<br><br>Here is a list of just a few of the specializations in the game, along with a brief description of how they work:<br><br>Animator - As an Animator, you will always have a unique creature in your party called Animatus. Your entire battle strategy will likely focus on this creature. You can empower your Animatus, and even use your other creatures to make it stronger in combat.<br><br>Cabalist - As a Cabalist, you'll enable your creatures to cast spells that they normally wouldn't have access to. While other people's creatures might run out of Spell Gem Charges, you'll be able to keep your creatures well-stocked with fresh Spell Gems at the start of every battle.<br><br>Cleric - As a Cleric, you'll specialize in healing abilities, as well as buffing, resurrection, stat-boosting effects, and providing your creatures with protective barriers. Your creatures will be extremely difficult to kill.<br><br>Defiler - As a Defiler, you'll specialize in debuffs and stat-reducing effects. Enemies will be so weak that your party will be able to easily pick them off, even if they were originally much more powerful than your creatures.<br><br>Druid - As a Druid, you'll probably only want to have one (or two, later on) creatures in your party. Your creatures will gain massive benefits for being part of a smaller party.<br><br>Evoker - As an Evoker, you'll empower your creatures' spellcasting capabilities. Your creatures will be able to cast the same spell multiple times in one turn, and these spells will be much stronger than if they had cast them without your guidance.<br><br>Hell Knight - As a Hell Knight, you'll favor creatures that specialize in attacking. Hell Knights empower their creatures' attacks with chaotic magic. Hell Knights are surprisingly adept at spellcasting in a pinch, as well.<br><br>Inquisitor - As an Inquisitor, you'll have a solution at your disposal for every problem you encounter. In addition, Inquisitors are able to use healing effects for offensive purposes - for example, when your creatures heal enemies, they instead cause damage to them.<br><br>Monk - As a Monk, you'll boost your creatures' chance to Dodge attacks and spells. When your creatures Dodge, they'll unleash a devastating counter-attack on the enemy.<br><br>Necromancer - As a Necromancer, you'll summon minions to aid your creatures in battle. These minions can do all kinds of things to support your creatures - they can cause damage, boost your creatures' stats, debuff enemies, and much more.<br><br>Paladin - As a Paladin, your creatures will be able to endure even the most powerful of attacks. Each time your creatures take damage, they'll also damage their enemies.<br><br>Reaver - As a Reaver, your creatures will gain massive benefits in combat as battles continue to drag on. If your creatures manage to survive for just a few extra turns, they'll be able to devastate your enemies.<br><br>Sorcerer - As a Sorcerer, you'll support your creatures by debilitating their enemies from afar. Generally, your enemies won't be able to act for the first few turns in battle as long as you're around.<br><br>Tribalist - As a Tribalist, you'll want to assemble a party of creatures that belong to the same race. This will provide them with significant benefits that are exacerbated by their racial synergies with each other.<br><br>Trickster - As a Trickster, you'll heavily inconvenience your enemies by preventing them from taking action. You'll also gain the ability to manipulate the element of luck - for example, if a positive effect has a chance to activate but fails to do so, you can try again.<br><br>Eventually, you can unlock all of these specializations on the same save file and quickly swap to them whenever you want.<br><br><br><br>Each of your creatures can equip an Artifact. Artifacts provide your creatures with various bonuses, including stat boosts, on-damage effects/procs, traits, and even the ability to automatically cast spells when certain conditions are met.<br><br>In order to obtain an Artifact, you must first forge one at the Blacksmith. After that, you can socket your Artifacts with crafting materials to add new properties to them. There are over 1000 crafting materials to be found, and they all provide different properties. You can upgrade your Artifacts to unlock new socket slots, and even brand your Artifacts to give them a custom name.<br><br><br><br>Your creatures can equip Spell Gems which allows them to cast the spell contained within the gem. There are more than 600 different spells for players to find.<br><br>In order to obtain Spell Gems, you must first find an Inscription that acts as a recipe to teach you how to craft the Spell Gem. You can upgrade your Spell Gems to unlock Enchantment Slots, and then you can use these slots to add properties that affect the way the spell works.<br><br>For example, you can add a modifier to a Spell Gem that allows it to deal damage to an additional enemy. Another interesting property is called “Magnetic”, which causes the spell to be more powerful for each creature in your party that has that same spell equipped.<br><br><br><br>Unlike other games, Siralim Ultimate allows you to decide when you’ve finished it. For that reason, we’ve packed the game with a ridiculous amount of content to explore, items to collect, achievements to earn, and so much more. Many players have enjoyed the previous Siralim games for thousands of hours (that's not an exaggeration) and Siralim Ultimate is even larger in scale. There will always be something new for you to collect, no matter how long you’ve been playing!<br><br><br><br>Each of the 30 realms in Siralim Ultimate is ruled by a different god. Players can earn Favor with these gods to increase their Favor Rank. As your Favor Rank with each god increases, you’ll be able to earn new items, creatures, decorations, and much more.<br><br><br><br>Almost every gameplay system in Siralim Ultimate is meant to last players forever - or at least for a very, very long time. For example, your creatures do not have a level cap, so you can continue to level them up and make them stronger indefinitely. Similarly, enemies can scale infinitely as well.<br><br>Post-story content is filled to the brim with countless activities for you to partake in to make your creatures more powerful. Here are a few examples:<br><ul class="bb_ul"><li>Take on randomly generated side quests to obtain unique creatures and items.<br></li><li>Draft a team of creatures in the arena and see how many battles you can last before your final creature falls.<br></li><li>Battle against the gods themselves! These super boss-style fights are among the most challenging in the game… but also the most rewarding.<br></li><li>Unlock the relics of the gods and upgrade them indefinitely to unleash devastating powers upon your foes.<br></li><li>Encounter Rodian Creature Masters in Realms. Defeat them to earn Mastery, items, achievements, and much more!<br></li><li>Work with five different guilds to take on powerful False Gods.<br></li><li>Collect skins and accessories for your creatures to customize their appearance.<br></li><li>Collect cards to unlock permanent bonuses for all your creatures. There's a card for nearly every creature in the game!<br></li><li>Collect Nether Stones, which are Diablo-inspired, randomly generated items that can be socketed into your Artifacts to grant them unimaginable power.<br></li><li>Partake in mini-games such as slot machines, keno, scratch cards, and even a board game that rewards you with exclusive items.<br></li><li>Defeat enemies to gain Knowledge about them, unlocking additional benefits when you next encounter that creature in the wild.</li></ul><br>The list goes on and on and on, but the point is, Siralim Ultimate isn’t a game where you’ll finish the main storyline and then call it quits. There’s so much content for you to discover afterward that it’s almost ridiculous!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
