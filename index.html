@@ -33,16 +33,6 @@
 				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
             }
 		</style>
-        <script>
-            function replaceHostname() {
-                var hostname = document.getElementById("host").value;
-                var links = document.getElementsByTagName("a");
-                for (var i = 0; i < links.length; i++) {
-                    var link = links[i];
-                    link.href = link.href.replace("hq.local", hostname);
-                }
-            }
-        </script>
 	</head>
 	<body>
     <h1>David's Media Archives</h1>
@@ -62,8 +52,18 @@
         </div>
         <br/>
         <h2>Replace hq.local with arbitary IP address</h2>
-        <input type="text" id="host" value="hq.local" />
-        <button onclick="replaceHostname() && return false;">Replace</button>
+        <input type="text" id="host" value="" />
+        <button onclick="replaceHostname()">Replace</button>
+        <script>
+            function replaceHostname() {
+                var hostname = document.getElementById("host").value;
+                var links = document.getElementsByTagName("a");
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    link.href = link.href.replace("hq.local", hostname);
+                }
+            }
+        </script>
 	    <h2>Physical Security and Internet Status</h2>
 	    <p>
 		    <ul>
