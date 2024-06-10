@@ -51,7 +51,7 @@
                 </div>
         </div>
         <br/>
-        <h2>Replace <span id="currenthostname">hq.local</span>with arbitrary IP address</h2>
+        <h2>Replace <span id="currenthostname">hq.local</span> with other host in all links</h2>
         <input type="text" id="host" value="" />
         <button onclick="replaceHostname()">Replace</button>
         <script>
@@ -62,7 +62,7 @@
                     var link = links[i];
                     link.href = link.href.replace("hq.local", hostname);
                 }
-                var hostnamespan = document.getElementsById("currenthostname");
+                var hostnamespan = document.getElementById("currenthostname");
                 hostnamespan.innerHTML = hostname;
             }
         </script>
