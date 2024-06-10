@@ -62,10 +62,8 @@
         </div>
         <br/>
         <h2>Replace hq.local with arbitary IP address</h2>
-        <form>
-            <input type="text" id="host" value="hq.local" />
-            <button onclick="replaceHostname()">Replace</button>
-        </form>
+        <input type="text" id="host" value="hq.local" />
+        <button onclick="replaceHostname() && return false;">Replace</button>
 	    <h2>Physical Security and Internet Status</h2>
 	    <p>
 		    <ul>
