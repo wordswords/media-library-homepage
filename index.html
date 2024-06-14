@@ -51,7 +51,35 @@
                 </div>
         </div>
         <br/>
-            <h2>Physical books and Kindle Ebooks</h2>
+        <h2>Replace <span id="currenthostname">hq.local</span> with other host in all links</h2>
+        <input type="text" id="host" value="" />
+        <button onclick="replaceHostname()">Replace</button>
+        <script>
+            function replaceHostname() {
+                var hostname = document.getElementById("host").value;
+                var links = document.getElementsByTagName("a");
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    link.href = link.href.replace("hq.local", hostname);
+                }
+                var hostnamespan = document.getElementById("currenthostname");
+                hostnamespan.innerHTML = hostname;
+            }
+        </script>
+	    <h2>Physical Security and Internet Status</h2>
+	    <p>
+		    <ul>
+                <li><a href="http://hq.local:8080">IP Security Cameras via Shinobi CCTV</a></li>
+			    <li><a href="https://home.google.com">Google Home Security Cameras</li>
+			    <li><a href="https://home.nest.com">Google Nest Security Cameras</li>
+		    </ul>
+		    <ul>
+			    <li><a href="https://content.brsk.co.uk/network-status">BRSK Network Status Web</a></li>
+			    <li><a href="https://x.com/Brsk_Status">BRSK Network Status Twitter</a></li>	    
+		    	    <li><a href="https://www.virginmedia.com/help/service-status">Virgin Media Network Status</a></li>
+		    </ul>
+	    </p>
+            <h2>Physical books and Ebook libraries</h2>
             <p>
                 <ul>
                     <li>
@@ -59,6 +87,9 @@
                     </li>
                     <li>
                         <a href="https://read.amazon.co.uk/kindle-library">Read my Kindle content on the Web (~100 books)</a>
+                    </li>
+                    <li>
+                        <a href="https://www.kobo.com/gb/en/library/books">Read my Kobo library content on the Web</a>
                     </li>
                 </ul>
             </p>
@@ -177,22 +208,16 @@
             <p>
                 <ul>
                     <li>
-                        <a href="./googleassistant.txt">Google Assistant Commands Cheatsheet</a>
+                        <a href="https://hq.local">NextCloud File Server</a>
                     </li>
                     <li>
                         <a href="https://hq.local:8443">Uniquiti Network Controller (accept the self-signed SSL cert)</a>
                     </li>
                     <li>
-                        <a href="https://aws.amazon.com">AWS Console</a>
+                        <a href="http://hq.local:3000/d/ATIxYkO7k/endlessh?orgId=1&refresh=5s">Endlessh SSH Honeypot Grafana Dashboard (username: examples / password: examples)</a>
                     </li>
                     <li>
-                        <a href="https://fast.com">Fast.com network speed test</a>
-                    </li>
-                    <li>
-                        <a href="http://192.158.1.241/admin/">Pihole DNS Server (192.168.1.241) Admin</a>
-                    </li>
-                    <li>
-                        <a href="http://192.168.1.50/admin/">Pihole DNS Server (192.168.1.50) Admin</a>
+                        <a href="http://hq.local:90/admin/">Pihole DNS Server (hq.local) Admin</a>
                     </li>
                     <li>
                         <b>Router iperf3 server (192.168.1.242)</b> e.g: <pre>sudo iperf3 -c 192.168.1.242</pre>
@@ -210,6 +235,12 @@
                         <a href="http://hq.local:8686">Lidarr Web Interface</a>
                     </li>
                     <li>
+                        <a href="http://hq.local:8787">Readarr Web Interface</a>
+                    </li>
+                    <li>
+                        <a href="http://hq.local:8989">Sonarr Web Interface</a>
+                    </li>
+                    <li>
                         <a href="http://hq.local:9696">Prowlarr Web Interface</a>
                     </li>
                     <li>
@@ -220,6 +251,21 @@
                     </li>
                     <li>
                         <a href="http://hq.local:9082">Comics/PDFs Calibre Desktop Admin Interface</a>
+                    </li>
+                </ul>
+                <h2>External Tools</h2>
+                <ul>
+                    <li>
+                        <a href="./googleassistant.txt">Google Assistant Commands Cheatsheet</a>
+                    </li>
+                    <li>
+                        <a href="https://portchecker.co">Check open ports</a>
+                    </li>
+                    <li>
+                        <a href="https://aws.amazon.com">AWS Console</a>
+                    </li>
+                    <li>
+                        <a href="https://fast.com">Fast.com network speed test</a>
                     </li>
                 </ul>
             </p>
