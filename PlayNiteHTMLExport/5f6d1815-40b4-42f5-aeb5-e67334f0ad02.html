@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Duels of Fortune</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Duels of Fortune</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-14/06/2024">14/06/2024</a> 8:25:49</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-14/06/2024">14/06/2024</a> 8:30:40</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-13/12/2023">13/12/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Early Access">Early Access</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Cosmic Hat Games">Cosmic Hat Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Cosmic Hat Games">Cosmic Hat Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Full Controller Support">Full Controller Support</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Pvp">Pvp</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Remote Play Together">Remote Play Together</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Shared/Split Screen">Shared/Split Screen</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Shared/Split Screen Pvp">Shared/Split Screen Pvp</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://steamcommunity.com/app/2371130" target="_blank">Community Hub</a><br/><a href="https://steamcommunity.com/app/2371130/discussions/" target="_blank">Discussions</a><br/><a href="https://steamcommunity.com/app/2371130/guides/" target="_blank">Guides</a><br/><a href="https://store.steampowered.com/news/?appids=2371130" target="_blank">News</a><br/><a href="https://store.steampowered.com/app/2371130" target="_blank">Store Page</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=2371130" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2.5D">2.5D</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-2D Fighter">2D Fighter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cartoony">Cartoony</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Combat">Combat</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Comedy">Comedy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Comic Book">Comic Book</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Controller">Controller</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Early Access">Early Access</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fighting">Fighting</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Local Multiplayer">Local Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-PvP">PvP</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br>Welcome to <strong>Duels of Fortune</strong>, a fast-paced 2.5D fighting game featuring a crazy diverse cast of loveable characters with unique superpowers, and an open-ended, freeform gameplay style that lets you play the game your way. It provides a simple control scheme that makes the game accessible for beginners, while keeping plenty of mechanical and character-based depth for serious players to dig into.<br><br>From intense clashes against friends and rivals, to expansive singleplayer content, to heaps of character lore to read up on, there's something for everyone in Duels of Fortune!<br><br><br>                                                                                                                                                                                  <br><ul class="bb_ul"><li><strong>VERSUS MODE</strong> - Battle it out in traditional 1-on-1 duels!<br></li><li><strong>ARCADE MODE</strong> - Fight your way through a gauntlet of increasingly difficult opponents, culminating with a special boss fight!<br></li><li><strong>TRAINING MODE</strong> - Practice your skills using a customizable training dummy!<br></li><li><strong>MISSION MODE</strong> - Participate in numerous special fights that add unique challenges or conditions to spice up the match!<br></li><li><strong>BOSS FIGHTS</strong> - Easily rematch any of the unique and challenging bosses found throughout the game!<br></li><li><strong>COMBO TRIALS</strong> - Learn what each character can do by trying out increasingly tricky pre-made combos!<br></li><li><strong>STAGE HAZARDS</strong> - A toggleable feature that flips stages on their head with all sorts of crazy effects, including ring-out zones, throwable items, giant skeletons that attack you from the background, and MORE!!<br></li><li><strong>LORE JOURNAL</strong> - Read up on the lore and backstory of each character, and learn what they fight for!<br></li><li><strong>JUKEBOX </strong>- Jam out to the bangin' soundtrack composed by Jack7!<br></li><li>All with 15+ <strong>UNIQUE FIGHTERS</strong> to choose from, with many more on the way!</li></ul>                                                                                                                                                                                  <br><br><br><ul class="bb_ul"><li>Perform stylish and dynamic <strong>combos </strong>with an open-ended attack cancel system!<br></li><li>Build up your Super Meter to unleash powerful and cinematic <strong>Super Moves</strong>, or defend yourself in a pinch with invincible <strong>Reversal</strong> attacks!<br></li><li>Strategically use <strong>Break Burst</strong> to shut down your opponents' combos, or go all-in on your own combo with a well-timed <strong>Blast Burst</strong>!<br></li><li>Schmoove around the stage with a variety of <strong>mobility mechanics</strong>, including dashes, long jumps, airdashes, free air drifting, and tons of unique character-specific options!<br></li><li>Choose between <strong>two styles</strong> of blocking: button-based blocking, or back-to-block!<br></li><li>And on top of all that, explore each character's plethora of <strong>unique attributes</strong>, giving every one of them a completely distinct feel and style!</li></ul>                                                                                                                                                                                  <br><br><br>What would a fighting game be without its fun and diverse cast of playable characters? Here's just a handful of the loveable (and despicable) fighters you can choose from!<br><br>‎<br><br>Clyde is a boxing prodigy with an attitude, and one of the most renowned fighters in the world. Clyde doesn't need any weapons; his fists, his natural speed, and his ability to create fire from his hands are all he needs to put up a good fight!<br><br><ul class="bb_ul"><li><strong>TRAILBLAZER</strong> - Rush in and overwhelm your opponents with Clyde's incredible speed and offensive capabilities!<br></li><li><strong>BRING THE HEAT </strong>- Clyde's special moves are focused on raw power and combo utility, delivering fiery punches left and right!<br></li><li><strong>KING OF THE RING</strong> - Keep your opponent on the ropes with fast mix-ups that force equally fast reactions!</li></ul>‎<br><br><br>Annie is a young engineer with a big brain, and an even bigger heart. Using her powerful mechanical arm, her vast arsenal of gadgets, and her helpful robotic companion Gizmo, she holds her own even despite her lack of experience!<br><br><ul class="bb_ul"><li><strong>GADGET GIRL </strong>- Annie's wide array of projectiles and traps let her set up an unbreakable defense, and she has the tools to easily convert her long-range zoning into close-up pressure!<br></li><li><strong>BLAST OFF</strong> - Annie's special rocket boots grant her a midair jump, as well as the ability to drastically slow her descent!<br></li><li><strong>HELPING HAND </strong>- Annie's Super Moves summon her little robo-buddy Gizmo to assist her in various ways, like firing massive lasers or carpet-bombing the whole stage!</li></ul><br>‎<br><br>Long ago, Rattlebone was a royal knight who loyally served his kingdom, until one day he fell victim to a horrible trebuchet accident. Now, revived into the modern day in skeletal form, he continues to fight as honourably as ever with his trusty sword and shield!<br><br><ul class="bb_ul"><li><strong>FOR HONOUR </strong>- An honest and noble fighter, Rattlebone is primarily focused on the absolute fundamentals of combat!<br></li><li><strong>RATTLE ME BONES</strong> - Rattlebone's skeletal form grants him plenty of new techniques, like throwing his own head as a bouncing projectile!<br></li><li><strong>CHIVALROUS SPIRIT</strong> - Unleash a powerful Super Move that imbues Rattlebone's sword with special properties for a limited time!</li></ul><br>‎<br><br>Shoto is a young, yet highly skilled student of the Locks Dojo. While he may have the personality of a cardboard box, his powers of electricity and his unbreakable focus in combat make him a force to be reckoned with!<br><br><ul class="bb_ul"><li><strong>GREASED LIGHTNING</strong>- Shoto's attacks are fast and precise, giving him a natural advantage in hand-to-hand combat!<br></li><li><strong>GLASS CANNON</strong> - Shoto may sport a low health pool, but he's got lots of ways to dish out far more damage in return!<br></li><li><strong>SHOTOKAN SPECIAL</strong> - With straightforward projectiles, a powerful uppercut, and a flurry of advancing kicks, Shoto remains true to his namesake while putting his own unique spin on the formula!</li></ul><br>‎<br><br>A brash, delinquent punk from the Capital, Red's aggressive and brutish nature is reflected in his fighting style. Red aims to get in his opponent's face and stay there, relentlessly beating them down with his energy beam!<br><br><ul class="bb_ul"><li><strong>BRUTE STRENGTH</strong> - Red is a powerful attacker who prefers to brute-force his way in, rather than relying on speed or zoning.<br></li><li><strong>UNYIELDING RAGE</strong> - Red's special Rage mechanic lets him unleash stronger versions of his special moves after taking or dealing enough damage!<br></li><li><strong>SMASHIN' KNEECAPS</strong> - Thanks to his many grappling attacks and deadly mix-ups, Red almost never has to let up his offense once he has the advantage!</li></ul>‎<br><br><br>Often called the &quot;strongest man alive&quot;, Baron's overwhelming desire to fight strong opponents led him down a dark, bloody path that ended with a life sentence. Now set free again thanks to the manipulation of Sylvan Blackjack, his titanic strength and powerful grappling techniques will crush all who oppose him.<br><br><ul class="bb_ul"><li><strong>WRESTLING LEGEND</strong> - Baron's mighty grappling moves can dish out damage like nothing else, and can even be comboed together under the right circumstances!<br></li><li><strong>UNBREAKABLE</strong> - With a huge HP pool and a variety of armoured attacks, Baron is both an unstoppable force, AND an immovable object!<br></li><li><strong>THE BIGGER THEY ARE...</strong> - Baron's great power comes at the cost of mobility. Use your techniques wisely to keep the opponent on the back foot and avoid getting overwhelmed!</li></ul>‎<br>‎<br><br>Sylvan is the founder and CEO of the Diamondeye Company, one of the largest and richest corporations in the world. Naturally, this can only mean that Sylvan is as sleazy and underhanded as they come, and he'll put all his chips down to get the job done.<br><br><ul class="bb_ul"><li><strong>ACES HIGH</strong> - Sylvan revolves around his card drawing mechanic. The more Aces he draws using his card draw attacks, the more options he gains!<br></li><li><strong>FULL HOUSE</strong> - When Sylvan has all 4 aces, he enters a state called Full House mode, where he becomes the most powerful character in the game for a limited time!<br></li><li><strong>GOOD LUCK</strong> - It can take some time and luck to get to Full House mode, but tools like a slot machine that grants random effects, and your faithful bodyguard Mr. Withers, can help buy you some time.</li></ul><br>‎<br><br>Once a feared high-seas pirate, Shiverskull is back from the dead to plunder the competition! With his twin swords and the help of his trusted pirate crew, he isn't afraid to take some serious risks to win. You can't kill what's already dead!<br><br><ul class="bb_ul"><li><strong>AYE, MATEYS</strong> - Shiverskull can summon the members of his pirate crew one after another to perform assist attacks, each with their own strengths and uses!<br></li><li><strong>RECKLESS SAILOR</strong> - Shiverskull is great when it comes to running in and putting on the pressure — but be careful, as messing up can cost you dearly!<br></li><li><strong>MORE SWORDS</strong> - Wield a deadly Super Move that summons a ring of damaging swords around you for a short time!</li></ul><br>‎<br><br>Black Heart is an alien parasite that feeds off people's inner hatred to take on their form. Having taken the form of Clyde, Black Heart inherits his speed and fire abilities, but like the trickster they are, they use those powers in much more devious ways.<br><br><ul class="bb_ul"><li><strong>TRICKSTER</strong> - Black Heart is capable of all sorts of mix-ups that are extremely difficult to react to, forcing their opponents into a guessing game!<br></li><li><strong>SLIPPERY SLIME</strong> - Black Heart has some of the trickiest movement in the game, with unique dashes and special moves that let them easily dodge enemy attacks!<br></li><li><strong>HEART BREAKER</strong> - Rain terror with a Super Move that traps the opponent in a massive smoke cloud, letting you be nearly invisible as you get in their face!</li></ul><br><br><br>Everyone's favourite green, legless superhero, Callowman blurs the line a bit between bravery and stupidity. But regardless of his quality as a hero, he certainly has the raw strength to warrant being called the mightiest warrior in the universe!<br><br><ul class="bb_ul"><li><strong>GRAPPLING WITH EVIL</strong> - Callowman's slew of advancing grappling attacks make him extremely fearsome to fight, especially since he's no slouch on speed!<br></li><li><strong>SHOW OFF</strong> - Successfully taunting as Callowman powers up your grabbing attacks, and you can use them in combos! Now that's what I call a flex!<br></li><li><strong>ALMIGHTY POWER </strong>- One of Callowman's Super Moves, if used with a full Super Meter AND a full taunt-buff meter, can instantly KO the opponent!!</li></ul><br>‎<br><br>The fourth-wall-breaking, two-dimensional menace, Doodle emerges from the depths of development hell to exact his revenge for all the cancelled games he was meant to star in. The first step of his vengeance quest? Breaking ALL the rules!<br><br><ul class="bb_ul"><li><strong>CHARGE UP</strong> - Doodle goes against the game's normal control scheme, introducing special moves inputted with charge motions!<br></li><li><strong>METER BURNER </strong>- Unload tons of damage with a Super Move that lets you spend even more meter to increase its power!<br></li><li><strong>ULTIMATE DOODLE</strong> - Doodle also features a Super Move that lets him briefly use his charge attacks with no charge required, giving him even more damage potential!</li></ul><br>And <strong>even more characters</strong> to discover for yourself!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
