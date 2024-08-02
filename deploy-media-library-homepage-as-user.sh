@@ -12,7 +12,8 @@ cd -
 rm -f ./hp/*.sh
 cd ./hp
 sudo mkdir -p /var/www/media-library-homepage
-sudo chown -R www-data:www-data /var/www/media-library-homepage
+sudo chown -R www-data:users /var/www/media-library-homepage
+sudo chmod -R 770 /var/www/media-library-homepage
 rsync -avhH --delete --remove-source-files . /var/www/media-library-homepage || true
 cd -
 rm -rf ./hp
