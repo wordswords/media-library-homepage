@@ -10,7 +10,7 @@ fi
 
 rm -rf /var/www/media-library-homepage/*
 runuser david -- ./deploy-media-library-homepage-as-user.sh
-chown -R root:users /var/www/html
+chown -R root:users /var/www/media-library-homepage
 chmod 775 -R /var/www/media-library-homepage
 
 
