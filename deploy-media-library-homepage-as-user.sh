@@ -8,6 +8,7 @@ cd $tmpdir
 git clone git@github.com:wordswords/media-library-homepage.git ./hp
 cd ./hp
 ./remove-all-image-links-from-playnite-export.sh
+./update-plex-inventories.sh
 cd -
 rm -f ./hp/*.sh
 cd ./hp
