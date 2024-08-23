@@ -42,3 +42,19 @@ Actions that can be done by voice command are:
 * “What’s playing?”
 * “What’s this album?”
 
+## Routines
+
+Hey google, good night - turns off all plugs, all lights, sets phone to DND, and prepares for sleep
+Hey google, good morning - turns phone off DND, plays podcasts, weather report etc
+Hey google, I'm cold - turns on heating, turns on heater, turns off all fans
+Hey google, I'm warm - turns off heating, turns off heater, turns on all fans
+Hey google, startup - turns on all screens in Studio, and on all fans
+Hey google, shutdown - turns off all screens in Studio, and off all fans
+Hey google, turn on screens - turns on the three extra screens
+Hey google, turn off screens - turns off the three extra screens
+Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the lights
+Hey google, chill - turns off the three extra screens, turns on the main screen, turns off the lights, turns off the heater, turns on the lava lamps, turns on the fans
+
+
+
+
