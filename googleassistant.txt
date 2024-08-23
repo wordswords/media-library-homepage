@@ -49,7 +49,7 @@ Hey google, good morning - turns phone off DND, plays podcasts, weather report e
 Hey google, I'm cold - turns on heating, turns on heater, turns off all fans
 Hey google, I'm warm - turns off heating, turns off heater, turns on all fans
 Hey google, startup - turns on all screens in Studio, and on all fans
-Hey google, shutdown - turns off all screens in Studio, and off all fans
+Hey google, halt - turns off all screens in Studio, and off all fans
 Hey google, turn on screens - turns on the three extra screens
 Hey google, turn off screens - turns off the three extra screens
 Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the lights
