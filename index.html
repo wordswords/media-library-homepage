@@ -32,6 +32,13 @@
 				color: white;
 				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
             }
+
+            span.public {
+                color: gree;,
+                background-color: black;
+                text-decoration: underline;
+                font-weight: bold;    
+            }
 		</style>
 	</head>
 	<body>
@@ -51,7 +58,7 @@
                 </div>
         </div>
         <br/>
-        <p>Any links marked with <span style="color: green">[PUBLIC]</span> are publicly accessible, everything else is private and secured.</p>
+        <p>Any links marked with <span class="public">[PUBLIC]</span> are publicly accessible, everything else is private and secured.</p>
         <h2>Replace <span id="currenthostname">hq.local</span> with other host in all links</h2>
         <input type="text" id="host" value="" />
         <button onclick="replaceHostname()">Replace</button>
@@ -83,7 +90,7 @@
             <p>
                 <ul>
                     <li>
-                        <a href="https://www.goodreads.com/review/list/22437975">GoodReads.com - ~500 books <span style="color: green">[PUBLIC]</span></a><br/>
+                        <a href="https://www.goodreads.com/review/list/22437975">GoodReads.com - ~500 books <span class="public">[PUBLIC]</span></a><br/>
                     </li>
                     <li>
                         <a href="https://read.amazon.co.uk/kindle-library">Read my Kindle content on the Web (~100 books)</a>
@@ -106,10 +113,10 @@
                            <a href="https://annas-archive.org">Anna's Archive - a good place to find new books</a>
                         </li>
                         <li>
-                            <a href="comics-inventory.txt">Comics/PDFs Inventory <span style="color: green">[PUBLIC]</span></a>
+                            <a href="comics-inventory.txt">Comics/PDFs Inventory <span class="public">[PUBLIC]</span></a>
                         </li>
                         <li>
-                            <a href="ebooks-inventory.txt">Ebooks Inventory <span style="color: green">[PUBLIC]</span></a>
+                            <a href="ebooks-inventory.txt">Ebooks Inventory <span class="public" >[PUBLIC]</span></a>
                         </li>
                     </ul>
                 </p>
@@ -120,10 +127,10 @@
                         <a href="https://app.plex.tv/desktop/#!/">Plex Server  - ~259 films, ~40 TV Series</a>
                     </li>
                     <li>
-                            <a href="video-inventory.txt">Films/Videos Plex Inventory <span style="color: green">[PUBLIC]</span></a>
+                            <a href="video-inventory.txt">Films/Videos Plex Inventory <span class="public">[PUBLIC]</span></a>
                     </li>
                     <li>
-                            <a href="TV-inventory.txt">TV Plex Inventory <span style="color: green">[PUBLIC]</span></a>
+                            <a href="TV-inventory.txt">TV Plex Inventory <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
@@ -134,7 +141,7 @@
                         <a href="https://app.plex.tv/desktop/#!/">Plex Server - ~40,000 music tracks (mostly FLAC)</a>
                     </li>
                     <li>
-                            <a href="music-inventory.txt">Music Plex Inventory <span style="color: green">[PUBLIC]</span></a>
+                            <a href="music-inventory.txt">Music Plex Inventory <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
@@ -142,7 +149,7 @@
             <p>
                 <ul>
                     <li>
-                        <a href=https://www.discogs.com/user/wordswords/collection?sort=added%2Cdesc&folder=1307188&limit=250">Discogs.com ~ 400 vinyl <span style="color: green">[PUBLIC]</span></a>
+                        <a href=https://www.discogs.com/user/wordswords/collection?sort=added%2Cdesc&folder=1307188&limit=250">Discogs.com ~ 400 vinyl <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
@@ -150,12 +157,12 @@
             <p>
                 <ul>
                     <li>
-                        <a href="./PlayNiteHTMLExport/index.html">PlayNite HTML Inventory of Paid-for Windows games on Gaming Laptop <span style="color: green">[PUBLIC]</span></a>
+                        <a href="./PlayNiteHTMLExport/index.html">PlayNite HTML Inventory of Paid-for Windows games on Gaming Laptop <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
             <h2>Physical Console Games</h2>
-            <p>All these lists are <span style="color: green">[PUBLIC]</span> and updated whenever the Google sheets spreadsheet is edited</p>
+            <p>All these lists are <span class="public">[PUBLIC]</span> and updated whenever the Google sheets spreadsheet is edited</p>
                 <ul>
                     <li>
                         <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSYcuzrFWvMJYzSp5ToEP_nf332nSUumxDu2A33bhb-JUaDgSUVrgBLTq8LrK3WPkfGGlTsnavrA2FI/pubhtml">PS1 Games</a>
