@@ -52,6 +52,10 @@ Hey google, evoke - turns on all screens in Studio
 Hey google, halt - turns off all screens in Studio, and off all fans
 Hey google, turn on screens - turns on the three extra screens
 Hey google, turn off screens - turns off the three extra screens
+Hey google, turn on heater
+Hey google, turn off heater
+Hey google, turn on fans
+Hey google, turn off fans
 Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the lights
 Hey google, chill - turns off the three extra screens, turns on the main screen, turns off the lights, turns off the heater, turns on the lava lamps, turns on the fans
 
