@@ -32,6 +32,14 @@
 				color: white;
 				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
             }
+
+            span.public {
+                color: green;
+                background-color: black;
+				text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+                text-decoration: underline;
+                font-weight: bold;
+            }
 		</style>
 	</head>
 	<body>
@@ -51,6 +59,7 @@
                 </div>
         </div>
         <br/>
+        <p>Any links marked with <span class="public">[PUBLIC]</span> are publicly accessible, everything else is private and secured.</p>
         <h2>Replace <span id="currenthostname">hq.local</span> with other host in all links</h2>
         <input type="text" id="host" value="" />
         <button onclick="replaceHostname()">Replace</button>
@@ -73,16 +82,15 @@
 			    <li><a href="https://home.google.com">Google Home Security Cameras</li>
 		    </ul>
 		    <ul>
-			    <li><a href="https://content.brsk.co.uk/network-status">BRSK Network Status Web</a></li>
-			    <li><a href="https://x.com/Brsk_Status">BRSK Network Status Twitter</a></li>	    
-		    	    <li><a href="https://www.virginmedia.com/help/service-status">Virgin Media Network Status</a></li>
+                <li><a href="https://content.brsk.co.uk/network-status">BRSK Network Status Web <span class="public">[PUBLIC]</span></a></li>
+                <li><a href="https://www.virginmedia.com/help/service-status">Virgin Media Network Status</a></li>
 		    </ul>
 	    </p>
             <h2>Physical books and Ebook libraries</h2>
             <p>
                 <ul>
                     <li>
-                        <a href="https://www.goodreads.com/review/list/22437975">GoodReads.com - ~500 books <span style="color: green">[PUBLIC]</span></a><br/>
+                        <a href="https://www.goodreads.com/review/list/22437975">GoodReads.com - ~500 books <span class="public">[PUBLIC]</span></a><br/>
                     </li>
                     <li>
                         <a href="https://read.amazon.co.uk/kindle-library">Read my Kindle content on the Web (~100 books)</a>
@@ -102,7 +110,13 @@
                             <a href="http://hq.local:8085">Comics/PDFs - Calibre Web Interface</a>
                         </li>
                         <li>
-                           <a href="https://annas-archive.org">Anna's Archive - a good place to find new books</a>
+                           <a href="https://annas-archive.org">Anna's Archive - a good place to find new books <span class="public">[PUBLIC]</span></a>
+                        </li>
+                        <li>
+                            <a href="comics-inventory.txt">Comics/PDFs Inventory <span class="public">[PUBLIC]</span></a>
+                        </li>
+                        <li>
+                            <a href="ebooks-inventory.txt">Ebooks Inventory <span class="public">[PUBLIC]</span></a>
                         </li>
                     </ul>
                 </p>
@@ -112,6 +126,12 @@
                     <li>
                         <a href="https://app.plex.tv/desktop/#!/">Plex Server  - ~259 films, ~40 TV Series</a>
                     </li>
+                    <li>
+                            <a href="video-inventory.txt">Films/Videos Plex Inventory <span class="public">[PUBLIC]</span></a>
+                    </li>
+                    <li>
+                            <a href="TV-inventory.txt">TV Plex Inventory <span class="public">[PUBLIC]</span></a>
+                    </li>
                 </ul>
             </p>
             <h2>Music and Audio books</h2>
@@ -120,13 +140,16 @@
                     <li>
                         <a href="https://app.plex.tv/desktop/#!/">Plex Server - ~40,000 music tracks (mostly FLAC)</a>
                     </li>
+                    <li>
+                            <a href="music-inventory.txt">Music Plex Inventory <span class="public">[PUBLIC]</span></a>
+                    </li>
                 </ul>
             </p>
             <h2>Vinyl collection</h2>
             <p>
                 <ul>
                     <li>
-                        <a href=https://www.discogs.com/user/wordswords/collection?sort=added%2Cdesc&folder=1307188&limit=250">Discogs.com ~ 400 vinyl <span style="color: green">[PUBLIC]</span></a>
+                        <a href=https://www.discogs.com/user/wordswords/collection?sort=added%2Cdesc&folder=1307188&limit=250">Discogs.com ~ 400 vinyl <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
@@ -134,12 +157,12 @@
             <p>
                 <ul>
                     <li>
-                        <a href="./PlayNiteHTMLExport/index.html">PlayNite HTML Export of Windows games on Gaming Laptop <span style="color: green">[PUBLIC]</span></a>
+                        <a href="./PlayNiteHTMLExport/index.html">PlayNite HTML Inventory of Paid-for Windows games on Gaming Laptop <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
             <h2>Physical Console Games</h2>
-            <p>All these lists are <span style="color: green">[PUBLIC]</span> and updated whenever the Google sheets spreadsheet is edited</p>
+            <p>All these lists are <span class="public">[PUBLIC]</span> and updated whenever the Google sheets spreadsheet is edited</p>
                 <ul>
                     <li>
                         <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSYcuzrFWvMJYzSp5ToEP_nf332nSUumxDu2A33bhb-JUaDgSUVrgBLTq8LrK3WPkfGGlTsnavrA2FI/pubhtml">PS1 Games</a>
@@ -254,26 +277,20 @@
                     <li>
                         <a href="http://hq.local:9082">Comics/PDFs Calibre Desktop Admin Interface</a>
                     </li>
-                    <li>
-                        <a href="http://hq.local:5299/home">Ebooks Calibre Library Lazy Librarian Metadata automated Fetcher</a>
-                    </li>
-                    <li>
-                        <a href="http://hq.local:5300/home">Comics/PDFs Calibre Library Lazy Librarian Metadata automated Fetcher</a>
-                    </li>
                 </ul>
                 <h2>External Tools</h2>
                 <ul>
                     <li>
-                        <a href="./googleassistant.txt">Google Assistant Commands Cheatsheet</a>
+                        <a href="./googleassistant.txt">Google Assistant Commands Cheatsheet <span class="public">[PUBLIC]</span></a>
                     </li>
                     <li>
-                        <a href="https://portchecker.co">Check open ports</a>
+                        <a href="https://portchecker.co">Check open ports <span class="public">[PUBLIC]</span></a>
                     </li>
                     <li>
                         <a href="https://aws.amazon.com">AWS Console</a>
                     </li>
                     <li>
-                        <a href="https://fast.com">Fast.com network speed test</a>
+                        <a href="https://fast.com">Fast.com network speed test <span class="public">[PUBLIC]</span></a>
                     </li>
                 </ul>
             </p>
