@@ -17,5 +17,7 @@ tree -H '~' /mnt/comics > comics-inventory.html
 remove_links "./comics-inventory.html"
 tree -H '~' /mnt/ebooks > ebooks-inventory.html
 remove_links "./ebooks-inventory.html"
+tree -H '~' /mnt/games > games-inventory.html
+remove_links "./games-inventory.html"
 
 
