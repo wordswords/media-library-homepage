@@ -3,7 +3,7 @@
 set -e
 set -x
 
-sudo -u david tmpdir=$(mktemp -d)
+tmpdir=$(sudo -u david mktemp -d)
 cd $tmpdir
 sudo -u david git clone --depth 1 git@github.com:wordswords/media-library-homepage.git ./hp
 cd ./hp
