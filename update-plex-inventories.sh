@@ -4,8 +4,7 @@ set -e
 set -x
 
 function remove_links () {
-    sed -e 's/<a[^>]*>//g' "$1"
-    sed -e 's/<\/a>//g' "$1"
+    sed -i 's/<a[^>]*>//g' "$1"
 }
 
 tree -H '~' /mnt/video > video-inventory.html
