@@ -5,7 +5,7 @@ set -x
 
 tmpdir=$(mktemp -d)
 cd $tmpdir
-git clone git@github.com:wordswords/media-library-homepage.git ./hp
+git clone --depth 1 git@github.com:wordswords/media-library-homepage.git ./hp
 cd ./hp
 ./remove-all-image-links-from-playnite-export.sh
 ./update-plex-inventories.sh
