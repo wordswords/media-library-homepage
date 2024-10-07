@@ -44,22 +44,20 @@ Actions that can be done by voice command are:
 
 ## Routines
 
-Hey google, good night - turns off Dave cave studio electrical items, all smart lights in the entire house, sets phone to DND, plays water rushing sounds
-Hey google, good morning - turns phone off DND, describe sleep report for last night, plays podcasts, weather report etc
-Hey google, I'm cold - turns on heating, turns on heater, turns off all fans
-Hey google, I'm warm - turns off heating, turns off heater, turns on all fans
+Hey google, good night - turns off Dave cave studio electrical items, all smart lights in the entire house, sets mobile phone to DND, plays water rushing sounds
+Hey google, good morning - turns mobile phone off DND, describe sleep report for last night from sleep trackers, plays podcasts, weather report etc
+Hey google, I'm cold - turns on heating, turns on studio portable heater, turns off all fans
+Hey google, I'm warm - turns off heating, turns off studio portable heater, turns on all fans
 Hey google, evoke/invoke - turns on all screens in Studio
 Hey google, big bang - turns off ALL electrical devices in Studio and all lights
-Hey google, turn on screens - turns on the three extra screens
-Hey google, turn off screens - turns off the three extra screens
-Hey google, turn on heater
-Hey google, turn off heater
-Hey google, turn on fans
-Hey google, turn off fans
+Hey google, turn on heater - turns on studio portable heater
+Hey google, turn off heater - turns off studio portable heater
+Hey google, turn on fans - turns on the two studio portable air fans
+Hey google, turn off fans - turns off the two studio portable air fans
 Hey google, turn on screens - turns on the extra 3 screens (apart from the main one)
 Hey google, turn off screens - turns off the extra 3 screens (apart from the main one)
-Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the lights
-Hey google, chill - turns off the three extra screens, turns on the main screen, sets chilled Phillips Hue light scene, turns off the heater, turns on the lava lamps, turns on the fans, plays chilled music
+Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the studio lights
+Hey google, chill - turns off the three extra screens, turns on the main screen, sets chilled Phillips Hue light scene, turns off the heater, turns on the lava lamps, plays chilled music
 Hey google, turn on lava lamps
 Hey google, turn off lava lamps
 Hey google, turn on sub - turns on the two music studio speakers and subwoofer
