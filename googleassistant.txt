@@ -49,7 +49,7 @@ Hey google, good morning - turns phone off DND, describe sleep report for last n
 Hey google, I'm cold - turns on heating, turns on heater, turns off all fans
 Hey google, I'm warm - turns off heating, turns off heater, turns on all fans
 Hey google, evoke/invoke - turns on all screens in Studio
-Hey google, big bang - turns off ALL electrical devices in Studio
+Hey google, big bang - turns off ALL electrical devices in Studio and all lights
 Hey google, turn on screens - turns on the three extra screens
 Hey google, turn off screens - turns off the three extra screens
 Hey google, turn on heater
