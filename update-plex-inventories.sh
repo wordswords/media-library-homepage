@@ -11,6 +11,8 @@ tree -H '~' /mnt/video > video-inventory.html
 remove_links "./video-inventory.html"
 tree -H '~' /mnt2/TV > TV-inventory.html
 remove_links "./TV-inventory.html"
+tree -H '~' /mnt2/audiobooks > audiobooks-inventory.html
+remove_links "./audiobooks-inventory.html"
 tree -H '~' /mnt2/music > music-inventory.html
 remove_links "./music-inventory.html"
 tree -H '~' /mnt/comics > comics-inventory.html
