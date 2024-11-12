@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>God of War Ragnar&#246;k</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> God of War Ragnar&#246;k</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-23/09/2024">23/09/2024</a> 2:00:51</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-26/09/2024">26/09/2024</a> 19:35:17</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-26/09/2024">26/09/2024</a> 19:36:06</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-PlayStation">PlayStation</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-PlayStation">PlayStation</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-09/11/2022">09/11/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-93">93</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-94">94</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Hack and slash/Beat 'em up">Hack and slash/Beat 'em up</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-SIE Santa Monica Studio">SIE Santa Monica Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Sony Interactive Entertainment">Sony Interactive Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://godofwar.playstation.com/" target="_blank">Official</a><br/><a href="https://godofwar.fandom.com/wiki/God_of_War_Wiki" target="_blank">Wikia</a><br/><a href="https://www.facebook.com/godofwar" target="_blank">Facebook</a><br/><a href="https://twitter.com/sonysantamonica" target="_blank">Twitter</a><br/><a href="https://instagram.com/santamonicastudio" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/PlayStation/search" target="_blank">YouTube</a><br/><a href="https://en.wikipedia.org/wiki/God_of_War:_Ragnar%C3%B6k" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/God%20of%20War%3A%20Ragnarok" target="_blank">Twitch</a><br/><a href="https://www.reddit.com/r/GodofWarRagnarok" target="_blank">Reddit</a><br/><a href="https://store.steampowered.com/app/2322010/God_of_War_Ragnark/" target="_blank">Steam</a><br/><a href="https://epicgames.com/product/god-of-war-ragnarok-3ca641" target="_blank">Epic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Ludusavi] Unknown save data">[Ludusavi] Unknown save data</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-3D">3D</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action RPG">Action RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action-Adventure">Action-Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Atmospheric">Atmospheric</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cinematic">Cinematic</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Combat">Combat</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Drama">Drama</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Emotional">Emotional</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Gore">Gore</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Hack and Slash">Hack and Slash</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-LGBTQ+">LGBTQ+</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Mythology">Mythology</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Open World">Open World</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Singleplayer">Singleplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Story Rich">Story Rich</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Third Person">Third Person</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><strong>THE NORSE SAGA CONTINUES </strong></h2>From Santa Monica Studio and brought to PC in partnership with Jetpack Interactive comes God of War Ragnarök, an epic and heartfelt journey that follows Kratos and Atreus as they struggle with holding on and letting go. <br><br>The sequel to the critically acclaimed God of War (2018), God of War Ragnarök picks up with Fimbulwinter well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as Odin’s forces in Asgard prepare for a prophesied battle that will end the world. <br><br>Along the way, they will explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters. As the threat of Ragnarök grows ever closer, Kratos and Atreus must choose between the safety of their family and the safety of the realms. <br><br><h2 class="bb_tag"><strong>A FUTURE, UNWRITTEN </strong></h2>Atreus seeks knowledge to help him understand the prophecy of “Loki” and establish his role in Ragnarök. Kratos must decide whether he will be chained by the fear of repeating his mistakes or break free of his past to be the father Atreus needs.<br><br><h2 class="bb_tag"><strong>FLUID, EXPRESSIVE COMBAT </strong></h2>The Leviathan Axe, Blades of Chaos, and Guardian Shield return alongside a host of new abilities for both Kratos and Atreus.  Kratos’ deadly Spartan skills will be tested like never before as he battles gods and monsters across Nine Realms to protect his family. <br><br><h2 class="bb_tag"><strong>EXPLORE VAST REALMS </strong></h2>Journey through dangerous and stunning landscapes as Kratos and Atreus search for answers. <br><br><h2 class="bb_tag"><strong>MASTER THYSELF IN GOD OF WAR RAGNARÖK: VALHALLA</strong>  </h2>Available right at launch with your purchase of God of War Ragnarök is access to the God of War Ragnarök: Valhalla DLC for no additional cost! <br><br><br><br>Accompanied only by Mimir, Kratos embarks on a deeply personal and reflective journey that pushes him to master mind and body as he is confronted with the challenges of Valhalla in an unravelling, replayable adventure that blends the beloved combat from God of War Ragnarök with brand new elements inspired by the roguelite genre.<h2 class="bb_tag"><strong>AN EPILOGUE TO RAGNARÖK </strong></h2>Kratos’ journey continues as he enters Valhalla, a new location in the God of War Norse saga. Faced with echoes of his past, he fights to overcome the trials within himself and walk the path laid out before him.<h2 class="bb_tag"><strong>BELOVED COMBAT REIMAGINED </strong></h2>The beloved combat from God of War Ragnarök with fresh and experimental twists inspired by the roguelite genre. Valhalla will push you to master different aspects of Kratos’ arsenal during each attempt as you face new combinations of enemies and some surprises along the way! <br><br><h2 class="bb_tag"><strong>FIGHT. LEARN. GROW. </strong></h2>Death is never the end. Kratos will have access to his weapons, skills, shields and abilities, but each new attempt will reset his Stats, Runic Attacks and Perks. As Kratos progresses through each attempt, you will be presented with choices between rewards that will help you push deeper into the mysterious depths of Valhalla while building resources toward persistent upgrades.<h2 class="bb_tag"><strong>PC FEATURES </strong></h2>Partnering with Jetpack Interactive once again, God of War Ragnarök on PC will harness the power of the platform to deliver an exceptional experience.<h2 class="bb_tag"><strong>UNLOCKED FRAME RATES &amp; HIGH-FIDELITY GRAPHICS </strong></h2>Unlocked framerates and the option of true 4K resolution expand the full potential of our cinematic no-cut camera as you travel through the stunning vistas of the Nine Realms.¹ <br><br><br>	<br>Behold enhanced reflections, lighting, and higher fidelity shadows, as well as increased geometric detail.²<h2 class="bb_tag"><strong>UPSCALING TECHNOLOGY</strong></h2>Full integration with NVIDIA RTX™ Deep Learning Super Sampling (DLSS) 3.7, AMD FidelityFX™ Super Resolution (FSR) 3.1, and Intel XeSS (Xe Super Sampling) 1.2 will allow you to reach higher graphical settings and output resolutions.  <br><br><h2 class="bb_tag"><strong>NVIDIA® REFLEX SUPPORT</strong></h2>Utilize NVIDIA Reflex low latency technology allowing you to react quicker and hit harder combos with the responsive gameplay.³<h2 class="bb_tag"><strong>SUPER ULTRAWIDE SUPPORT</strong></h2>Enjoy the breathtaking beauty of the Nine Realms in panoramic widescreen with 21:9 ultra-widescreen and 32:9 super ultra-widescreen support!¹<br><br><h2 class="bb_tag"><strong>CONTROLS CUSTOMIZATION</strong></h2>Play your way. With support for the DUALSHOCK®4 and DUALSENSE® wireless controllers, a wide range of other gamepads, and fully customizable bindings for mouse and keyboard, you have the power to fine-tune every action to match your playstyle.<h2 class="bb_tag"><strong>HAPTIC FEEDBACK </strong></h2>Feel your journey through the Norse realms, made possible by immersive haptic feedback and adaptive trigger functionality.³<h2 class="bb_tag"><strong>SPATIAL 3D AUDIO </strong></h2>Take advantage of highly accurate, spatial 3D Audio; hear enemies approaching from any direction, including from above and below you.⁴<br><br><br>--------<br>¹ Compatible PC and display device required.<br>² Compatible PC and graphics card required.<br>³ DualSense™ controller and wired connection required to experience the full range of in-game controller features.<br>⁴ 3D Audio via analog/USB stereo headphones.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
