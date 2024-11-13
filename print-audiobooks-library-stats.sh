@@ -22,6 +22,6 @@ echo "M4A count: $m4acount"
 echo "Total track count: $trackcount"
 echo "Total file count: $filecount"
 echo -e
-echo "Total size of music library:"
+echo "Total size of audiobooks library:"
 du -h /mnt2/audiobooks | tail -n1
 
