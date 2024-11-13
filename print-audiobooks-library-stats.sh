@@ -23,5 +23,5 @@ echo "Total track count: $trackcount"
 echo "Total file count: $filecount"
 echo -e
 echo "Total size of music library:"
-du -h /mnt2/music | tail -n1
+du -h /mnt2/audiobooks | tail -n1
 
