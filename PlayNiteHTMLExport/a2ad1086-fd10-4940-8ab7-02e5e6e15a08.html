@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Colony Ship: A Post-Earth Role Playing Game</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Colony Ship: A Post-Earth Role Playing Game</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-01/01/2025">01/01/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-02/01/2025">02/01/2025</a> 5:38:49</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-09/11/2023">09/11/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Iron Tower Studio">Iron Tower Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Iron Tower Studio">Iron Tower Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Achievements">Achievements</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Family Sharing">Family Sharing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://steamcommunity.com/app/648410" target="_blank">Community Hub</a><br/><a href="https://steamcommunity.com/app/648410/discussions/" target="_blank">Discussions</a><br/><a href="https://steamcommunity.com/app/648410/guides/" target="_blank">Guides</a><br/><a href="https://store.steampowered.com/news/?appids=648410" target="_blank">News</a><br/><a href="https://store.steampowered.com/app/648410" target="_blank">Store Page</a><br/><a href="https://pcgamingwiki.com/api/appid.php?appid=648410" target="_blank">PCGamingWiki</a><br/><a href="https://steamcommunity.com/stats/648410/achievements" target="_blank">Achievements</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Choices Matter">Choices Matter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Conversation">Conversation</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-CRPG">CRPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Cyberpunk">Cyberpunk</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dystopian">Dystopian</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Isometric">Isometric</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Lore-Rich">Lore-Rich</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Multiple Endings">Multiple Endings</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Nonlinear">Nonlinear</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Party-Based RPG">Party-Based RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-RPG">RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Sci-fi">Sci-fi</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Space">Space</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Story Rich">Story Rich</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Tactical">Tactical</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Tactical RPG">Tactical RPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based">Turn-Based</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Combat">Turn-Based Combat</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Strategy">Turn-Based Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based Tactics">Turn-Based Tactics</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<br><br><i>It is the Year of Our Lord 2754…<br><br>You will never feel the sun’s warmth under a blue sky, never hear the wind in the branches of a tree, and never swim in the ocean, all because you had the misfortune to be born on the Ship, chained to a fate you didn’t choose. You have never seen Earth and you’ll never see Proxima Centauri either. You’re doomed to live and die on the Ship in the name of the Mission, like your father before you, like his father before him.<br><br>The Ship is old. She had already been twenty years in service when she was rechristened Starfarer - a pretty name for a retrofitted interplanetary freighter. No one is certain the Ship will actually reach its destination, and nobody much cares, since no one alive now will live to see it. Might as well get on with your life and try to make the best of it.</i><br><br><br><br>Colony Ship is an isometric, party-based RPG inspired by Heinlein’s Orphans of the Sky. Your character's world is a “generation ship,” a massive spacecraft on a centuries long voyage to colonize a distant planet. The Ship's original government has been disbanded following a violent mutiny and you must negotiate a treacherous path among your fellow passengers and the contentious factions striving to dominate the Ship. Your choices will determine who your friends and enemies are.<br><br><br><br><br><br>Your adventure starts in the Pit - a sprawling heap of vacant cargo containers slowly getting filled up with those who couldn't afford to stay in the Habitat or needed to get away from its bosses and factions. Out here, folks live free and die fast...<br><br><i>You open your eyes to a grey hull-metal ceiling, one panel of which flickers yellow, indicating dayshift. You overslept, not that it matters. With a grunt you roll off your stained mattress and open the &quot;window&quot; to let some fresh air in. Like everything else around here, fresh is relative. The Ship does its best to recycle air and water, but cargo holds aren’t high on Her priority list. You breathe in metal and burning oil and look up. Four of the bridge's six projectors are still operational, shining dully down on the container towers of Cargo Hold 3, better known as the Pit, the Free City.<br><br>Calling the Pit a city is a bit of a stretch, but so is calling this reddish-brown liquid water. You've read that water is supposed to be clear and cities are supposed to be big, but no ship-born has ever seen either. Maybe in another hundred years water will look and taste like oil and people will be talking about the good old days when it was the color of rust and tasted refreshingly bitter and tangy. That's the kind of optimism that keeps you going.<br><br>The elevator crawls up a groove in the cargo hold's wall like a black steel bug that's worn a path traveling to the bridge and back. It’s time to get up there and earn a few credits, but first you need a drink.</i><br><br><br>Once tasked with adapting Terran plants and grasses to the alien environment of Proxima Centauri, Hydroponics was abandoned during the Mutiny. Quickly overwhelmed by out-of-control mutant vegetation, it more closely resembles deep jungle than a research complex. In addition to the abnormal plants, oversized pest control species –bioengineered to safeguard the colony's farmlands– are also on hand to punish the careless.<br><br><i>Plants were sacred to the Founding Fathers. They represented our connection to Mother Earth, our sustenance, and our future. Picture rippling fields of wheat, rye, and barley to the horizon, mighty oaks and cedars, children eating apples right from the tree. That was the vision for Proxima.<br><br>But they didn't anticipate how many seedlings would fail in the Ship's simulated environments. And unless they found a way to make good those losses, it would be catastrophic. Alien fauna and poor soil were deemed the biggest threats, so they matched the most important plant species with customized, symbiont fungi. The latter were meant to act as pest killers. Unfortunately, the fungus did its job a little too well. We’re the pests now.</i><br><br><br><br>Before the Mutiny, the rooftops of the Habitat supported a sprawling amusement park. There, the people of the Ship could experience at least a few of the novelties they would never enjoy on Earth or Proxima: walk barefoot on real green grass – courtesy of Hydroponics – or soft, red-tinted 'Proxima' sand; sit under tall, artificial trees; and watch the sunrise on gigantic screens suspended all around. This last was said to be indistinguishable from the real thing, not that anyone aboard had ever seen it.<br><br>Nowadays, the three remaining rooftops are heavily fortified platforms, patrolled by armed guards. The sky-screens went dark long ago, a frivolous luxury in a decaying world. The grass underfoot and simulations of golden fields have likewise vanished, replaced by watchtowers and checkpoints. With enemies on all sides, cheap entertainment is a useless distraction from reality and its harsh demands.<br><br><br><br>The Armory - Among the stars, the children of Earth wish most of all for peace. Nevertheless, the wise prepare for every eventuality – we should not survive long without the means to protect our territory and interests, with violence if every other method is exhausted. To that end, the Ship launched with a wide assortment of peacekeeping weapons and armaments, most of it looted and spent during the Mutiny and the hundred lesser skirmishes that followed.<br><br>Mission Control - The century-old wreckage of the Ship Authority government complex that once controlled every aspect of life on the Ship. Now scavengers infest this ancient seat of power, a grim reminder that nothing lasts.<br><br>The Shuttle Bay - Noah relied on doves to find a landing place, the Ship carried twelve survey shuttles for that same purpose. Even though the Shuttle Bay survived the Mutiny intact, it was looted in the interim, the life support systems and emergency supplies stripped, and the shuttle interiors used by generations of squatters. <br><br>The Factory - An abandoned industrial complex that once worked 'round the clock to produce tools for the Ship and the future colony. Why squander your precious shekels on second-hand Earth machinery, when your captive workforce will have three hundred years to manufacture everything you need?<br><br>And many others.<br><br><br><br><br><br>Combat is difficult. You’ll be outnumbered and outgunned, so you’ll have to figure out how to even the odds or avoid fights you can't win. There are 3 main factors determining the difficulty of any combat encounter and your character's life expectancy: Accuracy, Evasion, Damage (both dealt and taken). To succeed in combat, you must learn to control these factors. <br><br>Accuracy = 50 + bonuses from (stat + skill + feat + implant + helmet/goggles + weapon). You can easily neglect a couple of items from this list and still be a competent fighter, meaning you don't need to min/max your stats because it's only 1 item out of 6. The attacker's accuracy is further modified by the attack type (different attacks have different pros and cons), the weapon's gun's effective range, and inflicted penalties.<br><br>Evasion = bonuses from (stat + skill + feat + implant + armor handling – armor penalty). The defender's evasion is further modifier by cover (the exact bonus depends on the angle), gadget bonus (i.e., using a Disruptor Field), and smoke/spore cloud (smoke grenades and certain critters). More detailed information can be found on the character and inventory screens (which show your accuracy and evasion), and in combat, where you can press ALT when targeting while targeting to learn what is affecting the accuracy of a particular attack.<br><br>The damage depends on both the weapon and the target's defense. Incoming damage is reduced by damage resistance (feat + implants + armor) and energy shield (gadget and/or energy armor). Weapons with good penetration and/or aimed attacks can reduce enemy's damage resistance, dealing more damage.<br><br><br><br>When you enter the stealth mode all tiles are automatically assigned detection values, determined by the distance from the guards, which way they're facing, their Perception, and thermal vision gear, if any. Green - safe (you remain undetected), yellow - risky (if you end your turn there, you'll be spotted), red - instant discovery. High sneaking ability (modified by skill, feats, gear) turns more tiles green and opens up more options, whereas a low level thief might see nothing but yellow and red tiles. <br><br>Each step and action (lockpicking, climbing, using computers, killing guards in stealth mode, etc) generates noise. Not a whole lot of noise to instantly alert the guards the moment you do something, but enough to add up over time and raise the guards' suspicions. The higher the guards' Perception, the faster the alert bar is filled. An alerted guard turns towards the last noise generated, meaning a lot of safe tiles will turn red and if you're in the line of vision you'll be instantly discovered. <br><br><br><br>If fighting isn't you thing, you can avoid ALL combat by relying on speech skills: Persuasion, Streetwise, and Impersonate. Not every solution is in your face, but it is there. We check stats, skills, reputation, deeds, and track your choices to deliver appropriate consequences. <br><br><br>Ten party members (max party size is 4) and well over a hundred different characters, some less friendly than others. <br><br>   <br>   <br>   <br>   <br><br><i>Lord's Mercy was her given name. Though he wasn't a priest, her father had called himself a Man of Scripture, and never tired of reminding his only child of God's wrath, His vengeance, His untiring thirst for retribution. If that’s what her name meant, Mercy did her best to live up to it.</i><br><i>&quot;Are you now?&quot; Bartholomew looks at you with interest. &quot;I assume you were on your way to the Habitat, but now you're stuck here...  Your odds aren't looking good, my friend,” he gives you a salesman's smile. “Attacking the Black Hand's stronghold is suicide, with or without our help. If Stanton loses...” He makes a pause, letting you work it out on your own.</i><i>“You may address me as Harbinger. I no longer have a name.&quot; The bitterness in her voice is unmistakable. She must not have been doing this Harbinger thing for long. One of the guards removes his helmet to reveal an oddly leathery face with deep-sunk eyes and a lipless mouth. He grins as he savors your discomfort.<br><br>“I wonder if the Neanderthals were as shocked by your outlandish appearance,” the woman says. “I wonder if they foresaw their own doom.”</i><br><br><br><br>A generation ship is a perfect ant-farm where different societies can coexist within a limited space, influencing and affecting each others' development while fighting for that limited space, which adds 'the end justifies the means' pressure. <br><br><br><br>The Protectors' one truth is the Mission, and the sole way to ensure successful completion of the Mission is to follow the Old Ways. The ways of the fathers, forefathers, and Founding Fathers are together the beam upon which the Ship travels to our ultimate destination. The mutiny, which through their steadfast and timely intervention was thankfully aborted, was the ultimate betrayal of the Old Ways, of everyone who had come before, the nullification of every sacrifice and every life dedicated to the Mission.<br><br><br><br>The Brotherhood was formed to liberate the people from the iron shackles of the Ship Authority. Though their first sally -which the fossils of the old world denigrate with the term &quot;mutiny&quot;- failed to completely achieve this aim, the Brotherhood was successful in establishing themselves as a power to be reckoned with. The Brotherhood's initially pure goal, to free the enslaved wherever they may be, has unfortunately been sullied by the practical concerns of democracy. To bring freedom to the Ship entire must involve war, and no war may be won without sacrifice, nor may battles be managed by committee.<br><br><br><br>As inevitably happens in dark and challenging times, some citizens turn to God for reassurance, the promise of an end to pain and hunger. Or failing an end, at least a purpose. The Church of the Elect rejected both the Protectors of the Mission and the Brotherhood of Liberty as worldly fools distracted by politics and their own egos. Teaching their adherents that they were chosen by God, the Church frames the journey of the Ship as a centuries-long test of faith. When the Ship arrives at her destination, Judgment Day awaits every citizen. The righteous will be welcomed into the Promised Land of Proxima Centauri, while the unrepentant will be returned to the Hell from which we fled - Earth - to suffer for all eternity.<br>Plus lesser factions and groups: People of the Covenant (the mutants), the House of Ecclesiastes, formerly known as ECLSS - the Environmental Control and Life Support System, the Pit's Freemen, Thy Brother's Keepers, the Grangers, Jackson's Riflemen, and more!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
