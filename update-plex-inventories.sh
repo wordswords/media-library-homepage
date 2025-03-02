@@ -7,19 +7,19 @@ function remove_links () {
     sed -i 's/<a[^>]*>//g' "$1"
 }
 
-tree -H '~' /mnt/video > video-inventory.html
+tree -H '~' /home/video > video-inventory.html
 remove_links "./video-inventory.html"
-tree -H '~' /mnt2/TV > TV-inventory.html
+tree -H '~' /home/TV > TV-inventory.html
 remove_links "./TV-inventory.html"
-tree -H '~' /mnt2/audiobooks > audiobooks-inventory.html
+tree -H '~' /home/audiobooks > audiobooks-inventory.html
 remove_links "./audiobooks-inventory.html"
-tree -H '~' /mnt3/music > music-inventory.html
+tree -H '~' /home/music > music-inventory.html
 remove_links "./music-inventory.html"
-tree -H '~' /mnt/comics > comics-inventory.html
+tree -H '~' /home/comics > comics-inventory.html
 remove_links "./comics-inventory.html"
-tree -H '~' /mnt/ebooks > ebooks-inventory.html
+tree -H '~' /home/ebooks > ebooks-inventory.html
 remove_links "./ebooks-inventory.html"
-tree -H '~' /mnt/games > games-inventory.html
+tree -H '~' /home/games > games-inventory.html
 remove_links "./games-inventory.html"
 
 ./print-ebooks-library-stats.sh > ./ebooks-stats.txt
