@@ -23,5 +23,5 @@ echo "Total track count: $trackcount"
 echo "Total file count: $filecount"
 echo -e
 echo "Total size of audiobooks library:"
-du -Lh /mnt3/audiobooks | tail -n1
+du -Lh /home/audiobooks | tail -n1
 
