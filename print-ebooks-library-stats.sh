@@ -31,5 +31,5 @@ echo "Total books count: $bookscount"
 echo "Total file count: $filecount"
 echo -e
 echo "Total size of ebooks library:"
-du -hL /mnt/ebooks | tail -n1
+du -hL /home/ebooks | tail -n1
 
