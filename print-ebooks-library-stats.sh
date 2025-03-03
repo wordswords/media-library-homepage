@@ -3,16 +3,16 @@
 
 set -e
 
-epubcount=$(find /home/ebooks -type f -iname '*.epub' | wc -l)
-pdfcount=$(find /home/ebooks -type f -iname '*.pdf' | wc -l)
-mobicount=$(find /home/ebooks -type f -iname '*.mobi' | wc -l)
-txtcount=$(find /home/ebooks -type f -iname '*.txt' | wc -l)
-rtfcount=$(find /home/ebooks -type f -iname '*.rtf' | wc -l)
-doccount=$(find /home/ebooks -type f -iname '*.doc' | wc -l)
-chmcount=$(find /home/ebooks -type f -iname '*.chm' | wc -l)
-opfcount=$(find /home/ebooks -type f -iname '*.opf' | wc -l)
-cbzcount=$(find /home/ebooks -type f -iname '*.cbz' | wc -l)
-filecount=$(find /home/ebooks -type f | wc -l)
+epubcount=$(find -L /home/ebooks -type f -iname '*.epub' | wc -l)
+pdfcount=$(find -L /home/ebooks -type f -iname '*.pdf' | wc -l)
+mobicount=$(find -L /home/ebooks -type f -iname '*.mobi' | wc -l)
+txtcount=$(find -L /home/ebooks -type f -iname '*.txt' | wc -l)
+rtfcount=$(find -L /home/ebooks -type f -iname '*.rtf' | wc -l)
+doccount=$(find -L /home/ebooks -type f -iname '*.doc' | wc -l)
+chmcount=$(find -L /home/ebooks -type f -iname '*.chm' | wc -l)
+opfcount=$(find -L /home/ebooks -type f -iname '*.opf' | wc -l)
+cbzcount=$(find -L /home/ebooks -type f -iname '*.cbz' | wc -l)
+filecount=$(find -L /home/ebooks -type f | wc -l)
 bookscount=$(($epubcount + $pdfcount + $mobicount + $rtfcount + $doccount + $txtcount + $opfcount + $chmcount))
 
 echo "** eBooks Library Stats"
@@ -31,5 +31,5 @@ echo "Total books count: $bookscount"
 echo "Total file count: $filecount"
 echo -e
 echo "Total size of ebooks library:"
-du -h /mnt/ebooks | tail -n1
+du -hL /mnt/ebooks | tail -n1
 

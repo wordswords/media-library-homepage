@@ -3,16 +3,16 @@
 
 set -e
 
-epubcount=$(find /home/comics -type f -iname '*.epub' | wc -l)
-pdfcount=$(find /home/comics -type f -iname '*.pdf' | wc -l)
-mobicount=$(find /home/comics -type f -iname '*.mobi' | wc -l)
-txtcount=$(find /home/comics -type f -iname '*.txt' | wc -l)
-rtfcount=$(find /home/comics -type f -iname '*.rtf' | wc -l)
-doccount=$(find /home/comics -type f -iname '*.doc' | wc -l)
-chmcount=$(find /home/comics -type f -iname '*.chm' | wc -l)
-opfcount=$(find /home/comics -type f -iname '*.opf' | wc -l)
-cbzcount=$(find /home/comics -type f -iname '*.cbz' | wc -l)
-filecount=$(find /home/comics -type f | wc -l)
+epubcount=$(find -L /home/comics -type f -iname '*.epub' | wc -l)
+pdfcount=$(find -L /home/comics -type f -iname '*.pdf' | wc -l)
+mobicount=$(find -L /home/comics -type f -iname '*.mobi' | wc -l)
+txtcount=$(find -L /home/comics -type f -iname '*.txt' | wc -l)
+rtfcount=$(find -L /home/comics -type f -iname '*.rtf' | wc -l)
+doccount=$(find -L /home/comics -type f -iname '*.doc' | wc -l)
+chmcount=$(find -L /home/comics -type f -iname '*.chm' | wc -l)
+opfcount=$(find -L /home/comics -type f -iname '*.opf' | wc -l)
+cbzcount=$(find -L /home/comics -type f -iname '*.cbz' | wc -l)
+filecount=$(find -L /home/comics -type f | wc -l)
 bookscount=$(($epubcount + $pdfcount + $mobicount + $rtfcount + $doccount + $txtcount + $opfcount + $chmcount + $cbzcount))
 
 echo "** Comics Library Stats"
@@ -31,5 +31,5 @@ echo "Total comics count: $bookscount"
 echo "Total file count: $filecount"
 echo -e
 echo "Total size of comics library:"
-du -h /home/comics | tail -n1
+du -Lh /home/comics | tail -n1
 
