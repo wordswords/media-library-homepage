@@ -30,7 +30,7 @@ Actions that can be done by voice command are:
 * Control playback. To pause the TV show or movie you're watching, say "Pause." You can also use other controls like "play," "fast forward," and "rewind."
 
 ## Spotify
-"Okay Google…"
+"Okay Google.."
 * "Play Spotify."
 * "Play my Discover Weekly."
 * "Play hip-hop music."
