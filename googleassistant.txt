@@ -30,17 +30,17 @@ Actions that can be done by voice command are:
 * Control playback. To pause the TV show or movie you're watching, say "Pause." You can also use other controls like "play," "fast forward," and "rewind."
 
 ## Spotify
-“Okay Google…”
-* “Play Spotify.”
-* “Play my Discover Weekly.”
-* “Play hip-hop music.”
-* “Play ‘Angel’ by Lionel Richie.”
-* “Pause.”
-* “Like this song.”
-* “Skip forward 20 seconds.”
-* “Play the next song.”
-* “What’s playing?”
-* “What’s this album?”
+"Okay Google…"
+* "Play Spotify."
+* "Play my Discover Weekly."
+* "Play hip-hop music."
+* "Play Angel by Lionel Richie."
+* "Pause."
+* "Like this song."
+* "Skip forward 20 seconds."
+* "Play the next song."
+* "What’s playing?"
+* "What’s this album?"
 
 ## Routines
 
@@ -57,10 +57,14 @@ Hey google, turn off fans - turns off the two studio portable air fans
 Hey google, turn on screens - turns on the extra 3 screens (apart from the main one)
 Hey google, turn off screens - turns off the extra 3 screens (apart from the main one)
 Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the studio lights
-Hey google, chill - turns off the three extra screens, turns on the main screen, sets chilled Phillips Hue light scene, turns off the heater, turns on the lava lamps, plays chilled music
+Hey google, chill - turns off the three extra screens, turns on the main screen, sets chilled Phillips Hue light scene, turns off the heater, turns off the sub (but not the speakers if they're on), turns on the lava lamps
+Hey google, arcade - Turns off the main screen and the side screen, turns on the little screen and the TV, turns off the lights, turns off the sub, turns off the fans, turns off the heater
 Hey google, turn on lava lamps
 Hey google, turn off lava lamps
 Hey google, turn on sub - turns on the two music studio speakers and subwoofer
 Hey google, turn off sub - turns off the two music studio speakers and subwoofer
 Hey google, turn on speakers - turns on the two music studio speakers
 Hey google, turn off speakers - turns off the two music studio speakers
+Hey google, last one standing - turns off all the electrical devices in the house, and plays classical music (used when you're the last one in the house and leaving it, for security) - leaves the heating on for the cat
+
+
