@@ -3,12 +3,12 @@
 
 set -e
 
-flaccount=$(find /mnt2/audiobooks -type f -iname '*.flac' | wc -l)
-mp3count=$(find /mnt2/audiobooks -type f -iname '*.mp3' | wc -l)
-wavcount=$(find /mnt2/audiobooks -type f -iname '*.wav' | wc -l)
-oggcount=$(find /mnt2/audiobooks -type f -iname '*.ogg' | wc -l)
-m4acount=$(find /mnt2/audiobooks -type f -iname '*.m4a' | wc -l)
-filecount=$(find /mnt2/audiobooks -type f | wc -l)
+flaccount=$(find -L /home/audiobooks -type f -iname '*.flac' | wc -l)
+mp3count=$(find -L /home/audiobooks -type f -iname '*.mp3' | wc -l)
+wavcount=$(find -L /home/audiobooks -type f -iname '*.wav' | wc -l)
+oggcount=$(find -L /home/audiobooks -type f -iname '*.ogg' | wc -l)
+m4acount=$(find -L /home/audiobooks -type f -iname '*.m4a' | wc -l)
+filecount=$(find -L /home/audiobooks -type f | wc -l)
 trackcount=$(($flaccount + $mp3count + $wavcount + $oggcount))
 
 echo "** Audiobooks Library Stats"
@@ -23,5 +23,5 @@ echo "Total track count: $trackcount"
 echo "Total file count: $filecount"
 echo -e
 echo "Total size of audiobooks library:"
-du -h /mnt2/audiobooks | tail -n1
+du -Lh /home/audiobooks | tail -n1
 
