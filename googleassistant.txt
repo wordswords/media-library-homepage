@@ -56,8 +56,9 @@ Hey google, turn on fans - turns on the two studio portable air fans
 Hey google, turn off fans - turns off the two studio portable air fans
 Hey google, turn on screens - turns on the extra 3 screens (apart from the main one)
 Hey google, turn off screens - turns off the extra 3 screens (apart from the main one)
-Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the studio lights
 Hey google, chill - turns off the three extra screens, turns on the main screen, sets chilled Phillips Hue light scene, turns off the heater, turns off the sub (but not the speakers if they're on), turns on the lava lamps
+Hey google, gaming - turns off the three extra screens, turns on the main screen, turns off the studio lights
+Hey google, flight screen - turns off all screens except the portrait/vertical one, for playing schmups
 Hey google, arcade - Turns off the main screen and the side screen, turns on the little screen and the TV, turns off the lights, turns off the sub, turns off the fans, turns off the heater
 Hey google, turn on lava lamps
 Hey google, turn off lava lamps
