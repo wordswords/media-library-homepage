@@ -20,4 +20,4 @@ sudo rsync -azP -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress /mnt/f/HOT
 sudo rsync -azP -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress /mnt/f/TeknoParrat david@hq.local:/mnt3/PlayNiteBackups/TeknoParrat/
 sudo rsync -azP -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress /mnt/f/TeknoParrat david@hq.local:/mnt3/PlayNiteBackups/TeknoParrat/
 sudo rsync -azP -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress /mnt/f/Ludusavi\ Saves david@hq.local:/mnt3/PlayNiteBackups/Ludusavi\ Saves/
-sudo rsync -azP -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress /mnt/c/Users/conta/Documents/AutoHotKeys david@hq.local:/mnt3/PlayNiteBackups/AutoHotKeys/
+sudo rsync -azP -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress /mnt/c/Users/conta/Documents/AutoHotKey david@hq.local:/mnt3/PlayNiteBackups/AutoHotKey/
