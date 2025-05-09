@@ -10,5 +10,4 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-sudo mkdir -p /mnt/D/Music
-sudo rsync -azPL -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress david@hq.local:/home/music /mnt/D/Music/
+sudo rsync -azPL -e 'sudo ssh -p 608 -i ~david/.ssh/id_rsa' --progress david@hq.local:/mnt3/music /mnt/d/
