@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dino Crisis</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Dino Crisis</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-10/05/2025">10/05/2025</a> 19:13:10</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-10/05/2025">10/05/2025</a> 19:15:33</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-30/04/2000">30/04/2000</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Horror">Horror</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Survival">Survival</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Capcom / GOG">Capcom / GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Capcom">Capcom</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Controller support">Controller support</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/forum/dino_crisis_series" target="_blank">Forum</a><br/><a href="https://www.gog.com/en/game/dino_crisis" target="_blank">Store Page</a><br/><a href="http://pcgamingwiki.com/w/index.php?search=Dino Crisis" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video missing">[EMT] Video missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Install Drive] C:\">[Install Drive] C:\</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Ludusavi] Unknown save data">[Ludusavi] Unknown save data</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Action">Action</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Classic">Classic</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Combat">Combat</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dark">Dark</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Dinosaurs">Dinosaurs</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Good Old Game">Good Old Game</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Horror">Horror</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Military">Military</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Only On GOG">Only On GOG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Retro">Retro</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Survival">Survival</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Survival Horror">Survival Horror</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Tactical">Tactical</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Third Person">Third Person</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<div lang="ja"><div class="container" style="display: flex; justify-content: center;">
+</div>
+<p><br>The only thing louder than the dinosaurs' roars were the voices of gamers worldwide demanding the return of a survival horror classic.<br><br></p>We've listened – and now, the legendary Dino Crisis is back, fully playable on modern PCs.<p>Thanks to the tremendous efforts of Capcom and GOG, Regina’s iconic line, 'You’re extinct!' no longer applies to the game itself. The timeless thriller that defined a generation of gamers is made to last forever, enhanced for today’s systems, featuring all the original content you loved with numerous improvements.<br></p>
+<p><br>The wait is over. Dino Crisis has been resurrected. And…<br></p>
+<br><p>
+<i>It will totally consume you. All of you.</i><br></p><br>
+<div class="container" style="display: flex; justify-content: center;"></div><p><br>Three years ago. A scientist died in an accident during an experiment. His research was on “Third Energy,” a completely clean energy source. The accident occurred just as government funding had been cut off because the project was deemed unfeasible. To the public, it was nothing more than an insignificant piece of information. Until now.<br></p><p><br>An agent dispatched to a small country in the South Seas to investigate a top-secret military project brought back surprising information. At a military research facility in the Republic of Borginia, a scientist who was supposed to have died three years ago in our country has resumed his research activities in the field of Third Energy. Regina, a member of the government's spy team, was tasked with retrieving the doctor.<br></p><p><br>She heads to the isolated island of Ibis, where the military facility is located. The dark elite are trained for every conceivable challenge. For them, it is just another “job” as usual…<br></p><p><br>3年前。一人の科学者が実験中の事故で死亡した。<br>彼が研究していたのは《完全なクリーンエネルギー＝“サードエナジー”》。<br>実現性に乏しいとみなされ、政府からの資金援助を絶たれた矢先の、不慮の事故だった。<br>それは世間にとって、取るに足りない情報の一飛沫にすぎなかった。<br>そして今。<br>極秘軍事プロジェクトを探るため、南海の小国に派遣されていたエージェントから意外な情報がもたらされた。<br>〈このボルジニア共和国の軍事研究施設において、我が国で3年前に死亡したはずの科学者が、<br>サードエナジーの研究活動を再開している〉<br>政府直属のスパイチームの一員であるレジーナは、博士奪還の任務を受け、<br>その軍事施設が存在する孤島〈アイビス島〉へと向かう。<br>想定されるあらゆる困難に対して訓練を受けた、闇のエリートたち。<br>彼らにとってそれは、いつも通りの“仕事”のひとつに過ぎないはずだった…。<br></p><br>
+<div class="container" style="display: flex; justify-content: center;"></div><br><h4>Here’s how we ensured that this masterpiece is better than ever and what you can expect with GOG’s version of the game:</h4>
+<ul><br>
+<li>Full compatibility with Windows 10 and Windows 11</li>
+<li>All 6 localizations of the game included (English, German, French, Italian, Spanish, and Japanese)</li>
+<li>Original, Arrange, and Operation Wipe Out modes included</li>
+<li>Improved DirectX game renderer</li>
+<li>New rendering options (Windowed Mode, Vertical Synchronization Control, Gamma Correction, Integer Scaling, Anti-Aliasing, and more)</li>
+<li>Increased rendering resolution to ~4K (1920p) and color depth to 32-bit.</li><li>Improved geometry calculation, more stable transformation and texturing.</li><li>Improved alpha transparency</li><li>Improved game registry settings</li>
+<li>Issue-free animation, video, and music playback</li>
+<li>Issue-free saving (the game no longer corrupts save files after leaving dropped weapons)<br></li>
+<li>Full support for modern controllers (Sony DualSense, Sony DualShock4, Microsoft Xbox Series, Microsoft Xbox One, Microsoft Xbox 360, Nintendo Switch, Logitech F series and many more) with optimal button binding regardless of the hardware, hotplugging and wireless mode</li></ul>
+<br><h4>この傑作を最高の形で皆様のもとにお届けするため、GOG版では以下の調整を実施：</h4><ul><br>
+<li>Windows 10とWindows 11との完全な互換性の実現</li>
+<li>全6言語版への対応（英語、ドイツ語、フランス語、イタリア語、スペイン語、日本語）</li>
+<li>Original、Arrange、Operation Wipe Outの3モードに対応</li>
+<li>DirectXゲームレンダラーの調整</li><li>新しい画面描画オプションの追加（ウィンドウモード、垂直同期コントロール、ガンマ補正、整数スケーリング、アンチエイリアシングほか）</li>
+<li>レンダリング解像度を～4K（1920p）、色深度を32ビットまでアップグレード</li><li>ジオメトリの計算を改善し、トランスフォーメーションとテクスチャ処理を安定化</li>
+<li>アルファ透明処理の改善</li><li>ゲームのレジストリ設定の調整</li>
+<li>アニメーション、映像、楽曲の再生まわりの改善</li>
+<li>セーブ機能の改善（武器を手放して放置した場合にセーブデータが破損しないよう修正）</li><li>メジャーなコントローラー（Sony DualSense、Sony DualShock4、Microsoft Xbox Series、Microsoft Xbox One、Microsoft Xbox 360、Nintendo Switch、Logitech Fシリーズほか多数）にホットプラグ機能やワイヤレスモードも含めて完全対応し、コントローラーごとに最適なボタン配置を提供</li>
+<br></ul>
+<h4>Let’s go back in time to the PlayStation 1 era and reminisce about how Dino Crisis was presented to gamers back in 1999:</h4><br>Raw Instinct takes over in this new, adrenaline-pumping journey into Survival Horror. Something is terribly wrong. Your covert mission to infiltrate an isolated research compound has gone haywire… now you find yourself pursued by a relentless, prehistoric terror. Suddenly, your mission becomes a desperate fight for survival.<br><br><h4>初代PlayStationの時代にタイムスリップし、ディノクライシスが1999年当時どのように紹介されていたか振り返ってみよう（注：当時の英語版準拠のテキストとなります）：</h4><br>  アドレナリン全開のサバイバル・ホラーを支配するのは本能のみ。どこで歯車が狂ってしまったのか… 隔離された研究施設に潜入するという極秘任務が、まったく異なる様相を見せ始めた。容赦なく迫りくる、原始の恐怖。突如として、任務は生き残りをかけた絶望的な戦いに変貌を遂げる。<br><br>
+<div class="container" style="display: flex; justify-content: center;"></div>
+<h4>FEATURES:</h4><ul><br>
+<li>Revolutionary 3D engine</li><li>Realistic animal movements have been rigorously mimicked</li>
+<li>Character drips blood after being attacked</li><li>Intense dinosaur blasting action with loads of weapons</li>
+<li>Dinosaurs chase you from room to room bursting through doors and windows</li><li>Feel the anticipation increase when the screen shakes as the T-Rex gets closer</li><br></ul>
+<h4>特徴：</h4><ul>
+<li>革新的な3Dエンジン</li>
+<li>リアルな動物の動きを忠実に再現</li>
+<li>キャラクターが攻撃を受けた際の流血描写</li>
+<li>多様な武器を用いた対恐竜アクション</li><li>扉や窓を突き破って迫りくる恐竜たち</li>
+<li>ティラノサウルスの接近にあわせて振動する画面が恐怖を増大</li></ul><p><br></p><h4>The terror is alive! Can you survive?</h4><p></p><br>
+<div class="container" style="display: flex; justify-content: center;"></div><br>
+<p class="module">Operation Wipe Out Internet is a fully offline mode. Player score in this game mode is stored locally.</p><br><hr><br>
+<div class="container" style="display: flex; justify-content: center;"><br><br><br><br><br><br><br><br><br><br></div></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
