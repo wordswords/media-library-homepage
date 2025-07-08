@@ -14,7 +14,8 @@ gbacount=$(find -L /mnt/games -type f -iname '*.gba' | wc -l)
 ndscount=$(find -L /mnt/games -type f -iname '*.nds' | wc -l)
 imgcount=$(find -L /mnt/games -type f -iname '*.img' | wc -l)
 nescount=$(find -L /mnt/games -type f -iname '*.nes' | wc -l)
-gamescount=$(($isocount + $bincount + $chdcount + $zipcount + $execount + $nspcount + $gbacount + $imgcount + $nescount))
+pbpcount=$(find -L /mnt/games -type f -iname '*.pbp' | wc -l)
+gamescount=$(($isocount + $bincount + $chdcount + $zipcount + $execount + $nspcount + $gbacount + $imgcount + $nescount + $pbpcount))
 
 echo "** Games Library Stats"
 echo -e
@@ -30,6 +31,7 @@ echo ".GBA count: $gbacount"
 echo ".NDS count: $ndscount"
 echo ".IMG count: $imgcount"
 echo ".NES count: $nescount"
+echo ".PBP count: $pbpcount"
 echo -e
 echo "Total identified possible games: $gamescount"
 echo -e
