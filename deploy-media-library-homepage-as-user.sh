@@ -8,7 +8,7 @@ cd $tmpdir
 sudo -u david git clone --depth 1 git@github.com:wordswords/media-library-homepage.git ./hp
 cd ./hp
 sudo -u david ./remove-all-image-links-from-playnite-export.sh
-sudo -u david ./update-plex-inventories.sh
+sudo ./update-plex-inventories.sh
 cd -
 sudo -u david rm -f ./hp/*.sh
 cd ./hp
