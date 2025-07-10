@@ -3,6 +3,7 @@
 
 set -e
 
+romcount=$(find -L /mnt/games -type f -iname '*.rom' | wc -l)
 isocount=$(find -L /mnt/games -type f -iname '*.iso' | wc -l)
 bincount=$(find -L /mnt/games -type f -iname '*.bin' | wc -l)
 chdcount=$(find -L /mnt/games -type f -iname '*.chd' | wc -l)
@@ -17,12 +18,14 @@ nescount=$(find -L /mnt/games -type f -iname '*.nes' | wc -l)
 pbpcount=$(find -L /mnt/games -type f -iname '*.pbp' | wc -l)
 thirty2xcount=$(find -L /mnt/games -type f -iname '*.32x' | wc -l)
 threedscount=$(find -L /mnt/games -type f -iname '*.3ds' | wc -l)
+wuacount=$(find -L /mnt/games -type f -iname '*.wua' | wc -l)
 sevenzcount=$(find -L /mnt/games -type f -iname '*.7z' | wc -l)
-gamescount=$(($isocount + $bincount + $chdcount + $zipcount + $execount + $nspcount + $gbacount + $imgcount + $nescount + $pbpcount + $thirty2xcount + $threedscount + $sevenzcount))
+gamescount=$(($romcount + $isocount + $bincount + $chdcount + $zipcount + $execount + $nspcount + $gbacount + $imgcount + $nescount + $pbpcount + $thirty2xcount + $threedscount + $wuacount + $sevenzcount))
 
 echo "** Games Library Stats"
 echo -e
 echo "File Types:"
+echo ".ROM count: $romcount"
 echo ".ISO count: $isocount"
 echo ".BIN count: $bincount"
 echo ".CHD count: $chdcount"
@@ -37,6 +40,7 @@ echo ".NES count: $nescount"
 echo ".PBP count: $pbpcount"
 echo ".32x count: $thirty2xcount"
 echo ".3DS count: $threedscount"
+echo ".WUA count: $wuacount"
 echo ".7z count: $sevenzcount"
 echo -e
 echo "Total identified possible games: $gamescount"
