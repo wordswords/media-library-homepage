@@ -26,9 +26,15 @@ remove_links "./games-inventory.html"
 ./print-audiobooks-library-stats.sh > ./audiobooks-stats.txt
 ./print-music-library-stats.sh > ./music-stats.txt
 ./print-comics-library-stats.sh > ./comics-stats.txt
+./print-games-library-stats.sh > ./games-stats.txt
+./print-video-library-stats.sh > ./video-stats.txt
+./print-TV-library-stats.sh > ./TV-stats.txt
 
 ./insert-stats-to-inventory.sh ./ebooks-stats.txt ./ebooks-inventory.html
 ./insert-stats-to-inventory.sh ./music-stats.txt ./music-inventory.html
 ./insert-stats-to-inventory.sh ./comics-stats.txt ./comics-inventory.html
 ./insert-stats-to-inventory.sh ./audiobooks-stats.txt ./audiobooks-inventory.html
+./insert-stats-to-inventory.sh ./games-stats.txt ./games-inventory.html
+./insert-stats-to-inventory.sh ./TV-stats.txt ./TV-inventory.html
+./insert-stats-to-inventory.sh ./video-stats.txt ./video-inventory.html
 
