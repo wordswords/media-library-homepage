@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Warstone TD</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Warstone TD</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-17/07/2025">17/07/2025</a> 19:45:19</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-17/07/2025">17/07/2025</a> 20:17:39</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Humble Keys Library">Humble Keys Library</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Humble Keys">Humble Keys</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-Humble Key: steam">Humble Key: steam</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.humblebundle.com/downloads?key=mxeUCTqpDBkZREPZ" target="_blank">Humble Purchase URL</a><br/><a href="https://store.steampowered.com/app/562500" target="_blank">Steam</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video missing">[EMT] Video missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Ludusavi] Unknown save data">[Ludusavi] Unknown save data</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Bundle: February 2020 Humble Choice">Bundle: February 2020 Humble Choice</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Key: Unredeemed">Key: Unredeemed</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					A fearsome Chieftain is gathering an army, intent on the subjugation of the realm. The Villagers cry out for a hero! Someone to rise up and rescue them from their plight. This burden falls to you. Build a city, train an army, and equip your subjects. Seek out the assistance of helpful allies, such as dwarves, amazons, and sorceresses. With allies to help, and an army of your own, you can defeat the invading army and make the realm safe again!<div class="bb_img_ctn"><img class="bb_img" src="https://battlecruiser.ru/wstd/english.jpg" crossorigin="anonymous" /></div><h2 class="bb_tag"><strong>Features</strong></h2><ul class="bb_ul">    <li>7 basic units, with a further 15 available as upgrades!<br>    </li><li>Intriguing story with beautifully drawn artwork.<br>    </li><li>3 Vastly different Classes for you to choose from: Warlord, Sorcerer, and Treasurer. Over 70 different skills in all!<br>    </li><li>Diverse array of spells: Firewall, Lightning, Meteor Shower, Titan's Fist, Summon Elemental, Poisonous Cloud, Transmutation, and more! Only 4 spells can be brought into battle though, so choose wisely!<br>    </li><li>Multiple different game modes: Classic, Challenge, Survival, Maze, Hero Defense, Attack/Defend (Also used in PvP,) and Co-op missions.<br>    </li><li>Upgrade Defenders in the workshop! Multiple upgrades with several tiers for each defender. More upgrades become available as you build and improve your town.</li></ul><br><div class="bb_img_ctn"><img class="bb_img" src="https://battlecruiser.ru/wstd/stones.jpg" crossorigin="anonymous" /></div><h2 class="bb_tag"><strong>Gameplay</strong></h2>Unlike regular Tower Defense games, Warstone TD has a unique method of summoning defenders (towers). You start with a fairly empty map and a few stones where you can place defenders. As the level progresses, more stones appear and some even drop from enemies, allowing you to place them in any valid position on the map. Powerful Warstones also appear occasionally which give significant bonuses to defenders standing on them. You can summon any of the 5 basic defenders on the stones: Peasant, Archer, Rifleman, Sorceress, and Elemental. Each basic defender has its own upgrade path, damage type, gold cost, and special abilities! <br><br><br>Warstone TD also has 2 extra base units only available for use in attack/defense missions, the Eagle and the Wolf. Each have branching upgrade paths, like the basic defenders. With such a variety of defenders and game classes there is a huge amount of tactics in PvP battles, increasing replayability even further!<br><br>There are 30 story missions and each mission has 3 modes: Campaign, Challenge, and Survival. The player can choose the difficulty of each mission from 4 settings: Easy, Normal, Hard, and Nightmare. Each mode has a unique achievement which gives a star when completed, the color of the star corresponds to the difficulty of the mission: gold for Nightmare, silver for Hard, and bronze for Normal. Levels have a lot of possible solutions but, with so many combinations, you're going to need to perfect your strategy to master them. And just in case you forget how awesome you are, there's an online leaderboard, which tracks your score, both in Campaign mode and PvP. Compete with your friends, or enemies!<br><br><div class="bb_img_ctn"><img class="bb_img" src="https://battlecruiser.ru/wstd/meteors.jpg" crossorigin="anonymous" /></div><h2 class="bb_tag"><strong>Class system</strong></h2>After you progress through the first 4 missions in the campaign, you are able to choose a class to augment your abilites in battle. The classes are non-linear, you can pick and choose skills from any class, but you have to focus on a class if you want to get the most powerful skills.<br><ul class="bb_ul">   <li>The Mighty Warlord greatly increases the effectiveness of your army! He improves the power and abilities of your defenders, can unleash the power of stone to help in battle; allowing placement of stones to slow nearby enemies, or give you a surge of mana and gold. He also has skills which allow your defenders to level up in battle, becoming more powerful with each successive rank.<br>   </li><li>The Cunning Treasurer's weapon is gold! He is a master of item storage, able to fit an improbably large number of items into his backpack, and find many more scrolls and even potions during battles. Everything he does is for gold! He is able to increase bounty for enemies killed, make his own defenders cheaper, and eventually can even get a powerful spell that allows you to transmute an enemy into pure gold! With all of these abilities, the Treasurer can field a much bigger army than any other class.<br>   </li><li>The Powerful Sorcerer is able to complete levels using only spells! He can bring up to eight spells into battle, increasing flexibilty greatly. His skills revolve around buffing spell effectiveness, regenerating mana, unlocking more powerful spells, and he can even transform units into mana. Among the spells the sorcerer can unlock are: Summon Elemental, Reduction; which shrinks and debuffs monsters, Meteor Shower, and Teleportation; which allows you to teleport defenders to any available stone on the map.</li></ul>Join the fight today, in Warstone TD!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
