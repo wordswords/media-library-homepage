@@ -60,7 +60,7 @@
         </div>
         <br/>
         <p>Any links marked with <span class="public">[PUBLIC]</span> are publicly accessible, everything else is private and secured.</p>
-        <h2>Replace <span id="currenthostname">hq</span> with other host in all links</h2>
+        <h2>Replace <span id="currenthostname">hq.local</span> with other host in all links</h2>
         <input type="text" id="host" value="192.168.194.62" />
         <button onclick="replaceHostname()">Replace</button>
         <script>
@@ -69,7 +69,7 @@
                 var links = document.getElementsByTagName("a");
                 for (var i = 0; i < links.length; i++) {
                     var link = links[i];
-                    link.href = link.href.replace("hq", hostname);
+                    link.href = link.href.replace("hq.local", hostname);
                 }
                 var hostnamespan = document.getElementById("currenthostname");
                 hostnamespan.innerHTML = hostname;
@@ -166,10 +166,10 @@
                 <p>Both these Calibre libraries are full of downloadable books designed to be accessed and read via web browser. You need to login with the username 'admin' and the password 'admin123' for both.</p>
                     <ul>
                         <li>
-                            <a href="http://hq:8883">Ebooks - Calibre Web Automated Interface</a>
+                            <a href="http://hq.local:8883">Ebooks - Calibre Web Automated Interface</a>
                         </li>
                         <li>
-                            <a href="http://hq:8885">Comics/PDFs - Calibre Web Interface</a>
+                            <a href="http://hq.local:8885">Comics/PDFs - Calibre Web Interface</a>
                         </li>
                         <li>
                             <a href="comics-inventory.html">Comics/PDFs Inventory <span class="public">[PUBLIC]</span></a>
@@ -184,7 +184,7 @@
                 <ul>
                     <li><a href="https://trakt.tv/dashboard">Trakt.tv - Keeping track of TV series and movies that you've watched, with recommendations <span class="public">[PUBLIC]</span></a></li>
                     <li>
-                        <a href="http://hq:8181">Tautulli - Plex Server Analytics and Additional Tools</a>
+                        <a href="http://hq.local:8181">Tautulli - Plex Server Analytics and Additional Tools</a>
 
                     </li>
                     <li>
@@ -312,14 +312,14 @@
                 If a username/password is required then it's Username:'admin' and Password:'admin123'.
             </p>
                 <ul>
-                    <li>Calibre EPUBs - <a href="http://hq:8081">http://hq:8081</a></li>
-                    <li>Calibre PDFs and Comics - <a href="http://hq:9081">http://hq:9091</a></li>
+                    <li>Calibre EPUBs - <a href="http://hq.local:8081">http://hq.local:8081</a></li>
+                    <li>Calibre PDFs and Comics - <a href="http://hq.local:9081">http://hq.local:9091</a></li>
                 </ul>
             </p>
             <h2>Network Hostnames to Remember</h2>
             <p>
                 <ul>
-                    <li>hq - Home server</li>
+                    <li>hq.local - Home server</li>
                     <li>router - Home router</li>
                     <li>switch - Home 10Gb/sec switch</li>
                 </ul>
@@ -328,7 +328,7 @@
             <p>
                 <ul>
                     <li>
-                        <a href="http://hq:3005/d/ATIxYkO7k/endlessh?orgId=1&refresh=5s">Endlessh SSH Honeypot Grafana Dashboard (username: admin / password: admin123)</a>
+                        <a href="http://hq.local:3005/d/ATIxYkO7k/endlessh?orgId=1&refresh=5s">Endlessh SSH Honeypot Grafana Dashboard (username: admin / password: admin123)</a>
                     </li>
                     <li>
                         <b>Router iperf3 server (192.168.1.242)</b> e.g: <pre>sudo iperf3 -c 192.168.1.242</pre>
@@ -338,35 +338,35 @@
             <p>
                 <ul>
                     <li>
-                        <a href="http://hq:8686">Lidarr Web Interface</a>
+                        <a href="http://hq.local:8686">Lidarr Web Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:5299">LazyLibrarian Web Interface</a>
+                        <a href="http://hq.local:5299">LazyLibrarian Web Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:8099">Mylar3 Web Interface</a>
+                        <a href="http://hq.local:8099">Mylar3 Web Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:8989">Sonarr Web Interface</a>
+                        <a href="http://hq.local:8989">Sonarr Web Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:9696">Prowlarr Web Interface</a>
+                        <a href="http://hq.local:9696">Prowlarr Web Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:7878">Radarr Web Interface</a>
+                        <a href="http://hq.local:7878">Radarr Web Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:7070">QBitTorrent Web Interface</a>
+                        <a href="http://hq.local:7070">QBitTorrent Web Interface</a>
                     </li>
                 </ul>
             </p>
             <h2>Calibre Admin</h2>
                 <ul>
                     <li>
-                        <a href="http://hq:8090">Ebooks Calibre Desktop Admin Interface</a>
+                        <a href="http://hq.local:8090">Ebooks Calibre Desktop Admin Interface</a>
                     </li>
                     <li>
-                        <a href="http://hq:9080">Comics/PDFs Calibre Desktop Admin Interface</a>
+                        <a href="http://hq.local:9080">Comics/PDFs Calibre Desktop Admin Interface</a>
                     </li>
                 </ul>
                 <h2>External Tools</h2>
