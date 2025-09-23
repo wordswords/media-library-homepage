@@ -1,0 +1,690 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Breath of Fire IV</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Breath of Fire IV</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-10/05/2025">10/05/2025</a> 19:13:10</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-10/05/2025">10/05/2025</a> 19:15:31</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-26/04/2000">26/04/2000</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-JRPG">JRPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing">Role-playing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based">Turn-based</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Capcom / GOG">Capcom / GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Capcom">Capcom</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Cloud Saves">Cloud Saves</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Controller support">Controller support</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/forum/breath_of_fire_iv" target="_blank">Forum</a><br/><a href="https://www.gog.com/en/game/breath_of_fire_iv" target="_blank">Store Page</a><br/><a href="http://pcgamingwiki.com/w/index.php?search=Breath of Fire IV" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video missing">[EMT] Video missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Install Drive] C:\">[Install Drive] C:\</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Ludusavi] Unknown save data">[Ludusavi] Unknown save data</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Atmospheric">Atmospheric</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Classic">Classic</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Combat">Combat</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Good Old Game">Good Old Game</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Great Soundtrack">Great Soundtrack</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-JRPG">JRPG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Magic">Magic</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Only On GOG">Only On GOG</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Role-playing">Role-playing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based">Turn-Based</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<a href="https://www.gog.com/dreamlist/"><img src="https://items.gog.com/breath_of_fire_iv/Dreamlist.png"></a><br><hr>
+
+<div class="description_lang_selector">
+    <div class="description_lang_group">
+        <input type="radio" name="description_lang_radio" id="description_lang_radio_en" checked>
+        <label class="label_description_lang_radio_en" for="description_lang_radio_en"></label>
+    </div>
+    <div class="description_lang_group">
+        <input type="radio" name="description_lang_radio" id="description_lang_radio_jp">
+        <label class="label_description_lang_radio_jp" for="description_lang_radio_jp"></label>
+    </div>
+</div>
+<div class="description_lang" id="description_lang_en">
+    <img src="https://items.gog.com/breath_of_fire_iv/story_system_1.png">
+    <br>
+    <p style="margin: 15px"></p>
+    In a far-away world, two continents float, separated by a vast swamp-land. For eons, no
+    contact existed between the two continents because ships couldn’t sail across the expanse.
+    At last, when the historic first contact was made between the two powers, war erupted!<br>
+    <br>
+    After long and costly fighting between the Fou Empire in the west and an alliance of
+    countries in the east, both sides exhausted all their strength and resources. With no other
+    alternative, the two powers agreed to an armistice.<br>
+    <br>
+    One year later, Princess Elina vanished. She had been traveling in the east from town to
+    town, exploring battlegrounds and visiting war veterans. Her trail vanished in a small town
+    near the front line. Nobody knew her whereabouts!<br>
+    <br>
+    The Eastern Alliance wanted to avoid sending a large army to the front. Such a move would be
+    a political blunder, breaking the armistice and stirring up hostilities. It became
+    impossible to carry out a large-scale search for Elina. Time passed... with no sign of the
+    princess.<br>
+    <br>
+    Elina’s sister, Princess Nina, finally makes up her mind. She leaves on a journey in search
+    of her sister – by herself.<br>
+     <br>
+    <img src="https://items.gog.com/breath_of_fire_iv/characters_system_3a.png">
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/ryu.jpg"
+                style="margin: 0px;">
+        </div>
+        <div class="character_description_description"><b>Ryu</b>
+            <hr>Ryu meets Nina while he is lying unconscious on a street in a desert town in the
+            eastern continent. His race and native land are unknown. Ryu has a Dragon’s Eye,
+            which empowers him with the amazing abilities to transform into a dragon and summon dragons.
+        </div>
+    </div>
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/nina_v1.jpg"
+                style="margin: 0px;">
+        </div>
+        <div class="character_description_description"><b>Nina</b>
+            <hr>The princess of Wyndia, a town of the Fae tribe (winged folk). Nina meets Ryu on
+            her journey to seek her lost sister Elina. Though somewhat naïve, Nina is
+            skilled in <i>Healing</i> magic.
+        </div>
+    </div>
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/scias.jpg"
+                style="margin: 0px;">
+        </div>
+        <div class="character_description_description"><b>Scias</b>
+            <hr>A mercenary soldier, Scias was hired by the eastern side during the war. Scias
+            becomes the party’s watcher. He is very quiet and aloof from the world. Scias can
+            perform a powerful double attack with his sword.
+        </div>
+    </div>
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/cray.jpg"
+                style="margin: 0px;">
+        </div>
+        <div class="character_description_description"><b>Cray</b>
+            <hr>A young leader of the Woren tribe (cat people) in the eastern alliance, Cray
+            joins Nina to search for Princess Elina, his childhood friend.
+            He has a strong sense of responsibility and acts as the leader of the party. His
+            high offensive and defensive abilities are very dependable.
+        </div>
+    </div>
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/ershin_v1.jpg"
+                style="margin: 0px;"></div>
+        <div class="character_description_description"><b>Ershin</b>
+            <hr>Ershin wears completely sealed armor to protect her from any kind of curse.
+            Since she wears the armor all the time, no one knows her real face or background.
+            She meets the party in a mysterious place polluted by a curse and decides to join
+            them.
+        </div>
+    </div>
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/ursula.jpg"
+                style="margin: 0px;">
+        </div>
+        <div class="character_description_description"><b>Ursula</b>
+            <hr>Ursula is a middle-class leader of the Fou Empire. She came to the eastern
+            continent in search of dragons, and meets up with Ryu and his companions. Ursula was
+            brought up in the military, and knows very little about worldly concerns. She is
+            excellent at attacking with both magic and weapons.
+        </div>
+    </div>
+    <div class="character_description">
+        <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/fou_lu.jpg"
+                style="margin: 0px;">
+        </div>
+        <div class="character_description_description"><b>Fou-Lu</b>
+            <hr>Fou-lu unified the western continent single-handedly with his paranormal powers.
+            He became the first emperor of the Fou Empire several hundred years ago. Despite his
+            youthful look, he has mystic dignity. It is said that he predicted his own
+            resurrection as he passed away.
+        </div>
+    </div>
+    <br>
+    <h4>Here’s how we ensured that this masterpiece is better than ever and what you can expect
+        with GOG’s version of the game:</h4>
+    <br>
+    <ul>
+        <li>Full compatibility with Windows 10 and Windows 11</li>
+        <li>Both 2 localizations of the game included (English and Japanese)</li>
+        <li>Improved DirectX game renderer</li>
+        <li>New rendering options (Windowed Mode, Vertical Synchronization Control, Gamma
+            Correction, Integer Scaling, Anti-Aliasing, and more)</li>
+        <li>Improved audio engine (restored missing environmental sounds and audio
+            configuration)</li>
+        <li>Improved keyboard and mouse support</li>
+        <li>Improved Warehouse and Crane minigames</li>
+        <li>Improved F9 exit screen</li>
+        <li>Issue-free battle and combo system (all crashes have been fixed)</li>
+        <li>Issue-free cutscene scripting</li>
+        <li>Issue-free task switching</li>
+        <li>Full support for modern controllers (Sony DualSense, Sony DualShock4, Microsoft Xbox
+            Series, Microsoft Xbox One, Microsoft Xbox 360, Nintendo Switch, Logitech F series
+            and many more) with optimal button binding, vibration, hotplugging and wireless mode
+        </li>
+    </ul>
+    <br>
+    <img src="https://items.gog.com/breath_of_fire_iv/fou_lu_bof4_v1.jpg">
+    <br>
+    <h4>Let’s go back in time to the PlayStation 1 era and reminisce about how Breath of Fire IV
+        was presented to gamers back in 2000:</h4>
+    <br>
+    After centuries of war, the two lands bordering an impenetrable swampland have finally
+    reached an armistice. Mysteriously, the noble Princess Elina disappears somewhere near the
+    war-ravaged front lines. Distraught, her sister Nina goes in search of the Princess alone
+    and on her journey, meets a mysterious young warrior named Ryu. Their destinies soon
+    entwine. The next chapter in the epic tale of magic and mystery now unfolds. The fate of
+    what lies ahead rests in your control.
+    <br>
+    <br>
+    <h4>FEATURES:</h4>
+    <ul>
+        <br>
+        <li> Stunning New and Improved Graphics – High Resolution, Animated Characters in Vast
+            3-D Worlds</li>
+        <li>More Than 200 Spells to Learn and Master – Unlock New Magic From Opponents</li>
+        <li>2 Epic Intertwining Storylines – Follow the Fates of Ryu and Fou-Lu – A Classic RPG
+            Adventure!</li>
+    </ul>
+    <br>
+    <img src="https://items.gog.com/breath_of_fire_iv/BOF4_back_cover.jpg">
+</div>
+<div class="description_lang" id="description_lang_jp" style="display: none;">
+    <div lang="ja">
+        <img src="https://items.gog.com/breath_of_fire_iv/story_jp.png">
+        <br>
+        <p style="margin: 15px"></p>
+        泥に覆われた世界。<br>
+        流れ、たゆたい、渦をなす泥の大洋に隔てられた二つの大陸。<br>
+        閉ざされた世界。泥の海に船は進めない。<br>
+        近くて遠い、二つの大陸。<br>
+        歴史上最初の大掛かりな接触。<br>
+        不幸。<br>
+        戦争。<br>
+        いつものこと。<br>
+        <br>
+        長く続いた戦争が終わる。<br>
+        西と東。<br>
+        強大な帝国と、それに抗すべく連合した諸国。<br>
+        双方ともに疲弊。<br>
+        休戦。<br>
+        よくある結末。<br>
+        <br>
+        エリーナ王女が、前線の町で消息を絶ったのは、休戦が成立した一年ほど後のことだ。<br>
+        戦災で傷ついた人々を、彼女は見舞わずにいられなかった。<br>
+        周囲の反対を押し切り、小人数で前線の町に赴いた。<br>
+        復興の気運に湧くその町で、王女が何を見、何を感じたのかは分からない。<br>
+        エリーナ王女の行方は、その町を最後に知れない。<br>
+        前線に部隊を送り、帝国を刺激したくない。<br>
+        政治的な理由が、大規模な捜索を不可能にした。<br>
+        おざなりの探索。<br>
+        無為な時間。<br>
+        ニーナは決意する。<br>
+        姉を探しに旅に出ることを。<br>
+         <br>
+        <img src="https://items.gog.com/breath_of_fire_iv/characters_jp.png">
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/ryu.jpg"
+                    style="margin: 0px;">
+            </div>
+            <div class="character_description_description"><b>リュウ</b>
+                <hr>東大陸の砂漠地帯の街道で倒れていたところをニーナに発見される。
+                <br><br>
+                種族、出身地等不明。
+                <br><br>
+                この世界で奇相とされる『竜眼』を持つ。『竜眼』の持ち主は、天下を取る、あるいは世に災いをもたらす等、様々に言い伝えられている。しかし、普段のリュウからそのような神秘性を感じ取ることは難しい。
+            </div>
+        </div>
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/nina_v1.jpg"
+                    style="margin: 0px;">
+            </div>
+            <div class="character_description_description"><b>ニーナ</b>
+                <hr>東側連合に組する王国、ウインディアの王女。
+                <br><br>
+                飛翼族。
+                <br><br>
+                行方不明になった姉を探す旅の途中でリュウと出会う。育ちの良さもあるが、少々子供っぽい部分があり、悪く言えば頼りない。美人でしっかり者の姉を尊敬している。
+            </div>
+        </div>
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/scias.jpg"
+                    style="margin: 0px;">
+            </div>
+            <div class="character_description_description"><b>サイアス</b>
+                <hr>戦時中東側に雇われていた傭兵。
+                <br><br>
+                戦後は仕事がなく、ぶらぶらしていた。
+                <br><br>
+                ある事件がきっかけで、主人公たちのお目付け役となる。
+                非常に無口で、ひょうひょうとしているが、頼れる一面もある。酒好き。
+            </div>
+        </div>
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/cray.jpg"
+                    style="margin: 0px;">
+            </div>
+            <div class="character_description_description"><b>クレイ</b>
+                <hr>東側連合傘下フーレン族の若き族長。
+                <br><br>
+                ニーナと共に、幼馴染であったエリーナ王女の捜索に乗り出す。
+                <br><br>
+                好戦的なフーレン族の中にあって、勉めて冷静であることを自己に課している。
+                <br><br>
+                族長であるという責任感がそうさせるのだが、時に苛立ち、感情を爆発させることもある。<br>
+                戦闘力は高く、先の大戦ではいくつかの軍功を得ている。
+            </div>
+        </div>
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/ershin_v1.jpg"
+                    style="margin: 0px;"></div>
+            <div class="character_description_description"><b>マスター</b>
+                <hr>呪いを防ぐ完全密封のよろいを着ている。
+                <br><br>
+                食べるときも寝るときもよろいを脱がないので、<br>
+素顔や種族が分からない。
+                <br><br>
+                見当はずれのことを言ったり、場違いに笑い出したりと、少し言動の怪しいところがある。
+                <br><br>
+                呪いに汚染された場所で主人公に出会い、その後なぜか行動を共にする。
+            </div>
+        </div>
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/ursula.jpg"
+                    style="margin: 0px;">
+            </div>
+            <div class="character_description_description"><b>アースラ</b>
+                <hr>ラッソと同じく、帝国軍の隊長。
+                <br><br>
+                平民出身だが、将軍の一人に魔法力の高さを買われて入隊。
+                <br><br>
+                魔力駆動式の銃の扱いに長け、冷静で信頼の置ける軍人だと評される。
+                東側中立地帯の捜索隊に加わっている。
+            </div>
+        </div>
+        <div class="character_description">
+            <div class="character_description_image"><img src="https://items.gog.com/breath_of_fire_iv/fou_lu.jpg"
+                    style="margin: 0px;">
+            </div>
+            <div class="character_description_description"><b>フォウル</b>
+                <hr>西側、フォウ帝国の始祖。初代皇帝。
+                <br><br>
+                超常的な力をもって、西大陸の全土の統一を一代で果たした。
+                <br><br>
+                その後、数百年後に復活することを自ら預言し、没したとされる。
+                外見こそ20代そこそこだが、神秘的とすら言える威厳と怜悧（れいり）さをそなえており、没後、神格化され『神皇（しんのう）』と呼ばれる。
+            </div>
+        </div>
+        <br>
+        <h4>この傑作を最高の形で皆様のもとにお届けするため、GOG版では以下の調整を実施：</h4>
+        <br>
+        <ul>
+            <li>Windows 10とWindows 11との完全な互換性の実現</li>
+            <li>全2言語版への対応（英語、日本語）</li>
+            <li>DirectXゲームレンダラーの調整</li>
+            <li>新しい画面描画オプションの追加（ウィンドウモード、垂直同期コントロール、ガンマ補正、整数スケーリング、アンチエイリアシングほか）</li>
+            <li>オーディオエンジンの改善（再生されていなかった一部環境音の修復とオーディオ調整）</li>
+            <li>キーボードとマウス対応の改善</li>
+            <li>倉庫整理とクレーンミニゲームの改善</li>
+            <li>F9キーによるゲーム終了画面の改善</li>
+            <li>バトルとコンボシステムの修復（ゲームがクラッシュする不具合はすべて修正）</li>
+            <li>カットシーンにおける字幕表示の修正</li>
+            <li>タスク切り換え時の挙動の修正</li>
+            <li>メジャーなコントローラー（Sony DualSense、Sony DualShock4、Microsoft Xbox Series、Microsoft Xbox One、Microsoft Xbox
+                360、Nintendo Switch、Logitech Fシリーズほか多数）にホットプラグ機能やワイヤレスモードも含めて完全対応し、コントローラーごとに最適なボタン配置を提供
+            </li>
+        </ul>
+        <br>
+        <img src="https://items.gog.com/breath_of_fire_iv/fou_lu_bof4_v1.jpg">
+        <br>
+        <h4>初代PlayStationの時代にタイムスリップし、ブレスオブファイアIVが2000年当時どのように紹介されていたか振り返ってみよう：</h4>
+        <br>
+泥の海によって隔てられた二つの大陸――長く続く戦争ののち、ついに両大陸は休戦協定を結ぶ。時をおかずして、前線近くで姿を消すエリーナ王女。
+王女を探して単身旅に出た妹のニーナは、<br>リュウという名の謎の戦士と出会う。絡み合う二人の運命。謎と魔法の壮大な物語が新たに幕を上げる。君の手で運命を切り開け。
+
+        <br>
+        <br>
+        <h4>特徴：</h4>
+       <ul>
+<br>
+<li> 強化されたグラフィック <br>
+<i> 高解像度のアニメーションキャラクターで広大な3D世界を冒険しよう</i></li><li>200種以上の魔法 <br>
+<i> 敵から新たな魔法を解放しよう</i></li>
+<li>2つの壮大な物語 <br>
+<i> 絡み合うリュウとフォウルの運命を見届けよう</i>
+</li></ul>
+        <br>
+        <img src="https://items.gog.com/breath_of_fire_iv/BOF4_back_cover.jpg">
+    </div>
+</div>
+<br>
+<p class="module">Texture filtering modes can be changed via DirectX Settings configuration tool.<br>
+<br>
+Press F9 key on the keyboard to return to main menu or quit the game.</p>
+<br><br>
+<div class="container" style="display: flex; justify-content: center;"><br><img src="https://items.gog.com/breath_of_fire_iv/CERO_C.png"><br><img src="https://items.gog.com/breath_of_fire_iv/CERO_Crime.png"><br><img src="https://items.gog.com/breath_of_fire_iv/ACB_PG.png"><br><img src="https://items.gog.com/breath_of_fire_iv/FPB_16.png"><br><img src="https://items.gog.com/breath_of_fire_iv/GCAM_12.png"><br><img src="https://items.gog.com/breath_of_fire_iv/RARS_12.png"><br><img src="https://items.gog.com/breath_of_fire_iv/GSRR_15.png"><br></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const radioButtons = document.querySelectorAll('input[name="description_lang_radio"]');
+        const descriptions = document.querySelectorAll('.description_lang');
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function () {
+                descriptions.forEach(desc => {
+                    desc.style.display = 'none';
+                });
+
+                const selectedLang = this.id.split('_').pop();
+                document.getElementById(`description_lang_${selectedLang}`).style.display = 'block';
+            });
+        });
+    });
+</script>
+<style>
+    .description_lang_selector {
+        padding: 5px;
+        border-radius: 1px;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        display: flex;
+    }
+
+    .description_lang_group {
+        margin-right: 11px;
+    }
+
+    .description_lang_head {
+        font-weight: 600;
+    }
+
+    input[name="description_lang_radio"] {
+        margin: 0;
+        margin: 4px 4px;
+    }
+
+    .character_description {
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0, 0, 0, .08);
+        padding-bottom: 15px;
+        padding-top: 15px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .character_description_image {
+        float: left;
+        margin: 5px 15px 0px 0px;
+        height: auto;
+        justify-content: center;
+    }
+
+    /* width bigger than 480px */
+    @media (min-width: 480px) {
+        .character_description_image>img {
+            max-width: 140px !important;
+        }
+
+        .character_description_description {
+            overflow: hidden;
+            flex-grow: 1;
+        }
+    }
+
+    /* width smaller than 480px */
+    @media (max-width: 480px) {
+        .character_description_image>img {
+            max-width: 100px !important;
+        }
+
+        .character_description_description {
+            overflow: hidden;
+            flex-grow: 1;
+        }
+    }
+</style>
+
+<style>
+    label.label_description_lang_radio_en::after {
+        content: "English"
+    }
+    label.label_description_lang_radio_jp::after {
+        content: "Japanese"
+    }
+</style>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

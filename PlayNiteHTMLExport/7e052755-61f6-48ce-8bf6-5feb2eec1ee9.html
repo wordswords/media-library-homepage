@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Heroes of Might and Magic III: Horn of the Abyss</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Heroes of Might and Magic III: Horn of the Abyss</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-12/06/2025">12/06/2025</a> 6:48:38</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-12/06/2025">12/06/2025</a> 6:49:04</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-2008">2008</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-95">95</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Turn-based">Turn-based</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-HotA Crew">HotA Crew</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-HotA Crew">HotA Crew</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/forum/heroes_of_might_and_magic_iii_horn_of_the_abyss" target="_blank">Forum</a><br/><a href="https://www.gog.com/en/game/heroes_of_might_and_magic_iii_horn_of_the_abyss" target="_blank">Store Page</a><br/><a href="http://pcgamingwiki.com/w/index.php?search=Heroes of Might and Magic III: Horn of the Abyss" target="_blank">PCGamingWiki</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video Micro missing">[EMT] Video Micro missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[EMT] Video missing">[EMT] Video missing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-[Ludusavi] Unknown save data">[Ludusavi] Unknown save data</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Fantasy">Fantasy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Mod">Mod</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/><a href="default%20list%20text%20combobox%20quicklinks_tag_ascending_name_ascending.html#quicklink-Turn-Based">Turn-Based</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<video muted loop preload="auto" autoplay="autoplay" style="margin: auto;display:block;width:100%"><source src="https://items.gog.com/heroes_of_might_and_magic_iii_horn_of_the_abyss/Factory.mp4" type="video/mp4"></video><br>
+<h4><b>Horn of the Abyss</b></h4>
+<br>
+<i>The definitive fan expansion to Heroes of Might and Magic III.</i><br><br>
+Horn of the Abyss (HotA) is a meticulously crafted fan-made expansion for Heroes of Might and Magic III, designed to seamlessly integrate with the original game's mechanics and aesthetics. Developed by HotA Crew, this expansion introduces new content that honors the legacy of the original while enhancing gameplay depth and variety.<br>
+ 
+<h4><b>New Factions: Cove and Factory</b></h4>
+<br>
+<strong>Cove</strong><br>
+Set sail with the Cove, a seafaring faction hailing from the pirate kingdom of Regna. This town introduces a lineup of aquatic and pirate-themed creatures, such as Nymphs, Corsairs, and the terrifying Sea Serpents. The Cove's distinctive gameplay revolves around naval dominance and swift assaults, offering a fresh strategic experience.
+<br><br>
+<strong>Factory</strong><br>
+Embrace innovation with the Factory, a steampunk-inspired faction blending technology and nature. Its creatures range from Halflings and Armadillos to mechanical Automatons and the powerful Dreadnoughts. The Factory's unique dual-path development allows players to choose between technological advancement and natural synergy, providing diverse tactical options.
+<br><br>
+<h4><b>Expanded Hero Roster</b></h4>
+<br>
+HotA enriches the hero lineup by adding 16 new heroes for each of the new towns, Cove and Factory, as well as a number of striking campaign-specific figures, totaling 37 new playable characters. Additionally, several existing heroes have been reintroduced or rebalanced to enhance gameplay diversity.
+<br><br>
+<h4><b>New Campaigns</b></h4>
+<br>
+HotA introduces five new campaigns, expanding the game's narrative and strategic depth:<br><br>
+<ul>
+<li><b>Under the Jolly Roger: </b>Follow Captain Jeremy Albatross on his quest for survival as he finds himself in uncharted land.
+ </li>
+<li><b>Terror of the Seas: </b>Navigate treacherous waters and confront formidable foes in this suspenseful maritime adventure.
+ </li>
+<li><b>Horn of the Abyss: </b>Delve into the mystery surrounding the eponymous great artifact and its impact on the world.
+ </li>
+<li><b>Forged in Fire: </b>Experience the rise of the Factory faction amidst the chaos of wars and find the best use for your heroes’ ingenious innovations.
+ </li>
+<li><b>All In: </b>Witness your former foe embarking on a high-stakes journey that tests the limits of strategy and courage.
+ </li>
+</ul>
+<br>
+<b>These campaigns provide hours of immersive gameplay.</b>
+<br><br>
+<h4><b>Revamped and Expanded</b></h4>
+<br>
+<ul>
+<li>Dozens of new artifacts, including the devastating <i>Horn of the Abyss</i> and the mind-shielding <i>Sleepkeeper</i>, change the flow of combat and map control.</li>
+<li>Some secondary skills are revamped with the aim to make each one playable and useful without crossing into overpowered territory.</li>
+<li>Classic characters return with fresh polish, and familiar faces reemerge with lore-respecting twists.</li>
+<li>Enhanced map and campaign editors, new terrains like Highlands and Wasteland, a wealth of new objects and options, as well as refined random map templates, give creators more power than ever.</li>
+<li>Updated visuals, interface enhancements, and subtle town balance changes make everything smoother, sharper, and more satisfying.</li>
+</ul>
+
+<br>
+From external dwellings accumulating weekly growths to the all-new spell research system, <i>Horn of the Abyss</i> is designed with convenience, mechanical depth and immersive lore in mind. Every change respects the source material while pushing the boundaries of what's possible in the <i>Heroes III</i> universe.<br>
+<br>
+Whether you're chasing nostalgic glory or discovering this legend for the first time, <i>Horn of the Abyss</i> is the definitive way to play one of the greatest turn-based strategy games ever made.
+<br><br>
+Horn of the Abyss comes with the essential HD Mod by Baratorch integrated. This product provides for high resolution functionality, extended graphics settings, a vibrant online lobby for seamless multiplayer gaming and many further quality of life enhancements.
+<br><br>
+<img src="https://items.gog.com/heroes_of_might_and_magic_iii_horn_of_the_abyss/cove_townscreen_animation.gif">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
