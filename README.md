@@ -2,7 +2,7 @@
 
 ![Screenshot](screenshot.png "Screenshot of latest version of page")
 
-A simple personal homepage that I use to list and organise my media.
+A simple personal homepage that I use to list and organise my media. It also acts as as 'personal home page' with lots of bookmarks I regularly use.
 
 # Access
 
