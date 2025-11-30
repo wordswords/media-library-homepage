@@ -2,12 +2,12 @@
 
 File Types:
 FLAC count: 441
-MP3 count: 854
+MP3 count: 1137
 WAV count: 0
 OGG count: 0
 M4A count: 0
-Total track count: 1295
-Total file count: 1319
+Total track count: 1578
+Total file count: 1637
 
 Total size of audiobooks library:
-46G	/home/audiobooks
+54G	/home/audiobooks
