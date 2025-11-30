@@ -1,0 +1,9 @@
+** TV Library Stats
+
+File Types:
+MKV count: 1550
+MP4 count: 493
+Total TV episode count: 2043
+
+Total size of TV library:
+3.0T	/home/TV

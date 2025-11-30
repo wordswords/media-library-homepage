@@ -1,16 +1,25 @@
 ** Games Library Stats
 
 File Types:
+.ROM count: 33
 .ISO count: 31
-.BIN count: 1065
-.CHD count: 81
-.ZIP count: 7326
+.BIN count: 1075
+.CHD count: 86
+.ZIP count: 7327
 .EXE count: 483
 .XCI count: 11
 .NSP count: 14
 .GBA count: 218
+.NDS count: 19
+.IMG count: 9
+.NES count: 577
+.PBP count: 416
+.32x count: 33
+.3DS count: 1
+.WUA count: 2
+.7z count: 9
 
-Total identified possible games: 9218
+Total identified possible games: 10314
 
 Total size of games library:
-894G	/mnt/games
+903G	/home/games
