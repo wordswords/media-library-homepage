@@ -3,23 +3,23 @@
 
 set -e
 
-romcount=$(find -L /mnt/games -type f -iname '*.rom' | wc -l)
-isocount=$(find -L /mnt/games -type f -iname '*.iso' | wc -l)
-bincount=$(find -L /mnt/games -type f -iname '*.bin' | wc -l)
-chdcount=$(find -L /mnt/games -type f -iname '*.chd' | wc -l)
-zipcount=$(find -L /mnt/games -type f -iname '*.zip' | wc -l)
-execount=$(find -L /mnt/games -type f -iname '*.exe' | wc -l)
-xcicount=$(find -L /mnt/games -type f -iname '*.xci' | wc -l)
-nspcount=$(find -L /mnt/games -type f -iname '*.nsp' | wc -l)
-gbacount=$(find -L /mnt/games -type f -iname '*.gba' | wc -l)
-ndscount=$(find -L /mnt/games -type f -iname '*.nds' | wc -l)
-imgcount=$(find -L /mnt/games -type f -iname '*.img' | wc -l)
-nescount=$(find -L /mnt/games -type f -iname '*.nes' | wc -l)
-pbpcount=$(find -L /mnt/games -type f -iname '*.pbp' | wc -l)
-thirty2xcount=$(find -L /mnt/games -type f -iname '*.32x' | wc -l)
-threedscount=$(find -L /mnt/games -type f -iname '*.3ds' | wc -l)
-wuacount=$(find -L /mnt/games -type f -iname '*.wua' | wc -l)
-sevenzcount=$(find -L /mnt/games -type f -iname '*.7z' | wc -l)
+romcount=$(find -L /home/games -type f -iname '*.rom' | wc -l)
+isocount=$(find -L /home/games -type f -iname '*.iso' | wc -l)
+bincount=$(find -L /home/games -type f -iname '*.bin' | wc -l)
+chdcount=$(find -L /home/games -type f -iname '*.chd' | wc -l)
+zipcount=$(find -L /home/games -type f -iname '*.zip' | wc -l)
+execount=$(find -L /home/games -type f -iname '*.exe' | wc -l)
+xcicount=$(find -L /home/games -type f -iname '*.xci' | wc -l)
+nspcount=$(find -L /home/games -type f -iname '*.nsp' | wc -l)
+gbacount=$(find -L /home/games -type f -iname '*.gba' | wc -l)
+ndscount=$(find -L /home/games -type f -iname '*.nds' | wc -l)
+imgcount=$(find -L /home/games -type f -iname '*.img' | wc -l)
+nescount=$(find -L /home/games -type f -iname '*.nes' | wc -l)
+pbpcount=$(find -L /home/games -type f -iname '*.pbp' | wc -l)
+thirty2xcount=$(find -L /home/games -type f -iname '*.32x' | wc -l)
+threedscount=$(find -L /home/games -type f -iname '*.3ds' | wc -l)
+wuacount=$(find -L /home/games -type f -iname '*.wua' | wc -l)
+sevenzcount=$(find -L /home/games -type f -iname '*.7z' | wc -l)
 gamescount=$(($romcount + $isocount + $bincount + $chdcount + $zipcount + $execount + $nspcount + $gbacount + $imgcount + $nescount + $pbpcount + $thirty2xcount + $threedscount + $wuacount + $sevenzcount))
 
 echo "** Games Library Stats"
@@ -46,5 +46,5 @@ echo -e
 echo "Total identified possible games: $gamescount"
 echo -e
 echo "Total size of games library:"
-du -Lh /mnt/games | tail -n1
+du -Lh /home/games | tail -n1
 
