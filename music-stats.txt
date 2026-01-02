@@ -1,31 +1,13 @@
 ** Music Library Stats
 
 File Types:
-<<<<<<< HEAD
 FLAC count: 43847
 MP3 count: 25056
-||||||| f04e4168
-FLAC count: 38919
-MP3 count: 23533
-=======
-FLAC count: 43837
-MP3 count: 25048
->>>>>>> c096c543335cfbf0e9826eac7c1a07167caceac1
 WAV count: 14
 OGG count: 0
-<<<<<<< HEAD
 M4A count: 479
 Total track count: 68917
 Total file count: 151886
-||||||| f04e4168
-M4A count: 439
-Total track count: 62466
-Total file count: 110044
-=======
-M4A count: 479
-Total track count: 68899
-Total file count: 151849
->>>>>>> c096c543335cfbf0e9826eac7c1a07167caceac1
 
 Total size of music library:
 1.8T	/home/music

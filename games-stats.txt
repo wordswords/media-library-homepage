@@ -22,10 +22,4 @@ File Types:
 Total identified possible games: 78382
 
 Total size of games library:
-<<<<<<< HEAD
 8.1T	/home/games/
-||||||| f04e4168
-903G	/home/games
-=======
-8.1T	/home/games
->>>>>>> c096c543335cfbf0e9826eac7c1a07167caceac1
