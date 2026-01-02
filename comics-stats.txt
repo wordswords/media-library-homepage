@@ -1,17 +1,17 @@
 ** Comics Library Stats
 
 File Types:
-EPUB count: 2699
-PDF count: 9748
+EPUB count: 2645
+PDF count: 9571
 MOBI count: 32
 TXT count: 21
 RTF count: 0
 DOC count: 4
 CHM count: 25
-OPF count: 19456
-CBZ count: 917
-Total comics count: 32902
-Total file count: 56256
+OPF count: 17151
+CBZ count: 686
+Total comics count: 30135
+Total file count: 49754
 
 Total size of comics library:
-706G	/home/comics
+627G	/home/comics

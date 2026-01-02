@@ -1,9 +1,9 @@
 ** Video Library Stats
 
 File Types:
-MKV count: 60
-MP4 count: 323
-Total video count: 383
+MKV count: 63
+MP4 count: 324
+Total video count: 387
 
 Total size of music library:
-1.6T	/home/music
+1.8T	/home/music
