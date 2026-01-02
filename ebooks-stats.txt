@@ -14,4 +14,10 @@ Total books count: 64384
 Total file count: 89560
 
 Total size of ebooks library:
+<<<<<<< HEAD
 203G	/home/ebooks/
+||||||| f04e4168
+201G	/home/ebooks
+=======
+203G	/home/ebooks
+>>>>>>> c096c543335cfbf0e9826eac7c1a07167caceac1
