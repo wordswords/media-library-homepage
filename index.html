@@ -1,8 +1,15 @@
 <html>
 	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<title>David's Media Archives</title>
 		<base target="_blank"> 
 		<style>
+            #weather-input {
+                width:76px;
+            }
 			body {
 				background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("library.jpg");
 				background-color: black;
@@ -14,7 +21,9 @@
 			div#left {
 				float: left;
 			}
-			div#page-wrap {
+
+			body {
+                font-family: "Times New Roman", Times, serif;
 				font-size: 14pt;
 				color: white;
 				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
@@ -25,6 +34,7 @@
 				font-size: 14pt;
 				color: white;
 				text-shadow: 3px 0 0 #000, 0 -3px 0 #000, 0 3px 0 #000, -3px 0 0 #000;
+                text-decoration: underline;
 			}
             h1 {
                 text-align: center;
@@ -75,6 +85,23 @@
                 hostnamespan.innerHTML = hostname;
             }
         </script>
+
+        <h2>Current Status</h2>
+        <div class="container mt-3">
+            <div class="d-inline-block">
+                <img id="weather-img" class="img-fluid rounded" src="https://wttr.in/Chorley_0pq_transparency=200_lang=en.png" alt="Current weather in Chorley">
+                <form id="weather-form">
+                    <div class="input-group mt-1">
+                        <input id="weather-input" class="form-control" type="text" placeholder="Weather in..." aria-label="Weather in..." />
+                        <div class="input-group-append">
+                            <button id="weather-btn" class="btn btn-primary" type="button">OK</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script defer src="assets/js/main.js"></script>
+
         <h2>Job Sites - All <span class="public">[PUBLIC]</span></h2>
         <p>
             <ul>
@@ -417,9 +444,11 @@
                     </li>
                 </ul>
             <h2>Opnsense IDS Box</h2>
-            <li>
-                <a href="http://192.168.1.12">Opnsense Interface</a>
-            </li>
+                <ul>
+                    <li>
+                        <a href="http://192.168.1.12">Opnsense Interface</a>
+                    </li>
+                </ul>
             <h2>Calibre Admin</h2>
                 <ul>
                     <li>
