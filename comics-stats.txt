@@ -9,9 +9,9 @@ RTF count: 0
 DOC count: 4
 CHM count: 25
 OPF count: 17151
-CBZ count: 686
-Total comics count: 30135
-Total file count: 49754
+CBZ count: 691
+Total comics count: 30140
+Total file count: 49759
 
 Total size of comics library:
 627G	/home/comics

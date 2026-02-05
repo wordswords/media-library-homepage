@@ -2,11 +2,11 @@
 
 File Types:
 .ROM count: 66
-.ISO count: 31
+.ISO count: 32
 .BIN count: 718
 .CHD count: 4638
-.ZIP count: 71563
-.EXE count: 483
+.ZIP count: 79668
+.EXE count: 484
 .XCI count: 11
 .NSP count: 14
 .GBA count: 218
@@ -19,7 +19,7 @@ File Types:
 .WUA count: 2
 .7z count: 11
 
-Total identified possible games: 78382
+Total identified possible games: 86489
 
 Total size of games library:
-8.1T	/home/games/
+8.8T	/home/games/
