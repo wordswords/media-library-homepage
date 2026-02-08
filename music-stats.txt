@@ -1,13 +1,13 @@
 ** Music Library Stats
 
 File Types:
-FLAC count: 43847
-MP3 count: 25056
+FLAC count: 45849
+MP3 count: 25434
 WAV count: 14
 OGG count: 0
-M4A count: 479
-Total track count: 68917
-Total file count: 151886
+M4A count: 494
+Total track count: 71297
+Total file count: 153327
 
 Total size of music library:
-1.8T	/home/music
+1.9T	/home/music
