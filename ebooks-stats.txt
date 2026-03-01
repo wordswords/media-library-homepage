@@ -1,17 +1,17 @@
 ** eBooks Library Stats
 
 File Types:
-EPUB count: 21295
-PDF count: 1906
+EPUB count: 21038
+PDF count: 1893
 MOBI count: 10
 TXT count: 8
 RTF count: 1
 DOC count: 0
 CHM count: 1
-OPF count: 41173
+OPF count: 40501
 CBZ count: 42
-Total books count: 64394
-Total file count: 89582
+Total books count: 63452
+Total file count: 88149
 
 Total size of ebooks library:
-203G	/home/ebooks/
+202G	/home/ebooks/
